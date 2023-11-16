@@ -9,4 +9,6 @@ function RelatedProducts() {
   );
 }
 
+//hi
+
 export default RelatedProducts;
