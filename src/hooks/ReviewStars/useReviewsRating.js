@@ -44,7 +44,7 @@ function useReviewRating(productId) {
     setStatus(StatusEnum.pending);
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${productId}`, { // FIXME:
       headers: {
-        Authorization: 'makeItWorkLaterInEnv', // FIXME:
+        Authorization: process.env.AUTH_TOKEN, // FIXME:
       },
     })
       .then((response) => {

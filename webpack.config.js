@@ -1,4 +1,6 @@
 /* eslint-disable */
+const Dotenv = require('dotenv-webpack')
+
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -25,5 +27,5 @@ module.exports = {
     }
     ]
   },
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin, new Dotenv()]
 };
