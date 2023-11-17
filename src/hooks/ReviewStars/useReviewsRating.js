@@ -20,17 +20,17 @@ export const StatusEnum = {
 };
 
 function calculateAverageRating(ratings) {
-  const totalScore = (1 * ratings[1] || 0)
-  + (2 * ratings[2] || 0)
-  + (3 * ratings[3] || 0)
-  + (4 * ratings[4] || 0)
-  + (5 * ratings[5] || 0);
+  const totalScore = (1 * Number(ratings[1]) || 0)
+  + (2 * Number(ratings[2]) || 0)
+  + (3 * Number(ratings[3]) || 0)
+  + (4 * Number(ratings[4]) || 0)
+  + (5 * Number(ratings[5]) || 0);
 
-  const totalCount = (ratings[1] || 0)
-  + (ratings[2] || 0)
-  + (ratings[3] || 0)
-  + (ratings[4] || 0)
-  + (ratings[5] || 0);
+  const totalCount = (Number(ratings[1]) || 0)
+  + (Number(ratings[2]) || 0)
+  + (Number(ratings[3]) || 0)
+  + (Number(ratings[4]) || 0)
+  + (Number(ratings[5]) || 0);
 
   return totalCount === 0 ? 0 : totalScore / totalCount;
 }

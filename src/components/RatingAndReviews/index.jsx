@@ -9,9 +9,10 @@ function RatingAndReviews() {
       <StarsRating stars={3.7} />
       <StarsRating stars={4.7} />
       <StarsRating stars={1.7} />
-      PId: 1
-      <ProductStarRating productId={6} />
-      <ProductStarRating productId={1} />
+      <p>Review For ID 40344:</p>
+      <ProductStarRating productId={40344} />
+      <p>Review For ID 40347:</p>
+      <ProductStarRating productId={40347} />
 
     </>
   );
