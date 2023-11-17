@@ -49,7 +49,6 @@ function useReviewRating(productId) {
     })
       .then((response) => {
         setStatus(StatusEnum.success);
-        console.log(response.data); // FIXME:
         const { ratings } = response.data;
         setRating(calculateAverageRating(ratings));
       })
