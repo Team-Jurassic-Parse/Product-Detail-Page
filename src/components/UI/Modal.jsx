@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Modal({children, text = 'Click', buttonStyle}) { // eslint-disable-line
-
-  const [open, setOpen] = useState(false);
-
-  function handleOpenModal() {
-    setOpen(!open);
-  }
+function Modal({children, handleClose}) { // eslint-disable-line
 
   return (
     (
       <div>
-        {open
-        && (
         <button
           type="button"
           onClick={() => {
-            handleOpenModal();
+            handleClose();
+          }}
+          onKeyUp={(e) => {
+            if (e.key === 'Escape') {
+              handleClose();
+            } else if (e.key === ' ' || e.key === 'Spacebar') {
+              e.preventDefault();
+            }
           }}
           style={
           {
@@ -36,8 +35,6 @@ function Modal({children, text = 'Click', buttonStyle}) { // eslint-disable-line
         >
           <div onClick={(e) => {e.stopPropagation()}}>{children}</div> {/* eslint-disable-line */}
         </button>
-        )}
-        <button type="button" onClick={handleOpenModal} style={buttonStyle}>{text}</button>
       </div>
     )
   );
