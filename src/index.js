@@ -7,6 +7,7 @@ import Overview from './components/Overview/index.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers/index.jsx';
 import RatingAndReviews from './components/RatingAndReviews/index.jsx';
 import RelatedProducts from './components/RelatedProducts/index.jsx';
+import Modal from './components/UI/Modal.jsx'
 
 function App() {
   const [productId, setProductId] = React.useState('');
@@ -26,7 +27,7 @@ function App() {
 
 
   return (
-    <>
+    <div style={{padding: 12}}>
       <h1 className="heading"> app! </h1>
       <div className="content">
         <Overview productId={productId} styleId={styleId} setStyleId={setStyleId}/>
@@ -34,7 +35,7 @@ function App() {
         <RatingAndReviews productId={productId}/>
         <RelatedProducts productId={productId} setProductId={setProductId} styleId={styleId}/>
       </div>
-    </>
+    </div>
   );
 }
 
