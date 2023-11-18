@@ -1,16 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-
-/**
-* Custom hook for fetching and managing review ratings based on a product ID.
-*
-* @param {string} productId - The product id used to fetch data.
-* @returns {{
-*   rating: number | null,
-*   status: 'IDEL' | 'PENDING' | 'SUCCESS' | 'ERROR',
-*   error: string | null
-* }} An object containing the rating, current status of the fetch operation, and any error message.
-*/
+import useServerFetch from '../useServerFetch';
 
 export const StatusEnum = {
   idel: 'IDEL',
@@ -35,18 +24,27 @@ function calculateAverageRating(ratings) {
   return totalCount === 0 ? 0 : totalScore / totalCount;
 }
 
+/**
+* Custom hook for fetching and managing review ratings based on a product ID.
+*
+* @param {string} productId - The product id used to fetch data.
+* @returns {{
+*   rating: number | null,
+*   status: 'IDEL' | 'PENDING' | 'SUCCESS' | 'ERROR',
+*   error: string | null
+* }} An object containing the rating, current status of the fetch operation, and any error message.
+*/
+
 function useReviewRating(productId) {
   const [rating, setRating] = useState(null);
   const [status, setStatus] = useState(StatusEnum.idel);
   const [error, setError] = useState(null);
 
+  const reviewsFetchController = new AbortController();
+
   useEffect(() => {
     setStatus(StatusEnum.pending);
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${productId}`, { // FIXME:
-      headers: {
-        Authorization: process.env.AUTH_TOKEN, // FIXME:
-      },
-    })
+    useServerFetch('get', `reviews/meta?product_id=${productId}`, {}, reviewsFetchController)
       .then((response) => {
         setStatus(StatusEnum.success);
         const { ratings } = response.data;
@@ -56,6 +54,10 @@ function useReviewRating(productId) {
         setStatus(StatusEnum.error);
         setError(err.message);
       });
+
+    return () => {
+      reviewsFetchController.abort();
+    };
   }, [productId]);
   return { rating, status, error };
 }
