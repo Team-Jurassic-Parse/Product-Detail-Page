@@ -17,7 +17,7 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 
 PARAMS: (method, endpoint, controller)
 ```
-  method: The method of the request you are making.
+  method: The method of the request you are making ('get', 'post', etc...)
   endpoint: The server endpoint for the request (what comes after .../hr-rfp/)
   ?controller: The AbortController used to cancel the request (if necessary)
 ```
