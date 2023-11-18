@@ -11,14 +11,14 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
 
   useEffect(() => {
     if (productId) {
-      useServerFetch('get', `products/${productId}`, productFetchController)
+      useServerFetch('get', `products/${productId}`, {}, productFetchController)
         .then((res) => {
           setProductInfo(res.data);
         })
         .catch(() => {
           setProductInfo(null);
         });
-      useServerFetch('get', `products/${productId}/styles`, stylesFetchController)
+      useServerFetch('get', `products/${productId}/styles`, {}, stylesFetchController)
         .then((res) => {
           setProductStyles(res.data);
           setStyleId(res.data.results[0].style_id);
@@ -29,8 +29,8 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
     }
 
     return (() => {
-      productFetchController.abort();
       stylesFetchController.abort();
+      productFetchController.abort();
     });
   }, [productId]);
 

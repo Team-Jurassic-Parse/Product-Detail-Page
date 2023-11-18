@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const useServerFetch = ((method, endpoint, controller, body) => new Promise((resolve, reject) => {
+const useServerFetch = ((method, endpoint, body, controller) => new Promise((resolve, reject) => {
   axios.request({
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/${endpoint}`,
     headers: {
