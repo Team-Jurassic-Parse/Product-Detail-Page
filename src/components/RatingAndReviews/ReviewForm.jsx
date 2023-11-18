@@ -6,9 +6,12 @@ const Wrapper = styled.form`
   padding: 24px 36px;
 `;
 
-function ReviewForm() {
+function ReviewForm({ productName }) { // eslint-disable-line
   return (
-    <Wrapper>ReviewForm</Wrapper>
+    <Wrapper>
+      <h3>Review Form for:</h3>
+      <p>{productName}</p>
+    </Wrapper>
   );
 }
 

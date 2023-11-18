@@ -23,7 +23,7 @@ const AddFormBtn = styled.button`
   margin: auto;
 `;
 
-function RatingAndReviews({ productId }) { // eslint-disable-line
+function RatingAndReviews({ productId, productName='Anonymous' }) { // eslint-disable-line
 
   const [showForm, setShowForm] = useState(false);
   const openModal = () => { setShowForm(true); };
@@ -32,13 +32,13 @@ function RatingAndReviews({ productId }) { // eslint-disable-line
   return (
     <Wrapper>
       <SummaryAndListWrapper>
-        <RatingSummary />
-        <ReviewsList />
+        <RatingSummary productId={productId} />
+        <ReviewsList productId={productId} />
       </SummaryAndListWrapper>
       <BtnWrapper>
         <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
       </BtnWrapper>
-      {showForm && <Modal handleClose={closeModal}><ReviewForm /></Modal>}
+      {showForm && <Modal handleClose={closeModal}><ReviewForm productName={productName} /></Modal>}
     </Wrapper>
   );
 }

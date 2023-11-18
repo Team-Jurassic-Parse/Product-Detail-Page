@@ -4,10 +4,10 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   background: green;
   flex: 1;
-  height: 200px; // FIXME:
+  min-height: 200px; // FIXME:
 `;
 
-function RatingSummary() {
+function RatingSummary({ productId }) { // eslint-disable-line
   return (
     <Wrapper>Summary</Wrapper>
   );
