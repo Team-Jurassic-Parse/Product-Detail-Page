@@ -15,13 +15,13 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 
 ### useServerFetch
 
-params: (method, endpoint, controller)
+PARAMS: (method, endpoint, controller)
 ```
   method: The method of the request you are making.
   endpoint: The server endpoint for the request (what comes after .../hr-rfp/)
   ?controller: The AbortController used to cancel the request (if necessary)
 ```
 
-returns : <Promise> with the same resolution value as an axios fetch request
+RETURN: <Promise> with the same resolution value as an axios fetch request
 
 This hook can be used to directly replace your axios get requests.
