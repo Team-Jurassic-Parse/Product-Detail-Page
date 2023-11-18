@@ -17,6 +17,7 @@ useServerFetch(method, endpoint, controller)
 
 method: The method of the request you are making.
 endpoint: The server endpoint for the request (what comes after .../hr-rfp/)
+?body: The body for the request
 ?controller: The AbortController used to cancel the request (if necessary)
 
 returns : <Promise> with the same resolution value as an axios fetch request
