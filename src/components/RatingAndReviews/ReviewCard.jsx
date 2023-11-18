@@ -1,11 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import StarsRating from '../ReviewStars/StarsRating.jsx' // eslint-disable-line
 
-const Wrapper = styled.div``;
+const Wrapper = styled.li``;
 
-function ReviewCard() {
+function ReviewCard({ review }) { // eslint-disable-line
+  const { body, rating, recommend, date } = review; // eslint-disable-line
+  const formatedDate = new Intl.DateTimeFormat('en-US').format(new Date(date));
+  console.log(review);
   return (
-    <Wrapper>ReviewCard</Wrapper>
+    <Wrapper>
+      <p>
+        {body}
+        {' '}
+        <span>{formatedDate}</span>
+      </p>
+      <StarsRating stars={rating} />
+      {recommend && <p>Recommend</p>}
+    </Wrapper>
   );
 }
 

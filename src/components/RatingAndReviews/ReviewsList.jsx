@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
+import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   background: blue;
   flex: 2;
   min-height: 200px; // FIXME:
+  max-height: 100vh;
+  overflow: scroll;
 `;
 
 const UnorderedList = styled.ul`
@@ -25,7 +28,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
   const reviewsFetchController = new AbortController();
   useEffect(() => {
     setStatus(StatusEnum.pending);
-    console.log({ sort_by: sort });
+    console.log({ sort_by: sort }); // FIXME:
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', {
       headers: {
         Authorization: process.env.AUTH_TOKEN,
@@ -78,7 +81,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
       status !== StatusEnum.error && reviews.length === 0 ? <p>No Reviews yet</p>
         : (
           <UnorderedList>
-            { reviews.map((review) => (<li key={review.review_id}>{review.body}</li>))}
+            { reviews.map((review) => (<ReviewCard key={review.review_id} review={review} />))}
           </UnorderedList>
         )
       }
