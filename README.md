@@ -13,13 +13,13 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 
 # Custom Hooks Documentation
 
-useServerFetch(method, endpoint, controller)
+### useServerFetch
 
-method: The method of the request you are making.
+params: (method, endpoint, controller)
 
-endpoint: The server endpoint for the request (what comes after .../hr-rfp/)
-
-?controller: The AbortController used to cancel the request (if necessary)
+  method: The method of the request you are making.
+  endpoint: The server endpoint for the request (what comes after .../hr-rfp/)
+  ?controller: The AbortController used to cancel the request (if necessary)
 
 
 returns : <Promise> with the same resolution value as an axios fetch request
