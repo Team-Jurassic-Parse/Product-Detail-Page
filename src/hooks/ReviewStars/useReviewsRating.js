@@ -44,7 +44,7 @@ function useReviewRating(productId) {
 
   useEffect(() => {
     setStatus(StatusEnum.pending);
-    useServerFetch('get', `reviews/meta?product_id=${productId}`, reviewsFetchController)
+    useServerFetch('get', `reviews/meta?product_id=${productId}`, {}, reviewsFetchController)
       .then((response) => {
         setStatus(StatusEnum.success);
         const { ratings } = response.data;
