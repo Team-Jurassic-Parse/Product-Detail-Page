@@ -29,8 +29,8 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
     }
 
     return (() => {
-      stylesFetchController.abort();
       productFetchController.abort();
+      stylesFetchController.abort();
     });
   }, [productId]);
 
