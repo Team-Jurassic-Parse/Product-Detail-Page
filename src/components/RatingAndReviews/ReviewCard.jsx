@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import StarsRating from '../ReviewStars/StarsRating.jsx' // eslint-disable-line
 
-const Wrapper = styled.li``;
+const Wrapper = styled.li`
+  background: blueviolet;
+`;
 
 function ReviewCard({ review }) { // eslint-disable-line
   const { body, rating, recommend, date } = review; // eslint-disable-line

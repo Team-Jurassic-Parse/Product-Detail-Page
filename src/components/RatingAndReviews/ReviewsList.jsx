@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
 const UnorderedList = styled.ul`
   border: 1px solid;
+  list-style-type: none;
 `;
 
 function ReviewsList({ productId }) { // eslint-disable-line
