@@ -8,22 +8,6 @@ export const StatusEnum = {
   error: 'ERROR',
 };
 
-function calculateAverageRating(ratings) {
-  const totalScore = (1 * Number(ratings[1]) || 0)
-  + (2 * Number(ratings[2]) || 0)
-  + (3 * Number(ratings[3]) || 0)
-  + (4 * Number(ratings[4]) || 0)
-  + (5 * Number(ratings[5]) || 0);
-
-  const totalCount = (Number(ratings[1]) || 0)
-  + (Number(ratings[2]) || 0)
-  + (Number(ratings[3]) || 0)
-  + (Number(ratings[4]) || 0)
-  + (Number(ratings[5]) || 0);
-
-  return totalCount === 0 ? 0 : totalScore / totalCount;
-}
-
 /**
 * Custom hook for fetching and managing review ratings based on a product ID.
 *
@@ -36,19 +20,19 @@ function calculateAverageRating(ratings) {
 */
 
 function useReviewRating(productId) {
-  const [rating, setRating] = useState(null);
+  const [productReview, setProductReview] = useState({});
   const [status, setStatus] = useState(StatusEnum.idel);
   const [error, setError] = useState(null);
 
   const reviewsFetchController = new AbortController();
 
   useEffect(() => {
+    if (!productId) return () => {};
     setStatus(StatusEnum.pending);
     useServerFetch('get', `reviews/meta?product_id=${productId}`, {}, reviewsFetchController)
       .then((response) => {
         setStatus(StatusEnum.success);
-        const { ratings } = response.data;
-        setRating(calculateAverageRating(ratings));
+        setProductReview(response.data);
       })
       .catch((err) => {
         setStatus(StatusEnum.error);
@@ -59,7 +43,7 @@ function useReviewRating(productId) {
       reviewsFetchController.abort();
     };
   }, [productId]);
-  return { rating, status, error };
+  return { productReview, status, error };
 }
 
 export default useReviewRating;
