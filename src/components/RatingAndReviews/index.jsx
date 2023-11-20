@@ -32,7 +32,7 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
   const [showWidget, setShowWidget] = useState(false);
 
   return (
-    <>
+    <div>
       <button type="button" onClick={() => { setShowWidget((cur) => !cur); }}>Toggle Lance&apos;s widget</button>
       {showWidget && (
         <Wrapper>
@@ -50,7 +50,7 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
           )}
         </Wrapper>
       )}
-    </>
+    </div>
   );
 }
 
