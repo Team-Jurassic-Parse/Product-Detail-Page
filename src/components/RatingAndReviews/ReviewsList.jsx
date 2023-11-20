@@ -30,7 +30,6 @@ function ReviewsList({ productId }) { // eslint-disable-line
   useEffect(() => {
     if (!productId) return () => {};
     setStatus(StatusEnum.pending);
-    console.log({ sort_by: sort }); // FIXME:
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', {
       headers: {
         Authorization: process.env.AUTH_TOKEN,

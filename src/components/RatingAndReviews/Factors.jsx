@@ -5,7 +5,6 @@ import FactorSlider from './FactorSlider.jsx'; // eslint-disable-line
 const Wrapper = styled.div``;
 
 function Factors({characteristics}) { // eslint-disable-line
-  console.log(characteristics);
   return (
     <Wrapper>
       {Object
