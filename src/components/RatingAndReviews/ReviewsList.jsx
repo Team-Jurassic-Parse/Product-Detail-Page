@@ -5,7 +5,6 @@ import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
 import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
-  background: blue;
   flex: 2;
   min-height: 200px; // FIXME:
   max-height: 100vh;

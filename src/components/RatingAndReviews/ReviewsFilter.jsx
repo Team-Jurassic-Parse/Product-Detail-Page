@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import RatingBar from './RatingBar.jsx'; // eslint-disable-line
 
-const Wrapper = styled.div`
-  background: wheat;
-`;
+const Wrapper = styled.div``;
 
 const StarsFilter = styled.ol``;
 

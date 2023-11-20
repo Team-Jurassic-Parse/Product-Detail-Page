@@ -6,9 +6,7 @@ import Factors from './Factors.jsx'; // eslint-disable-line
 
 import { calculateAverageRating } from '../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
 
-const ContentWrapper = styled.div`
-  background: yellowgreen;
-`;
+const ContentWrapper = styled.div``;
 
 function RatingSummaryContent({ productReview }) { // eslint-disable-line
   // console.log(productReview); FIXME: Delete in production

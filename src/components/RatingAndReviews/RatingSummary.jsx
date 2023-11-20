@@ -4,7 +4,6 @@ import useReviewRating, { StatusEnum } from '../../hooks/ReviewStars/useReviewsR
 import RatingSummaryContent from './RatingSummaryContent.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
-  background: green;
   flex: 1;
   min-height: 200px; // FIXME:
 

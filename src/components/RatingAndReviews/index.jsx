@@ -10,13 +10,10 @@ const Wrapper = styled.div`
 `;
 
 const SummaryAndListWrapper = styled.div`
-  border: 1px solid red;
   display: flex;
 `;
 
-const BtnWrapper = styled.div`
-  background-color: beige;
-`;
+const BtnWrapper = styled.div``;
 
 const AddFormBtn = styled.button`
   display: block;
