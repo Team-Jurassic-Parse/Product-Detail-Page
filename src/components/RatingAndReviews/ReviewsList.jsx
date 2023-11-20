@@ -67,6 +67,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
   const handleChangeSort = (event) => {
     setPage(1);
     setReviews([]);
+    setHaveMoreReviews(true);
     setSort(event.target.value);
   };
 
