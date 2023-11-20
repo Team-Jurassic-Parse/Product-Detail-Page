@@ -11,14 +11,14 @@ const ContentWrapper = styled.div`
 `;
 
 function RatingSummaryContent({ productReview }) { // eslint-disable-line
-  console.log(productReview);
+  // console.log(productReview); FIXME: Delete in production
   const avgScore = useMemo(() => calculateAverageRating(productReview.ratings), [productReview]); // eslint-disable-line
 
   return (
     <ContentWrapper>
       <ReviewScore score={avgScore} />
       <ReviewsFilter ratings={productReview.ratings} recommended={productReview.recommended}/> {/* eslint-disable-line */}
-      <Factors />
+      <Factors characteristics={productReview.characteristics}/> {/* eslint-disable-line */}
     </ContentWrapper>
   );
 }

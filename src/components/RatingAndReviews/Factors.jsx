@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import FactorSlider from './FactorSlider.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div``;
 
-function Factors() {
+function Factors({characteristics}) { // eslint-disable-line
+  console.log(characteristics);
   return (
     <Wrapper>
-      Factors
+      {Object
+        .entries(characteristics)
+        .map(([char, val]) => (<FactorSlider key={val.id} charact={char} value={val.value} />))}
     </Wrapper>
   );
 }
