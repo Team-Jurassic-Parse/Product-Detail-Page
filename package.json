@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "product-detail-page",
   "main": "index.js",
-
   "scripts": {
     "start": "webpack server --config webpack.config.js",
     "test": "jest"
@@ -24,6 +23,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@jest/globals": "^29.7.0",
+    "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "babel-jest": "^29.5.0",
     "babel-loader": "^8.2.5",
