@@ -4,7 +4,6 @@ import RatingSummary from './RatingSummary.jsx'; // eslint-disable-line
 import ReviewsList from './ReviewsList.jsx'; // eslint-disable-line
 import ReviewForm from './ReviewForm.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx' // eslint-disable-line
-import ProductStarRating from '../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   border: 1px solid;
@@ -32,7 +31,6 @@ function RatingAndReviews({ productId, productName='Anonymous' }) { // eslint-di
 
   return (
     <Wrapper>
-      <ProductStarRating productId={productId} />
       <SummaryAndListWrapper>
         <RatingSummary productId={productId} />
         <ReviewsList productId={productId} />

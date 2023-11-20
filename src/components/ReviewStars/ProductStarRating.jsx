@@ -2,7 +2,7 @@ import React from 'react';
 import useReviewRating, { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating.js'; // eslint-disable-line
 import StarsRating from './StarsRating.jsx'; // eslint-disable-line
 
-function calculateAverageRating(ratings) {
+export function calculateAverageRating(ratings) { // FIXME: move to a util folder.
   const totalScore = (1 * Number(ratings[1]) || 0)
   + (2 * Number(ratings[2]) || 0)
   + (3 * Number(ratings[3]) || 0)
@@ -21,7 +21,7 @@ function calculateAverageRating(ratings) {
 function ProductStarRating({ productId }) { // eslint-disable-line
   const { productReview, status, error } = useReviewRating(productId);
   if (status === StatusEnum.pending) {
-    return (<div>Pending...</div>);
+    return (<div>Pending...</div>); // FIXME: Fancier pending state.
   }
   if (status === StatusEnum.error) {
     return <div>{error}</div>;

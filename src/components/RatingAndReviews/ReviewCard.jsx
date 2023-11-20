@@ -9,7 +9,7 @@ const Wrapper = styled.li`
 function ReviewCard({ review }) { // eslint-disable-line
   const { body, rating, recommend, date } = review; // eslint-disable-line
   const formatedDate = new Intl.DateTimeFormat('en-US').format(new Date(date));
-  console.log(review);
+
   return (
     <Wrapper>
       <p>

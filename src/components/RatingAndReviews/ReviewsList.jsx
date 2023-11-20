@@ -28,6 +28,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
 
   const reviewsFetchController = new AbortController();
   useEffect(() => {
+    if (!productId) return () => {};
     setStatus(StatusEnum.pending);
     console.log({ sort_by: sort }); // FIXME:
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', {
@@ -86,6 +87,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
           </UnorderedList>
         )
       }
+      {/* FIXME: fancier pending state. */}
       {status === StatusEnum.pending && <p>Loading Data...</p>}
       {status === StatusEnum.error && <p>{error}</p>}
       {haveMoreReviews && <button onClick={handleShowMore} type="button">Show More</button>}
@@ -93,4 +95,4 @@ function ReviewsList({ productId }) { // eslint-disable-line
   );
 }
 
-export default ReviewsList;
+export default React.memo(ReviewsList);

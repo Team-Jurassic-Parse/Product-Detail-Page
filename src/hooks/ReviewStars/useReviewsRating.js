@@ -27,6 +27,7 @@ function useReviewRating(productId) {
   const reviewsFetchController = new AbortController();
 
   useEffect(() => {
+    if (!productId) return () => {};
     setStatus(StatusEnum.pending);
     useServerFetch('get', `reviews/meta?product_id=${productId}`, {}, reviewsFetchController)
       .then((response) => {
