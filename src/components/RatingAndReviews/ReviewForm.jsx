@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import ClickableStarsRating from '../ReviewStars/ClickableStarsRating.jsx'; // eslint-disable-line
 
 const Wrapper = styled.form`
   background: white;
@@ -7,10 +8,13 @@ const Wrapper = styled.form`
 `;
 
 function ReviewForm({ productName }) { // eslint-disable-line
+  const [rating, setRating] = useState(5);
+
   return (
     <Wrapper>
       <h3>Review Form for:</h3>
       <p>{productName}</p>
+      <ClickableStarsRating value={rating} onClick={(val) => { setRating(val); }} />
     </Wrapper>
   );
 }
