@@ -7,7 +7,7 @@ function QuestionsList({ questions }) { //eslint-disable-line
       {questions.map((question) => { //eslint-disable-line
         const questionId = question.question_id;
         return (
-          <div>
+          <div key={questionId}>
             Q:
             {question.question_body}
             <Answers questionId={questionId} />
