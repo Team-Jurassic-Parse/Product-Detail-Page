@@ -6,7 +6,10 @@ const ImageInput = styled.input`
   display: none;
 `;
 
-const Thumbnail = styled.img``;
+const Thumbnail = styled.img`
+  height: 100px;
+  width: 100px;
+`;
 
 function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
   const id = useId();
