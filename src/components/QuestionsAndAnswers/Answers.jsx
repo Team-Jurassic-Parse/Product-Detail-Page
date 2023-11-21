@@ -9,7 +9,6 @@ function Answers({ questionId }) { //eslint-disable-line
     if (questionId) {
       useServerFetch('get', `qa/questions/${questionId}/answers`, {}, answerFetchController)
         .then((response) => {
-          console.log('this is the response data from answers:', response.data);
           setAnswers(response.data.results);
         })
         .catch(() => setAnswers(null));
