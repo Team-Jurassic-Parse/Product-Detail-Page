@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Star from './Star.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,11 +30,10 @@ function ClickableStarsRating({ value, onClick }) {   // eslint-disable-line
       {starsNums.map((num) => (
         <StarBtn
           type="button"
-          aria-label={value >= num ? 'Full Star' : 'Empty Star'}
           key={num}
           onClick={() => onClick(num)}
         >
-          {value >= num ? '🌕' : '🌑'}
+          {value >= num ? <Star fill={1} /> : <Star fill={0} />}
         </StarBtn>
       ))}
     </Wrapper>
