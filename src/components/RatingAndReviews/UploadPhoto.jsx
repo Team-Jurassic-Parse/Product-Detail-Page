@@ -23,7 +23,7 @@ function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
         type="file"
         accept="image/"
         onChange={handleInputChange}
-        // multiple FIXME: decide if allow user to upload multiple images.
+        multiple
         id={`${id}-imageInput`}
       />
       {images.length < 5 && ( // eslint-disable-line
