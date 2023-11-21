@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
+
 
 function Answers({ questionId }) { //eslint-disable-line
   const [answers, setAnswers] = useState([]);
@@ -13,6 +15,9 @@ function Answers({ questionId }) { //eslint-disable-line
         })
         .catch(() => setAnswers(null));
     }
+    return (() => {
+      answerFetchController.abort();
+    });
   }, [questionId]);
   return answers ? (
     <>
