@@ -1,17 +1,22 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": "airbnb",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "rules": {
-        "import/extensions": ["error", "ignorePackages", {
-            "js": "never",
-            "jsx": "never"
-        }]
-    }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never"
+      }
+    ]
+  }
 }

@@ -7,22 +7,26 @@ import Overview from './components/Overview/index.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers/index.jsx';
 import RatingAndReviews from './components/RatingAndReviews/index.jsx';
 import RelatedProducts from './components/RelatedProducts/index.jsx';
+import useServerFetch from './hooks/useServerFetch.js'; //eslint-disable-line
 
 function App() {
   const [productId, setProductId] = React.useState('');
   const [styleId, setStyleId] = React.useState('');
+  const initialProductFetcher = new AbortController();
 
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', {
-    headers: {
-      Authorization: process.env.AUTH_TOKEN,
-    },
-  })
-    .then((res) => {
-      setProductId(res.data[0].id);
-    })
-    .catch((err) => {
-      console.error(err);
+  React.useEffect(() => {
+    useServerFetch('get', `products`, {}, initialProductFetcher)
+      .then((res) => {
+        setProductId(res.data[0].id);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    return (() => {
+      initialProductFetcher.abort();
     });
+  }, []);
 
 
   return (
