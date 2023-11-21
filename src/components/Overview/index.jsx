@@ -22,7 +22,7 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
     border-width: 2px;
     border-style: solid;
     border-color: black;
-    grid-template-rows: repeat(4, 20vh);
+    grid-template-rows: repeat(8, 10vh);
     border-radius: 10px;
   `;
 
@@ -77,7 +77,7 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
     <>
       <DefaultOverviewLayout>
 
-        <OverviewLayoutSection column="1 / 3" row="1 / 5">
+        <OverviewLayoutSection column="1 / 3" row="1 / 9">
           <ImageView
             currentStyle={currentStyle}
           />
@@ -90,7 +90,7 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
           />
         </OverviewLayoutSection>
 
-        <OverviewLayoutSection column="3" row="3">
+        <OverviewLayoutSection column="3" row="3 / 6">
           <StyleSelectorView
             productStyles={productStyles}
             styleId={styleId}
@@ -98,7 +98,7 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
           />
         </OverviewLayoutSection>
 
-        <OverviewLayoutSection column="3" row="4">
+        <OverviewLayoutSection column="3" row="6 / 9">
           <AddToCartView
             currentStyle={currentStyle}
           />
