@@ -10,12 +10,19 @@ const Thumbnail = styled.img``;
 
 function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
   const id = useId();
+
+  const handleInputChange = (event) => {
+    const selectedFiles = Array.from(event.target.files);
+    const newImages = selectedFiles.map((file) => URL.createObjectURL(file));
+    handleImageChange(newImages);
+  };
+
   return (
     <Wrapper>
       <ImageInput
         type="file"
         accept="image/"
-        onChange={handleImageChange}
+        onChange={handleInputChange}
         // multiple FIXME: decide if allow user to upload multiple images.
         id={`${id}-imageInput`}
       />
