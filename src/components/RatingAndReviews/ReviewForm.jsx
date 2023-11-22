@@ -8,10 +8,12 @@ import UploadPhoto from './ReviewForm/UploadPhoto.jsx'; // eslint-disable-line
 
 const Wrapper = styled.form`
   background: white;
+  max-width: 560px;
   padding: 24px 36px;
   display: flex;
+  gap: 12px;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 `;
 

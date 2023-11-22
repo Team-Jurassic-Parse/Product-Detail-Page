@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useId } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.fieldset``;
 function Recomended({recomended, setRecomended}) { // eslint-disable-line
+  const id = useId();
   return (
     <Wrapper>
-      Recommended
+      <legend>Do you recommend this product?</legend>
     </Wrapper>
   );
 }

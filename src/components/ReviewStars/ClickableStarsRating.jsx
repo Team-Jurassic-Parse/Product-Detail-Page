@@ -26,7 +26,11 @@ const starsNums = [1, 2, 3, 4, 5];
 
 function ClickableStarsRating({ value, onClick }) {   // eslint-disable-line
   return (
-    <Wrapper>
+    <Wrapper
+      role="scrollbar"
+      aria-valuemin={1}
+      aria-valuemax={5}
+    >
       {starsNums.map((num) => (
         <StarBtn
           type="button"
