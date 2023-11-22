@@ -4,6 +4,7 @@ import RatingSummary from './RatingSummary.jsx'; // eslint-disable-line
 import ReviewsList from './ReviewsList.jsx'; // eslint-disable-line
 import ReviewForm from './ReviewForm.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
+import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   border: 1px solid;
@@ -36,10 +37,12 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
       <button type="button" onClick={() => { setShowWidget((cur) => !cur); }}>Toggle Lance&apos;s widget</button>
       {showWidget && (
         <Wrapper>
-          <SummaryAndListWrapper>
-            <RatingSummary productId={productId} />
-            <ReviewsList productId={productId} />
-          </SummaryAndListWrapper>
+          <StarsFilterProvider>
+            <SummaryAndListWrapper>
+              <RatingSummary productId={productId} />
+              <ReviewsList productId={productId} />
+            </SummaryAndListWrapper>
+          </StarsFilterProvider>
           <BtnWrapper>
             <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
           </BtnWrapper>

@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import RatingBar from './RatingBar.jsx'; // eslint-disable-line
+import useStarsFilter from './hooks/useStarsFilter.js';
 
 const Wrapper = styled.div``;
 
 const StarsFilter = styled.ol``;
 
-const StarFilterLine = styled.li`
+const StarFilterLineWrapper = styled.li`
   display: flex;
+  opacity: ${(props) => (props.isActive ? 1 : 0.2)};
 `;
 
 const getMaxRating = (ratings) => {
@@ -20,9 +22,23 @@ const getMaxRating = (ratings) => {
   return max;
 }; // FIXME: move to a util folder.
 
+function StarFilterLine({ children, rating }) {
+  const { starsFilter, toggleStarsFilter } = useStarsFilter();
+
+  return (
+    <StarFilterLineWrapper isActive={starsFilter[rating]} onClick={() => toggleStarsFilter(rating)}>
+      <span>
+        {rating}
+        {' '}
+        Stars
+      </span>
+      {children}
+    </StarFilterLineWrapper>
+  );
+}
+
 function ReviewsFilter({recommended, ratings}) { // eslint-disable-line
   const recommendRate = Number(recommended.true) / (Number(recommended.true) + Number(recommended.false)); // eslint-disable-line
-
   const maxRating = getMaxRating(ratings);
 
   return (
@@ -32,24 +48,19 @@ function ReviewsFilter({recommended, ratings}) { // eslint-disable-line
         % of reviewers recommend this product.
       </div>
       <StarsFilter>
-        <StarFilterLine>
-          <span>5 Stars</span>
+        <StarFilterLine rating="5">
           <RatingBar rating={Number(ratings[5]) / maxRating} />
         </StarFilterLine>
-        <StarFilterLine>
-          <span>4 Stars</span>
+        <StarFilterLine rating="4">
           <RatingBar rating={Number(ratings[4]) / maxRating} />
         </StarFilterLine>
-        <StarFilterLine>
-          <span>3 Stars</span>
+        <StarFilterLine rating="3">
           <RatingBar rating={Number(ratings[3]) / maxRating} />
         </StarFilterLine>
-        <StarFilterLine>
-          <span>2 Stars</span>
+        <StarFilterLine rating="2">
           <RatingBar rating={Number(ratings[2]) / maxRating} />
         </StarFilterLine>
-        <StarFilterLine>
-          <span>1 Stars</span>
+        <StarFilterLine rating="1">
           <RatingBar rating={Number(ratings[1]) / maxRating} />
         </StarFilterLine>
       </StarsFilter>
