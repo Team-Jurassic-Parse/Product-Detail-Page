@@ -1,11 +1,11 @@
 import React from 'react';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import Overview from './index.jsx'; // eslint-disable-line
+import QuestionsAndAnswers from './index.jsx'; // eslint-disable-line
 
-describe('Overview', () => {
+describe('Questions and Answers', () => {
   it('exists', () => {
-    render(<Overview />);
-    expect(screen.getAllByText('Overview').toBeTruthy);
+    render(<QuestionsAndAnswers />);
+    expect(screen.getAllByText('QUESTIONS & ANSWERS').toBeTruthy);
   });
 });
