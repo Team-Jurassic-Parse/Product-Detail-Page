@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Answers from './Answers.jsx'; //eslint-disable-line
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
   background: white;
   padding: 10px 25px;
   font-size: 19px;
   font-weight: bold;
 `;
 
-const InnerWrapper = styled.form`
+const InnerWrapper = styled.div`
   background: lightgrey;
   margin-top: 10px;
   margin-bottom: 10px;

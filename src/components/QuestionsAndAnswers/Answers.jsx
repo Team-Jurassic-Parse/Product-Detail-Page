@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
-const AnswerWrapper = styled.form`
+const AnswerWrapper = styled.div`
   font-size: 16px;
   font-weight: normal;
   padding: 5px;
 `;
 
-const BelowAnswer = styled.form`
+const BelowAnswer = styled.div`
   padding: 5px 25px;
   font-size: 15px;
   font-weight: lighter;
@@ -41,8 +41,8 @@ function Answers({ questionId }) { //eslint-disable-line
         );
         const answerId = answer.answer_id;
         return (
-          <div>
-            <AnswerWrapper key={answerId}>
+          <div key={answerId}>
+            <AnswerWrapper>
               A:
               {answer.body}
             </AnswerWrapper>
