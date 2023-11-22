@@ -1,0 +1,165 @@
+.outfit-image {
+  width: 100%;
+  height: 26em;
+  object-fit: cover;
+  object-position: center center;
+  border: 1px solid #ddd;
+  background-color: #ddd;
+}
+
+.outfit-alt-text {
+  width: 100%;
+  height: 26em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.outfit-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  margin: auto 1rem;
+  text-align: center;
+  font-family: arial;
+  border: 1px solid #ddd;
+}
+
+.row-outfit-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.outfit-carousel-container {
+  width: 50%;
+  margin: auto;
+  height: auto;
+}
+
+.OutfitRatingsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.OutfitRatings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.row-outfit-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.outfit-card h1,
+.outfit-card h3,
+.outfit-card h2,
+.outfit-card h4 {
+  margin: 0.25rem 0;
+  font-family: Georgia, sans-serif;
+}
+
+.outfit-card h4 {
+  color: #333;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.outfit-card h3 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: none;
+}
+
+.outfit-card h2 {
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  position: relative;
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+  font-weight: 400;
+}
+
+.row-outift-title {
+  text-align: center;
+}
+
+.row-outift-title h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  padding: 0 0.75rem;
+  display: inline-block;
+}
+
+.remove-button {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.remove-button:hover .remove-icon {
+  color: black;
+}
+
+.remove-icon {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.add-button span {
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  position: relative;
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+  font-weight: 400;
+}
+
+.add-button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  margin: auto 1rem;
+  text-align: center;
+  font-family: arial;
+  border: 1px solid #ddd;
+}
+
+.add-icon {
+  width: 100%;
+  height: 26em;
+  object-fit: cover;
+  object-position: center center;
+  border: 1px solid #ddd;
+  background-color: #ddd;
+}
+
+.outfit-button-carousel {
+  display: flex;
+  width: 100%;
+}
+
+.outfit-carousel-item {
+  display: flex;
+  width: 100%;
+}
