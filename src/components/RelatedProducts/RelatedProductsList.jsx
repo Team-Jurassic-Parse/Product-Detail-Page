@@ -12,6 +12,7 @@ function RelatedProductsList({
   relatedItems,
   onClickRelatedProduct,
   setProductId,
+  setCurrentId,
 }) {
   //eslint-disable-line
   const responsive = {
@@ -62,6 +63,7 @@ function RelatedProductsList({
             className="favorite-button"
             onClick={(e) => {
               e.stopPropagation();
+              () => setCurrentId(relatedList.id);
             }}
           >
             <BsStarFill

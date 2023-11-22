@@ -6,12 +6,15 @@ import OutfitList from './OutfitList.jsx';
 import './RelatedProducts.css';
 import './Outfit.css';
 import Modal from '../UI/Modal.jsx';
+import ComparisonTable from './ComparisonTable.jsx';
 /* eslint-enable */
 
 function RelatedProducts({ productId, setProductId, styleId }) {
   //eslint-disable-line
   const [relatedItems, setRelatedItems] = useState(null);
   const [outfits, setOutfits] = useState(null);
+  const [currentId, setcurrentId] = useState(null);
+  const [openComparisonModal, setOpenComparisonModal] = useState(false);
   const relatedFetchController = new AbortController();
   const productIdFetchController = new AbortController();
   const stylesFetchController = new AbortController();
@@ -144,9 +147,13 @@ function RelatedProducts({ productId, setProductId, styleId }) {
     setOutfits(updatedOutfits);
   };
 
+  const setCurrentIdAndUpdateModal = (key) => {
+    setCurrentId(key);
+    setOpenComparisonModal((prev) => !prev);
+  };
+
   return (
     <>
-      {console.log(outfits)}
       <div className="row-related-title">
         <h1>
           <b>Related Products</b>
@@ -158,6 +165,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
             relatedItems={relatedItems}
             onClickRelatedProduct={onClickRelatedProduct}
             setProductId={setProductId}
+            setCurrentId={setCurrentIdAndUpdateModal}
           />
         </div>
       </div>
@@ -175,6 +183,17 @@ function RelatedProducts({ productId, setProductId, styleId }) {
           />
         </div>
       </div>
+      {/* {openComparisonModal && (
+        <Modal
+          handleClose={() => setOpenComparisonModal(false)}
+          children={
+            <ComparisonTable
+              currentProduct={currentProduct}
+              comparedProduct={relatedItems.relatedItems[relatedItems.currentId]}
+            />
+          }
+        ></Modal>
+      )} */}
     </>
   );
 }
