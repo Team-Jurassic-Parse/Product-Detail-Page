@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
+
+const AnswerWrapper = styled.div`
+  font-size: 16px;
+  font-weight: normal;
+  padding: 5px;
+`;
+
+const BelowAnswer = styled.div`
+  padding: 5px 25px;
+  font-size: 15px;
+  font-weight: lighter;
+`;
 
 function Answers({ questionId }) { //eslint-disable-line
   const [answers, setAnswers] = useState([]);
@@ -13,6 +26,9 @@ function Answers({ questionId }) { //eslint-disable-line
         })
         .catch(() => setAnswers(null));
     }
+    return (() => {
+      answerFetchController.abort();
+    });
   }, [questionId]);
   return answers ? (
     <>
@@ -25,19 +41,19 @@ function Answers({ questionId }) { //eslint-disable-line
         );
         const answerId = answer.answer_id;
         return (
-          <div>
-            <div key={answerId}>
+          <div key={answerId}>
+            <AnswerWrapper>
               A:
               {answer.body}
-            </div>
-            <div>
+            </AnswerWrapper>
+            <BelowAnswer>
               <span>by: </span>
               {answer.answerer_name === 'Seller'
                 ? <strong>{answer.answerer_name}</strong>
                 : answer.answerer_name}
               <span>, </span>
               {formatedDate}
-            </div>
+            </BelowAnswer>
           </div>
         );
       })}
