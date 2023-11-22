@@ -13,8 +13,8 @@ function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-d
   `;
 
   const ProductRating = styled(ProductStarRating)`
-  font-size: 1px;
-  margin: 0px;
+    font-size: 1px;
+    margin: 0px;
   `;
 
   const ProductCategory = styled.p`
