@@ -8,7 +8,7 @@ import UploadPhoto from './ReviewForm/UploadPhoto.jsx'; // eslint-disable-line
 
 const Wrapper = styled.form`
   background: white;
-  max-width: 560px;
+  max-width: 680px;
   padding: 24px 36px;
   display: flex;
   gap: 12px;
@@ -23,7 +23,7 @@ const SumbitBtn = styled.button``;
 
 function ReviewForm({ productName }) { // eslint-disable-line
   const [rating, setRating] = useState(5);
-  const [recomended, setRecomended] = useState(true);
+  const [recomended, setRecomended] = useState('yes');
   const [characteristics, setCharacteristics] = useState({
     size: null,
     width: null,
