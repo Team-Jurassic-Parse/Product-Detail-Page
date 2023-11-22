@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
 import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
+import filterReviewsByStars from './utils/filterReviewsByStars.js'; // eslint-disable-line
+import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
   flex: 2;
@@ -24,6 +26,8 @@ function ReviewsList({ productId }) { // eslint-disable-line
   const [haveMoreReviews, setHaveMoreReviews] = useState(true);
   const [status, setStatus] = useState(StatusEnum.idel);
   const [error, setError] = useState(null);
+
+  const { starsFilter } = useStarsFilter();
 
   const reviewsFetchController = new AbortController();
   useEffect(() => {
@@ -51,7 +55,6 @@ function ReviewsList({ productId }) { // eslint-disable-line
       })
       .catch((err) => {
         setStatus(StatusEnum.error);
-        console.log(err);
         setError(err.message);
       });
 
@@ -82,7 +85,10 @@ function ReviewsList({ productId }) { // eslint-disable-line
       status !== StatusEnum.error && reviews.length === 0 ? <p>No Reviews yet</p>
         : (
           <UnorderedList>
-            { reviews.map((review) => (<ReviewCard key={review.review_id} review={review} />))}
+            {
+              filterReviewsByStars(reviews, starsFilter)
+                .map((review) => (<ReviewCard key={review.review_id} review={review} />))
+            }
           </UnorderedList>
         )
       }
