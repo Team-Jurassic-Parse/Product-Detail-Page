@@ -36,7 +36,7 @@ const RatingText = styled.span`
   border-radius: 0.25rem;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.fieldset`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,6 +45,7 @@ const Wrapper = styled.div`
 function OverallRating({rating, handleChangeRating}) { // eslint-disable-line
   return (
     <Wrapper>
+      <legend>Overall Rating</legend>
       <RatingText rating={rating}>{ratingMap[rating]}</RatingText>
       <ClickableStarsRating value={rating} onClick={handleChangeRating} />
     </Wrapper>
