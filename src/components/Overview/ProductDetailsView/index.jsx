@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductStarRating from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
+import SalePrice from './SalePrice.jsx';
 
 function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-disable-line
   const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
