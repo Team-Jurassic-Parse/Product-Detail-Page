@@ -20,21 +20,18 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
     display: grid;
     grid-template-columns: repeat(3, 33.33%);
     border-width: 2px;
-    border-style: solid;
     border-color: black;
     grid-template-rows: repeat(8, 10vh);
     border-radius: 10px;
   `;
 
   const OverviewLayoutSection = styled.div`
-      border: 1px, solid, black;
-      grid-column: ${(props) => props.column /* eslint-disable-line*/};
-      grid-row: ${(props) => props.row /* eslint-disable-line*/};
-      border-width: 1px;
-      border-style: solid;
-      border-color: black;
-      overflow: hidden;
-    `;
+    grid-column: ${(props) => props.column /* eslint-disable-line*/};
+    grid-row: ${(props) => props.row /* eslint-disable-line*/};
+    border-width: 1px;
+    border-color: black;
+    overflow: hidden;
+  `;
 
   OverviewLayoutSection.defaultProps = {
     column: 1,
@@ -83,14 +80,14 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
           />
         </OverviewLayoutSection>
 
-        <OverviewLayoutSection column="3" row="1 / 3">
+        <OverviewLayoutSection column="3" row="1 / 4">
           <ProductDetailsView
             productInfo={productInfo}
             currentStyle={currentStyle}
           />
         </OverviewLayoutSection>
 
-        <OverviewLayoutSection column="3" row="3 / 6">
+        <OverviewLayoutSection column="3" row="4 / 7">
           <StyleSelectorView
             productStyles={productStyles}
             styleId={styleId}
@@ -98,7 +95,7 @@ function Overview({ productId, styleId, setStyleId }) { // eslint-disable-line
           />
         </OverviewLayoutSection>
 
-        <OverviewLayoutSection column="3" row="6 / 9">
+        <OverviewLayoutSection column="3" row="7 / 9">
           <AddToCartView
             currentStyle={currentStyle}
           />
