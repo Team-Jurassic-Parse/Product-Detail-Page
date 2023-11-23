@@ -7,22 +7,28 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // 
 
   const StyleSelector = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-auto-rows: 50px;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, calc(30px + 3vw));
+    grid-auto-rows: calc(30px + 3vw);
     border-bottom: 1px solid lightgray;
     max-height: 20vh;
+    max-width: 90%;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
+    padding-bottom: 20px;
     &::-webkit-scrollbar {
       display: none;
     }
   `;
 
   return (
-    <>
-      <h3>Style Selector</h3>
+    <div>
+      <h3>Select Your Style</h3>
       <StyleSelector>
         {productStyles && productStyles.results.map((style) => ( // eslint-disable-line
           <StyleItem
@@ -33,11 +39,12 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // 
           />
         ))}
       </StyleSelector>
-    </>
+    </div>
   );
 }
 
 const StyleSelectorView = styled(UnstyledStyleSelectorView)`
+  text-align: center;
 `;
 
 export default StyleSelectorView;
