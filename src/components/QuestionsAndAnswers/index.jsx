@@ -10,7 +10,7 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
 
   useEffect(() => {
     if (productId) {
-      useServerFetch('get', `qa/questions?product_id=${productId}`, {}, questionFetchController)
+      useServerFetch('get', `qa/questions?product_id=40345`, {}, questionFetchController)
         .then((response) => {
           setQuestions(response.data.results);
         })
