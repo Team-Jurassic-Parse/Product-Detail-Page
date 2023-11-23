@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-return-assign */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 
 // Utility Functions
 const combine = (obj1, obj2) => {
-  var newObj = {};
+  let newObj = {};
 
   obj1.features.forEach(
-    (item) => (newObj[item.feature] = { currentProduct: item.value }),
+    (item) => (newObj[item.feature] = { currentProduct: item.value })
   );
   obj2.features.forEach((item) => {
     if (newObj[item.feature]) {
@@ -21,7 +24,7 @@ const combine = (obj1, obj2) => {
   return newObj;
 };
 
-const ComparisonTable = ({ currentProduct, comparedProduct }) => {
+function ComparisonTable({ currentProduct, comparedProduct }) {
   const productObj = combine(currentProduct, comparedProduct);
 
   return (
@@ -44,18 +47,16 @@ const ComparisonTable = ({ currentProduct, comparedProduct }) => {
           <td>Category</td>
           <td>{comparedProduct.category}</td>
         </tr>
-        {Object.keys(productObj).map(function (key, index) {
-          return (
-            <tr key={index}>
-              <td>{productObj[key].currentProduct}</td>
-              <td>{key}</td>
-              <td>{productObj[key].comparedProduct}</td>
-            </tr>
-          );
-        })}
+        {Object.keys(productObj).map((key, index) => (
+          <tr key={index}>
+            <td>{productObj[key].currentProduct}</td>
+            <td>{key}</td>
+            <td>{productObj[key].comparedProduct}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
-};
+}
 
 export default ComparisonTable;

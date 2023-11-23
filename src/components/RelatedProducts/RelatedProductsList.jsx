@@ -1,20 +1,22 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 import React from 'react';
-import Carousel from 'react-multi-carousel'; //eslint-disable-line
-import 'react-multi-carousel/lib/styles.css'; //eslint-disable-line
-import RelatedProducts from './index.jsx'; //eslint-disable-line
-import ProductStarRating from '../ReviewStars/ProductStarRating.jsx'; //eslint-disable-line
-import { BsStarFill } from 'react-icons/bs'; //eslint-disable-line
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import ProductStarRating from '../ReviewStars/ProductStarRating.jsx';
+import { BsStarFill } from 'react-icons/bs';
 
 function RelatedProductsList({
   relatedItems,
   onClickRelatedProduct,
-  setProductId,
   setCurrentId,
 }) {
-  //eslint-disable-line
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -35,11 +37,10 @@ function RelatedProductsList({
   };
 
   if (!relatedItems || !relatedItems.relatedItems) {
-    //eslint-disable-line
     // Handle the case when relatedItems or relatedItems.relatedItems is null or undefined
     return <p>No related items available</p>;
   }
-  const relatedItemsArray = Object.values(relatedItems.relatedItems); //eslint-disable-line
+  const relatedItemsArray = Object.values(relatedItems.relatedItems);
 
   return (
     <Carousel responsive={responsive} swipeable={false} draggable={false}>
@@ -73,14 +74,10 @@ function RelatedProductsList({
                 stroke: 'black',
                 strokeWidth: '0.5',
               }}
-              // eslint-disable-next-line no-return-assign
               onMouseOver={({ target }) => (
-                // eslint-disable-next-line no-sequences
                 (target.style.color = 'gold'), (target.style.stroke = 'white')
               )}
-              // eslint-disable-next-line no-return-assign
               onMouseOut={({ target }) => (
-                // eslint-disable-next-line no-sequences
                 (target.style.color = 'white'), (target.style.stroke = 'black')
               )}
             />

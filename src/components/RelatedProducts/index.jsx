@@ -1,4 +1,6 @@
-/* eslint-disable */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
 import React, { useState, useEffect } from 'react';
 import useServerFetch from '../../hooks/useServerFetch.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
@@ -7,10 +9,8 @@ import './RelatedProducts.css';
 import './Outfit.css';
 import Modal from '../UI/Modal.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
-/* eslint-enable */
 
 function RelatedProducts({ productId, setProductId, styleId }) {
-  //eslint-disable-line
   const [relatedItems, setRelatedItems] = useState(null);
   const [outfits, setOutfits] = useState(null);
   const [currentId, setcurrentId] = useState(null);
@@ -26,7 +26,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
       'get',
       `products/${productId}/related`,
       {},
-      relatedFetchController,
+      relatedFetchController
     )
       .then((res) => {
         const items = {};
@@ -41,7 +41,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
                 'get',
                 `products/${id}/styles`,
                 {},
-                stylesFetchController,
+                stylesFetchController
               )
                 .then((res3) => {
                   const styles = res3.data.results;
@@ -56,7 +56,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
                       }
                       return lowestStyle;
                     },
-                    {},
+                    {}
                   );
                   items[id].photos = lowestSalePriceStyle.photos;
                   items[id].sale_price =
@@ -77,7 +77,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
         });
       })
       .catch((err) => {
-        console.error('Error fetching related items id', err); //eslint-disable-line
+        console.error('Error fetching related items id', err);
       });
   };
 
@@ -109,12 +109,12 @@ function RelatedProducts({ productId, setProductId, styleId }) {
           'get',
           `products/${productId}/styles`,
           {},
-          outfitsStylesFetchController,
+          outfitsStylesFetchController
         )
           .then((res2) => {
             const styleOutfits = res2.data.results;
             const selectedStyle = styleOutfits.find(
-              (style) => style.style_id === styleId,
+              (style) => style.style_id === styleId
             );
 
             if (selectedStyle) {
@@ -148,7 +148,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
   };
 
   const setCurrentIdAndUpdateModal = (key) => {
-    setCurrentId(key);
+    setcurrentId(key);
     setOpenComparisonModal((prev) => !prev);
   };
 
