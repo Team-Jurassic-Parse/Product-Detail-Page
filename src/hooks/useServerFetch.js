@@ -9,6 +9,7 @@ const useServerFetch = ((method, endpoint, body, controller) => new Promise((res
     signal: controller ? controller.signal : undefined,
     method,
     body,
+    data: body,
   })
     .then((res) => resolve(res))
     .catch((err) => reject(err));
