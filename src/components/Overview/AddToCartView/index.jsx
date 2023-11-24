@@ -31,7 +31,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
 
   return (
     <>
-      <form onSubmit={(e) => {
+      {currentStyle && currentStyle.skus ? <form onSubmit={(e) => {
         e.preventDefault();
         const posts = [];
         const postObject = { 'sku_id': selectedSku };
@@ -65,8 +65,11 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
             setQuantity(quantity || 1);
           }}>
             <option value={null} disabled hidden>Select Size</option>
-            {availableSkus.map((sku) =>
-              <option value={sku} key={sku}>{currentStyle.skus[sku].size}</option>
+            {availableSkus.map((sku) => {
+              if(currentStyle.skus[sku]) {
+                return <option value={sku} key={sku}>{currentStyle.skus[sku].size}</option>
+              }
+            }
             )}
           </select>
 
@@ -77,7 +80,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
           </select>
           <button type='submit' style={addToCartButtonStyle}>Add to Cart</button>
         </> : (added ? <p>ADDED</p> : <p>OUT OF STOCK</p>)}
-      </form>
+      </form> : <p>LOADING...</p>}
     </>
   );
 }
