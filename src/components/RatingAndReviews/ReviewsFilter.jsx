@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import RatingBar from './RatingBar.jsx'; // eslint-disable-line
-import useStarsFilter from './hooks/useStarsFilter.js';
+import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
 
 const Wrapper = styled.div``;
 
@@ -22,30 +22,30 @@ const getMaxRating = (ratings) => {
   return max;
 }; // FIXME: move to a util folder.
 
-function StarFilterLine({ children, rating }) {
+function StarFilterLine({ children, rating }) { // eslint-disable-line
   const { starsFilter, toggleStarsFilter } = useStarsFilter();
 
   return (
-    <StarFilterLineWrapper isActive={starsFilter[rating]} onClick={() => toggleStarsFilter(rating)}>
-      <span>
-        {rating}
-        {' '}
-        Stars
-      </span>
+    <StarFilterLineWrapper
+      isActive={starsFilter[rating]}
+      onClick={() => toggleStarsFilter(rating)}
+    >
+      <span>{rating} Stars</span>
       {children}
     </StarFilterLineWrapper>
   );
 }
 
-function ReviewsFilter({recommended, ratings}) { // eslint-disable-line
-  const recommendRate = Number(recommended.true) / (Number(recommended.true) + Number(recommended.false)); // eslint-disable-line
+function ReviewsFilter({ recommended, ratings }) { // eslint-disable-line
+  const recommendRate =
+    Number(recommended.true) / // eslint-disable-line
+    (Number(recommended.true) + Number(recommended.false)); // eslint-disable-line
   const maxRating = getMaxRating(ratings);
 
   return (
     <Wrapper>
       <div>
-        {Math.round(recommendRate * 100)}
-        % of reviewers recommend this product.
+        {Math.round(recommendRate * 100)}% of reviewers recommend this product.
       </div>
       <StarsFilter>
         <StarFilterLine rating="5">
