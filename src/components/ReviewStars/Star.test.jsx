@@ -1,7 +1,5 @@
 import '@testing-library/jest-dom';
-import {
-  test, expect, describe,
-} from '@jest/globals';
+import { test, expect, describe } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Star from './Star.jsx'; // eslint-disable-line

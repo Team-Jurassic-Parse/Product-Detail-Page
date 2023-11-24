@@ -33,22 +33,23 @@ function ReviewsList({ productId }) { // eslint-disable-line
   useEffect(() => {
     if (!productId) return () => {};
     setStatus(StatusEnum.pending);
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', {
-      headers: {
-        Authorization: process.env.AUTH_TOKEN,
-      },
-      signal: reviewsFetchController.signal,
-      params: {
-        product_id: productId,
-        page,
-        count: 2,
-        sort,
-      },
-    })
+    axios
+      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', {
+        headers: {
+          Authorization: process.env.AUTH_TOKEN,
+        },
+        signal: reviewsFetchController.signal,
+        params: {
+          product_id: productId,
+          page,
+          count: 2,
+          sort,
+        },
+      })
       .then((response) => {
         setStatus(StatusEnum.success);
         const { results } = response.data;
-        setReviews((currentReviews) => ([...currentReviews, ...results]));
+        setReviews((currentReviews) => [...currentReviews, ...results]);
         if (results.length < 2) {
           setHaveMoreReviews(false);
         }
@@ -81,21 +82,23 @@ function ReviewsList({ productId }) { // eslint-disable-line
         <option value="helpful">Helpful</option>
         <option value="newest">Newest</option>
       </select>
-      {
-      status !== StatusEnum.error && reviews.length === 0 ? <p>No Reviews yet</p>
-        : (
-          <UnorderedList>
-            {
-              filterReviewsByStars(reviews, starsFilter)
-                .map((review) => (<ReviewCard key={review.review_id} review={review} />))
-            }
-          </UnorderedList>
-        )
-      }
+      {status !== StatusEnum.error && reviews.length === 0 ? (
+        <p>No Reviews yet</p>
+      ) : (
+        <UnorderedList>
+          {filterReviewsByStars(reviews, starsFilter).map((review) => (
+            <ReviewCard key={review.review_id} review={review} />
+          ))}
+        </UnorderedList>
+      )}
       {/* FIXME: fancier pending state. */}
       {status === StatusEnum.pending && <p>Loading Data...</p>}
       {status === StatusEnum.error && <p>{error}</p>}
-      {haveMoreReviews && <button onClick={handleShowMore} type="button">Show More</button>}
+      {haveMoreReviews && (
+        <button onClick={handleShowMore} type="button">
+          Show More
+        </button>
+      )}
     </Wrapper>
   );
 }

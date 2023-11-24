@@ -1,9 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-param-reassign */
-/* eslint-disable */
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -11,9 +5,7 @@ import RelatedProducts from './index.jsx';
 import ProductStarRating from '../ReviewStars/ProductStarRating.jsx';
 import { TiDelete } from 'react-icons/ti';
 import { IoAddCircleOutline } from 'react-icons/io5';
-/* eslint-enable */
 
-// eslint-disable-next-line react/prop-types
 function AddOutfitButton({ onClick }) {
   return (
     <div className="outfit-card" onClick={onClick}>
@@ -25,14 +17,10 @@ function AddOutfitButton({ onClick }) {
             stroke: 'black',
             strokeWidth: '0.5',
           }}
-          // eslint-disable-next-line no-return-assign
           onMouseOver={({ target }) => (
-            // eslint-disable-next-line no-sequences
             (target.style.color = 'black'), (target.style.stroke = 'white')
           )}
-          // eslint-disable-next-line no-return-assign
           onMouseOut={({ target }) => (
-            // eslint-disable-next-line no-sequences
             (target.style.color = 'white'), (target.style.stroke = 'black')
           )}
         />
@@ -43,7 +31,6 @@ function AddOutfitButton({ onClick }) {
 }
 
 function OutfitList({ outfits, onClickAddOutfits, removeItem }) {
-  //eslint-disable-line
   const responsive2 = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -99,15 +86,11 @@ function OutfitList({ outfits, onClickAddOutfits, removeItem }) {
                       stroke: 'black',
                       strokeWidth: '0.5',
                     }}
-                    // eslint-disable-next-line no-return-assign
                     onMouseOver={({ target }) => (
-                      // eslint-disable-next-line no-sequences
                       (target.style.color = 'black'),
                       (target.style.stroke = 'white')
                     )}
-                    // eslint-disable-next-line no-return-assign
                     onMouseOut={({ target }) => (
-                      // eslint-disable-next-line no-sequences
                       (target.style.color = 'white'),
                       (target.style.stroke = 'black')
                     )}
