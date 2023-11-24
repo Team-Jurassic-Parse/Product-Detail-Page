@@ -34,7 +34,14 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
 
   return (
     <div>
-      <button type="button" onClick={() => { setShowWidget((cur) => !cur); }}>Toggle Lance&apos;s widget</button>
+      <button
+        type="button"
+        onClick={() => {
+          setShowWidget((cur) => !cur);
+        }}
+      >
+        Toggle Lance&apos;s widget
+      </button>
       {showWidget && (
         <Wrapper>
           <StarsFilterProvider>

@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, { createContext, useState, useCallback, useMemo } from 'react';
 
 export const StarsFilterContext = createContext();
 
@@ -16,11 +11,14 @@ function StarsFilterProvider({ children }) { // eslint-disable-line
     5: true,
   });
   const toggleStarsFilter = useCallback((star) => {
-    setStarsFilter((currentFilter) => ({ ...currentFilter, [star]: !currentFilter[star] }));
+    setStarsFilter((currentFilter) => ({
+      ...currentFilter,
+      [star]: !currentFilter[star],
+    }));
   }, []);
   const value = useMemo(
     () => ({ starsFilter, toggleStarsFilter }),
-    [starsFilter, toggleStarsFilter],
+    [starsFilter, toggleStarsFilter]
   );
 
   return (

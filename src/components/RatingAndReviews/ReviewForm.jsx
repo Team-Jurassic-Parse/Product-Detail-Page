@@ -36,16 +36,26 @@ function ReviewForm({ productName }) { // eslint-disable-line
   const [body, setBody] = useState('');
   const [images, setImages] = useState([]);
 
-  const handleChangeRating = (val) => { setRating(val); };
-  const handleImageChange = (newImgs) => { setImages((curImgs) => [...curImgs, ...newImgs]); };
+  const handleChangeRating = (val) => {
+    setRating(val);
+  };
+  const handleImageChange = (newImgs) => {
+    setImages((curImgs) => [...curImgs, ...newImgs]);
+  };
 
   return (
     <Wrapper>
       <FormHeading productName={productName} />
       <OverallRating rating={rating} handleChangeRating={handleChangeRating} />
       <Recomended recomended={recomended} setRecomended={setRecomended} />
-      <Characteristics characteristics={characteristics} setCharacteristics={setCharacteristics} />
-      <ReviewSummary value={summary} onChange={(e) => setSummary(e.target.value)} />
+      <Characteristics
+        characteristics={characteristics}
+        setCharacteristics={setCharacteristics}
+      />
+      <ReviewSummary
+        value={summary}
+        onChange={(e) => setSummary(e.target.value)}
+      />
       <ReviewBody value={body} onChange={(e) => setBody(e.target.value)} />
       <UploadPhoto images={images} handleImageChange={handleImageChange} />
       <SumbitBtn>Submit</SumbitBtn>

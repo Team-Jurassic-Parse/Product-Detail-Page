@@ -7,7 +7,14 @@ function FactorSlider({ charact, value }) { // eslint-disable-line
   const id = useId();
   return (
     <SliderWrapper>
-      <input id={id} type="range" value={value} max={5} min={0} onChange={() => {}} />
+      <input
+        id={id}
+        type="range"
+        value={value}
+        max={5}
+        min={0}
+        onChange={() => {}}
+      />
       <label htmlFor={id}>{charact}</label>
     </SliderWrapper>
   );
