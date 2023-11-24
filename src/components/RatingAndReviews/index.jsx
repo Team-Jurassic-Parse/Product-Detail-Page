@@ -55,7 +55,7 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
           </BtnWrapper>
           {showForm && (
             <Modal handleClose={closeModal}>
-              <ReviewForm productName={productName} />
+              <ReviewForm productName={productName} productId={productId} />
             </Modal>
           )}
         </Wrapper>
