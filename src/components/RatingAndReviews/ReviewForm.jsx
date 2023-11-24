@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useServerFetch from '../../hooks/useServerFetch.js'; // eslint-disable-line
+import axios from 'axios';
 import FormHeading from './ReviewForm/FormHeading.jsx'; // eslint-disable-line
 import OverallRating from './ReviewForm/OverallRating.jsx'; // eslint-disable-line
 import Recomended from './ReviewForm/Recomended.jsx'; // eslint-disable-line
@@ -63,21 +63,47 @@ function ReviewForm({ productName, productId }) { // eslint-disable-line
     setImages([]);
     setName('');
     setEmail('');
+    // const objToPost = {
+    //   product_id: Number(productId),
+    //   rating,
+    //   summary,
+    //   body,
+    //   recomended: recomended === 'yes',
+    //   name,
+    //   email,
+    //   photos: images,
+    //   characteristics,
+    // };
+    // FIXME: Fake data for testing.
     const objToPost = {
-      product_id: Number(productId),
-      rating,
-      summary,
-      body,
-      recomended: recomended === 'yes',
-      name,
-      email,
-      photos: images,
-      characteristics,
+      product_id: 40344,
+      rating: 4,
+      summary: 'Test',
+      body: 'Test',
+      recommend: false,
+      name: 'nick',
+      email: 'mail@mail.com',
+      photos: ['urlplaceholder/style_1_photo_number.jpg'],
+      characteristics: {
+        135219: 3,
+        135220: 3,
+        135221: 3,
+        135222: 3,
+      },
     };
-    useServerFetch('post', 'reviews', objToPost)
+    axios
+      .post(
+        'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+        objToPost,
+        {
+          headers: {
+            Authorization: process.env.AUTH_TOKEN,
+          },
+        }
+      )
       .then((res) => {
         setIsSubmitting(false);
-        console.log(res); // FIXME: GIVE A SUCCESS TOAST
+        alert(JSON.stringify(res)); // FIXME: GIVE A SUCCESS TOAST
       })
       .catch((err) => {
         setIsSubmitting(false);
