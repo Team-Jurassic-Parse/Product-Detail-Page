@@ -57,7 +57,7 @@ function RatingAndReviews({
                 status={status}
                 error={error}
               />
-              <ReviewsList productId={productId} />
+              <ReviewsList productId={productId} key={productId} />
             </SummaryAndListWrapper>
           </StarsFilterProvider>
           {status === 'SUCCESS' && (
