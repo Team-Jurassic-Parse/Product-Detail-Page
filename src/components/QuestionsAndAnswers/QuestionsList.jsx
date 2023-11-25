@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Question from './Question.jsx'; //eslint-disable-line
 
+//adjust css later
 const Wrapper = styled.div`
   background: white;
+  min-height: 50px;
+  max-height: 50vh;
   padding: 10px 25px;
-  font-size: 19px;
-  font-weight: bold;
+  overflow: scroll;
 `;
 
 function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line
@@ -20,10 +22,9 @@ function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable
         })
         .map((question) => {
           return <Question questionId={question.question_id} question={question} />
-        })
-      }
+        })}
     </Wrapper>
-  )
+  );
 }
 
 export default QuestionsList;
