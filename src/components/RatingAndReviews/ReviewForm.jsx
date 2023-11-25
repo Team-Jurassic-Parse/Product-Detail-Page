@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-restricted-syntax */
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import FormHeading from './ReviewForm/FormHeading.jsx'; // eslint-disable-line
@@ -23,19 +24,19 @@ const ReviewBody = styled.textarea``;
 const InfoInput = styled.input``;
 const SumbitBtn = styled.input``;
 
-const initialCharacteristics = {
-  size: null,
-  width: null,
-  comfort: null,
-  quality: null,
-  length: null,
-  fit: null,
-};
+function ReviewForm({ productName, productId, currentCharacteristics }) { // eslint-disable-line
 
-function ReviewForm({ productName, productId }) { // eslint-disable-line
+  const initialCharacteristics = useMemo(() => {
+    const result = {};
+    for (const [k, v] of Object.entries(currentCharacteristics)) {
+      result[k.toLowerCase()] = { ...v, value: null };
+    }
+    return result;
+  }, [currentCharacteristics]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rating, setRating] = useState(5);
-  const [recomended, setRecomended] = useState('yes');
+  const [recommend, setRecommend] = useState('yes');
   const [characteristics, setCharacteristics] = useState(
     initialCharacteristics
   );
@@ -56,41 +57,29 @@ function ReviewForm({ productName, productId }) { // eslint-disable-line
     e.preventDefault();
     setIsSubmitting(true);
     setRating(5);
-    setRecomended('yes');
+    setRecommend('yes');
     setCharacteristics(initialCharacteristics);
     setSummary('');
     setBody('');
     setImages([]);
     setName('');
     setEmail('');
-    // const objToPost = {
-    //   product_id: Number(productId),
-    //   rating,
-    //   summary,
-    //   body,
-    //   recomended: recomended === 'yes',
-    //   name,
-    //   email,
-    //   photos: images,
-    //   characteristics,
-    // };
-    // FIXME: Fake data for testing.
+    const postCharacteristics = {};
+    for (const v of Object.values(characteristics)) {
+      postCharacteristics[v.id] = Number(v.value);
+    }
     const objToPost = {
-      product_id: 40344,
-      rating: 4,
-      summary: 'Test',
-      body: 'Test',
-      recommend: false,
-      name: 'nick',
-      email: 'mail@mail.com',
-      photos: ['urlplaceholder/style_1_photo_number.jpg'],
-      characteristics: {
-        135219: 3,
-        135220: 3,
-        135221: 3,
-        135222: 3,
-      },
+      product_id: Number(productId),
+      rating,
+      summary,
+      body,
+      recommend: recommend === 'yes',
+      name,
+      email,
+      photos: images,
+      characteristics: postCharacteristics,
     };
+
     axios
       .post(
         'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
@@ -122,7 +111,7 @@ function ReviewForm({ productName, productId }) { // eslint-disable-line
             rating={rating}
             handleChangeRating={handleChangeRating}
           />
-          <Recomended recomended={recomended} setRecomended={setRecomended} />
+          <Recomended recommend={recommend} setRecommend={setRecommend} />
           <Characteristics
             characteristics={characteristics}
             setCharacteristics={setCharacteristics}
