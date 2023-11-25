@@ -2,7 +2,7 @@
   font-family: "Georgia", sans-serif;
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px;
 }
 
 .related-table th,
@@ -20,25 +20,22 @@
   font-weight: bold;
 }
 
-/* Optional: Add hover effect for better visual feedback */
 .related-table tr:hover {
   background-color: #f5f5f5;
 }
 
-/* Optional: Style the header for a modern look */
 .related-table th {
-  background-color: #4caf50; /* Green color, adjust as needed */
+  background-color: #4caf50;
   color: white;
 }
 
-/* Optional: Style the text color and border color for better contrast */
 .related-table td {
   color: #333;
   border-color: #ddd;
 }
 
 .related-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9; /* Light grey */
+  background-color: #f9f9f9;
 }
 
 .related-table tbody tr:nth-child(odd) {
