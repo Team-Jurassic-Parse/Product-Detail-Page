@@ -24,7 +24,7 @@ function Answers({ questionId }) { //eslint-disable-line
     if (questionId) {
       useServerFetch('get', `qa/questions/${questionId}/answers`, {}, answerFetchController)
         .then((response) => {
-          const sortResponse = response.data.results.sort((a, b) => b.helpfulness - a.helpfulness)
+          const sortResponse = response.data.results.sort((a, b) => b.helpfulness - a.helpfulness);
           setAnswers(sortResponse);
         })
         .catch(() => setAnswers(null));
@@ -32,24 +32,24 @@ function Answers({ questionId }) { //eslint-disable-line
     return (() => {
       answerFetchController.abort();
     });
-  }
+  };
 
   const handleHelpful = (id) => {
     if (!helpful[id]) {
-      setHelpful({...helpful, [id]: true})
+      setHelpful({ ...helpful, [id]: true });
       useServerFetch('put', `qa/answers/${id}/helpful`, {})
-      .then((response) => handleFetch())
-      .catch((err) => console.error(err))
+        .then(() => handleFetch())
+        .catch((err) => console.error(err));
     }
-  }
+  };
 
   const handleReport = (id) => {
     if (!reported[id]) {
       useServerFetch('put', `qa/answers/${id}/report`, {})
-      .then((response) => setReported({...reported, [id]: true}))
-      .catch((err) => console.error(err))
+        .then(() => setReported({ ...reported, [id]: true }))
+        .catch((err) => console.error(err));
     }
-  }
+  };
   useEffect(() => {
     handleFetch();
   }, [questionId]);

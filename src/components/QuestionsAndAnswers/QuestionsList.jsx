@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Answers from './Answers.jsx'; //eslint-disable-line
-import AnswerModal from './AnswerModal.jsx';
+import AnswerModal from './AnswerModal.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
@@ -47,9 +47,13 @@ function QuestionsList({ questions, productName = 'placeholder product name' }) 
             <Answers questionId={questionId} />
             {showForm && (
             <Modal handleClose={closeModal}>
-              <AnswerModal productName={productName} questionBody={question.question_body}/>
+              <AnswerModal
+                productName={productName}
+                questionBody={question.question_body}
+                questionId={questionId}
+              />
             </Modal>
-          )}
+            )}
           </InnerWrapper>
         );
       })}
