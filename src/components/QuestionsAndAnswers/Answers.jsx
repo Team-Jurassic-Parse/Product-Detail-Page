@@ -53,6 +53,7 @@ function Answers({ questionId }) { //eslint-disable-line
   useEffect(() => {
     handleFetch();
   }, [questionId]);
+
   return answers ? (
     <>
       {answers.map((answer) => {
