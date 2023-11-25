@@ -67,7 +67,11 @@ function RatingAndReviews({
           )}
           {showForm && (
             <Modal handleClose={closeModal}>
-              <ReviewForm productName={productName} productId={productId} />
+              <ReviewForm
+                productName={productName}
+                productId={productId}
+                currentCharacteristics={productReview.characteristics} // eslint-disable-line
+              />
             </Modal>
           )}
         </Wrapper>
