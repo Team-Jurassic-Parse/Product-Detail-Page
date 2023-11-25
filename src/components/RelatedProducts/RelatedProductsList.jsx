@@ -1,3 +1,5 @@
+/* eslint-disable no-sequences */
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/order */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
@@ -15,29 +17,28 @@ import { BsStarFill } from 'react-icons/bs';
 function RelatedProductsList({
   relatedItems,
   onClickRelatedProduct,
-  setCurrentId,
+  setCurrentIdAndUpdateModal,
 }) {
   const responsive = {
     superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
+      breakpoint: { max: 3000, min: 2000 },
       items: 4,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      breakpoint: { max: 2000, min: 1200 },
+      items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1200, min: 700 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 700, min: 0 },
       items: 1,
     },
   };
 
   if (!relatedItems || !relatedItems.relatedItems) {
-    // Handle the case when relatedItems or relatedItems.relatedItems is null or undefined
     return <p>No related items available</p>;
   }
   const relatedItemsArray = Object.values(relatedItems.relatedItems);
@@ -54,7 +55,7 @@ function RelatedProductsList({
           {relatedList.photos && relatedList.photos.length > 0 ? (
             <img
               className="product-image"
-              src={relatedList.photos[0].thumbnail_url}
+              src={relatedList.photos[0].url}
               alt=""
             />
           ) : (
@@ -64,7 +65,7 @@ function RelatedProductsList({
             className="favorite-button"
             onClick={(e) => {
               e.stopPropagation();
-              () => setCurrentId(relatedList.id);
+              setCurrentIdAndUpdateModal(relatedList.id);
             }}
           >
             <BsStarFill
