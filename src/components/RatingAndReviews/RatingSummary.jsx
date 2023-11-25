@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import useReviewRating, {
-  StatusEnum,
-} from '../../hooks/ReviewStars/useReviewsRating.js'; // eslint-disable-line
+import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating.js'; // eslint-disable-line
 import RatingSummaryContent from './RatingSummaryContent.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
@@ -14,10 +12,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function RatingSummary({ productId }) { // eslint-disable-line
-
-  const { productReview, status, error } = useReviewRating(productId);
-
+function RatingSummary({ productId, productReview, status, error }) { // eslint-disable-line
   return (
     <Wrapper>
       <h3>ratings and reviews</h3>
