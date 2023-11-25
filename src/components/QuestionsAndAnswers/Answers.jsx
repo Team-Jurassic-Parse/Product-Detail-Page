@@ -16,19 +16,42 @@ const BelowAnswer = styled.div`
 
 function Answers({ questionId }) { //eslint-disable-line
   const [answers, setAnswers] = useState([]);
+  const [helpful, setHelpful] = useState({});
+  const [reported, setReported] = useState({});
   const answerFetchController = new AbortController();
 
-  useEffect(() => {
+  const handleFetch = () => {
     if (questionId) {
       useServerFetch('get', `qa/questions/${questionId}/answers`, {}, answerFetchController)
         .then((response) => {
-          setAnswers(response.data.results);
+          const sortResponse = response.data.results.sort((a, b) => b.helpfulness - a.helpfulness)
+          setAnswers(sortResponse);
         })
         .catch(() => setAnswers(null));
     }
     return (() => {
       answerFetchController.abort();
     });
+  }
+
+  const handleHelpful = (id) => {
+    if (!helpful[id]) {
+      setHelpful({...helpful, [id]: true})
+      useServerFetch('put', `qa/answers/${id}/helpful`, {})
+      .then((response) => handleFetch())
+      .catch((err) => console.error(err))
+    }
+  }
+
+  const handleReport = (id) => {
+    if (!reported[id]) {
+      useServerFetch('put', `qa/answers/${id}/report`, {})
+      .then((response) => setReported({...reported, [id]: true}))
+      .catch((err) => console.error(err))
+    }
+  }
+  useEffect(() => {
+    handleFetch();
   }, [questionId]);
   return answers ? (
     <>
@@ -52,7 +75,9 @@ function Answers({ questionId }) { //eslint-disable-line
                 ? <strong>{answer.answerer_name}</strong>
                 : answer.answerer_name}
               <span>, </span>
-              {formatedDate}
+              {formatedDate} | Helpful?
+              <span onClick={() => {handleHelpful(answerId)}}> Yes</span> ({answer.helpfulness})
+              | <span onClick={() => {handleReport(answerId)}}>{reported[answerId] ? 'Reported' : 'Report'}</span>
             </BelowAnswer>
           </div>
         );

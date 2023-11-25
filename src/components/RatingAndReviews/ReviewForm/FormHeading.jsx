@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div``;
 
-function FormHeading({productName}) { // eslint-disable-line
+function FormHeading({ productName }) { // eslint-disable-line
   return (
     <Wrapper>
       <h3>Review Form for:</h3>
-      <p>{ productName }</p>
+      <p>{productName}</p>
     </Wrapper>
   );
 }

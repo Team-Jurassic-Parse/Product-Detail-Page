@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Star from "./Star.jsx"; // eslint-disable-line
+import Star from './Star.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   display: flex;
-  gap : 2px;
+  gap: 2px;
 `;
 
 function StarsRating({ stars }) { // eslint-disable-line
@@ -25,7 +25,7 @@ function StarsRating({ stars }) { // eslint-disable-line
       starsArray.push(<Star key={i} fill={0} />);
     }
   }
-  return (<Wrapper>{starsArray}</Wrapper>);
+  return <Wrapper>{starsArray}</Wrapper>;
 }
 
 export default StarsRating;

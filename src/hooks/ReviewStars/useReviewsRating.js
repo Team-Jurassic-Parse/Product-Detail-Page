@@ -9,15 +9,15 @@ export const StatusEnum = {
 };
 
 /**
-* Custom hook for fetching and managing review ratings based on a product ID.
-*
-* @param {string} productId - The product id used to fetch data.
-* @returns {{
-*   rating: number | null,
-*   status: 'IDEL' | 'PENDING' | 'SUCCESS' | 'ERROR',
-*   error: string | null
-* }} An object containing the rating, current status of the fetch operation, and any error message.
-*/
+ * Custom hook for fetching and managing review ratings based on a product ID.
+ *
+ * @param {string} productId - The product id used to fetch data.
+ * @returns {{
+ *   rating: number | null,
+ *   status: 'IDEL' | 'PENDING' | 'SUCCESS' | 'ERROR',
+ *   error: string | null
+ * }} An object containing the rating, current status of the fetch operation, and any error message.
+ */
 
 function useReviewRating(productId) {
   const [productReview, setProductReview] = useState({});
@@ -29,7 +29,12 @@ function useReviewRating(productId) {
   useEffect(() => {
     if (!productId) return () => {};
     setStatus(StatusEnum.pending);
-    useServerFetch('get', `reviews/meta?product_id=${productId}`, {}, reviewsFetchController)
+    useServerFetch(
+      'get',
+      `reviews/meta?product_id=${productId}`,
+      {},
+      reviewsFetchController
+    )
       .then((response) => {
         setStatus(StatusEnum.success);
         setProductReview(response.data);
