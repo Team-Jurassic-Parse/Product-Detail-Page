@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import UploadPhoto from '../RatingAndReviews/ReviewForm/UploadPhoto.jsx'; //eslint-disable-line
-import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
 const FormWrapper = styled.form`
 background: white;

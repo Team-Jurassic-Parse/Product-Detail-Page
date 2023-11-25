@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Search() {
+function Search({ handleChange }) {
   return (
     <div>
-      <form>
-        <input placeholder="Have a question? Search for answers" />
-      </form>
+      <input type="text" placeholder="Have a question? Search for answers" onChange={handleChange} />
     </div>
   );
 }

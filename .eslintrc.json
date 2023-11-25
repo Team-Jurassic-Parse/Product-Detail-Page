@@ -3,8 +3,8 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb"],
+  // "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
