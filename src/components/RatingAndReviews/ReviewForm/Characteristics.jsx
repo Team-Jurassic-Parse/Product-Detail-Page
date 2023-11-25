@@ -78,15 +78,3 @@ function Characteristics({ characteristics, setCharacteristics }) { // eslint-di
 }
 
 export default Characteristics;
-
-/**
- * (
-        <CharacteristicsRow
-          key={key}
-          char={characteristics[key].value} // eslint-disable-line
-          charString={key}
-          handleChange={handleChange}
-          description={descriptioinMap[key]}
-        />
-      )
- */
