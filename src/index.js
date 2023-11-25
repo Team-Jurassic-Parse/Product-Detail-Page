@@ -13,11 +13,8 @@ function App() {
   const [productId, setProductId] = React.useState('');
   const [styleId, setStyleId] = React.useState('');
   const initialProductFetcher = new AbortController();
-  const {
-    productReview,
-    status: reviewsStatus,
-    error: reviewsError,
-  } = React.useMemo(() => useReviewRating(productId), [productId]);
+  const {productReview, status: reviewsStatus, error: reviewsError} = useReviewRating(productId);
+  console.log(productReview)
 
   React.useEffect(() => {
     useServerFetch('get', `products`, {}, initialProductFetcher)
