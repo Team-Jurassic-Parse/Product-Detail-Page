@@ -21,8 +21,13 @@ const AddFormBtn = styled.button`
   margin: auto;
 `;
 
-function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-disable-line
-
+function RatingAndReviews({
+  productId, // eslint-disable-line
+  productName = 'Anonymous', // eslint-disable-line
+  productReview, // eslint-disable-line
+  status, // eslint-disable-line
+  error, // eslint-disable-line
+}) {
   const [showForm, setShowForm] = useState(false);
   const openModal = () => {
     setShowForm(true);
@@ -34,21 +39,35 @@ function RatingAndReviews({ productId, productName = 'Anonymous' }) { // eslint-
 
   return (
     <div>
-      <button type="button" onClick={() => { setShowWidget((cur) => !cur); }}>Toggle Lance&apos;s widget</button>
+      <button
+        type="button"
+        onClick={() => {
+          setShowWidget((cur) => !cur);
+        }}
+      >
+        Toggle Lance&apos;s widget
+      </button>
       {showWidget && (
         <Wrapper>
           <StarsFilterProvider>
             <SummaryAndListWrapper>
-              <RatingSummary productId={productId} />
-              <ReviewsList productId={productId} />
+              <RatingSummary
+                productId={productId}
+                productReview={productReview}
+                status={status}
+                error={error}
+              />
+              <ReviewsList productId={productId} key={productId} />
             </SummaryAndListWrapper>
           </StarsFilterProvider>
-          <BtnWrapper>
-            <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
-          </BtnWrapper>
+          {status === 'SUCCESS' && (
+            <BtnWrapper>
+              <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
+            </BtnWrapper>
+          )}
           {showForm && (
             <Modal handleClose={closeModal}>
-              <ReviewForm productName={productName} />
+              <ReviewForm productName={productName} productId={productId} />
             </Modal>
           )}
         </Wrapper>

@@ -27,11 +27,16 @@ font-weight: bold;
 const BtnWrapper = styled.button`
 `;
 
+const SuccessWrapper = styled.h2`
+color: green;
+`;
+
 function AnswerModal({ productName, questionBody, questionId }) { //eslint-disable-line
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [images, setImages] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleImageChange = (newImgs) => { setImages((curImgs) => [...curImgs, ...newImgs]); };
 
@@ -50,11 +55,10 @@ function AnswerModal({ productName, questionBody, questionId }) { //eslint-disab
         },
       })
         .then(() => {
-          setSubmitting(false);
+          setSubmitted(true);
           console.log('posted');
         })
         .catch((err) => {
-          setSubmitting(false);
           console.error('Error adding answer:', err);
         });
     }
@@ -62,9 +66,7 @@ function AnswerModal({ productName, questionBody, questionId }) { //eslint-disab
 
   return (
     <FormWrapper onSubmit={handleSubmitAnswer}>
-      {body.length < 5 && submitting ? (
-        <span> You must enter the following:</span>
-      ) : null}
+      {submitted ? (<SuccessWrapper>Successfully submitted!</SuccessWrapper>) : null}
       <h2>Submit your Answer</h2>
       <Subtitle>
         {productName}
