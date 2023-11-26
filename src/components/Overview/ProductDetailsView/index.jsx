@@ -5,7 +5,7 @@ import SalePrice from './SalePrice.jsx';
 
 function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-disable-line
   const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
-  console.log(productInfo);
+  // console.log(productInfo);
   const OriginalPrice = styled.p`
     ${onSale && (`
       color: red;

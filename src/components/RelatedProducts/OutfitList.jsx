@@ -10,9 +10,9 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import ProductStarRating from '../ReviewStars/ProductStarRating.jsx';
 import { TiDelete } from 'react-icons/ti';
 import { IoAddCircleOutline } from 'react-icons/io5';
+import StarsRating from '../ReviewStars/StarsRating.jsx';
 
 function AddOutfitButton({ onClick }) {
   return (
@@ -136,9 +136,9 @@ function OutfitList({
                   )}
                 </h4>
                 <div className="OutfitRatingsContainer">
-                  <ProductStarRating
-                    productId={outfitsList.id}
+                  <StarsRating
                     className="OutfitRatings"
+                    stars={outfitsList.avg_ratings}
                   />
                 </div>
               </div>

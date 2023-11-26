@@ -14,18 +14,28 @@ import './RelatedProducts.css';
 import './Outfit.css';
 import './ComparisonTable.css';
 import ComparisonTable from './ComparisonTable.jsx';
+import { calculateAverageRating } from '../ReviewStars/ProductStarRating.jsx';
 
-function RelatedProducts({ productId, setProductId, styleId }) {
+function RelatedProducts({
+  productId,
+  setProductId,
+  styleId,
+  productReview,
+  productInfo,
+  productStyles,
+}) {
   const [relatedItems, setRelatedItems] = useState(null);
-  const [outfits, setOutfits] = useState(null);
+  const [outfits, setOutfits] = useState(() => {
+    const storedOutfits = localStorage.getItem('userOutfits');
+    return storedOutfits ? JSON.parse(storedOutfits) : null;
+  });
   const [currentId, setcurrentId] = useState(null);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [openComparisonModal, setOpenComparisonModal] = useState(false);
   const relatedFetchController = new AbortController();
   const productIdFetchController = new AbortController();
   const stylesFetchController = new AbortController();
-  const outfitsIdFetchController = new AbortController();
-  const outfitsStylesFetchController = new AbortController();
+  const starFetchController = new AbortController();
 
   const getRelatedProducts = async () => {
     if (productId) {
@@ -57,7 +67,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
           relatedItemIds
             .filter((id) => !existingItems[id])
             .map(async (id) => {
-              const [productData, stylesData] = await Promise.all([
+              const [productData, stylesData, ratingsData] = await Promise.all([
                 useServerFetch(
                   'get',
                   `products/${id}`,
@@ -70,6 +80,12 @@ function RelatedProducts({ productId, setProductId, styleId }) {
                   {},
                   stylesFetchController
                 ).then((res3) => res3.data.results),
+                useServerFetch(
+                  'get',
+                  `reviews/meta?product_id=${id}`,
+                  {},
+                  starFetchController
+                ).then((res4) => res4.data.ratings),
               ]);
 
               const lowestSalePriceStyle = stylesData.reduce(
@@ -90,6 +106,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
               productData.sale_price =
                 lowestSalePriceStyle.sale_price || stylesData[0].sale_price;
               productData.original_price = lowestSalePriceStyle.original_price;
+              productData.avg_ratings = calculateAverageRating(ratingsData);
 
               return { [id]: productData };
             })
@@ -114,6 +131,12 @@ function RelatedProducts({ productId, setProductId, styleId }) {
     };
   }, [productId]);
 
+  useEffect(() => {
+    if (outfits) {
+      localStorage.setItem('userOutfits', JSON.stringify(outfits));
+    }
+  }, [outfits]);
+
   const onClickRelatedProduct = (e) => {
     const currentProductId = e.currentTarget.getAttribute('data-key');
     if (currentProductId) {
@@ -123,62 +146,43 @@ function RelatedProducts({ productId, setProductId, styleId }) {
 
   const fetchDataAndSetOutfits = () => {
     const outfitsData = {};
-    return useServerFetch(
-      'get',
-      `products/${productId}`,
-      {},
-      outfitsIdFetchController
-    )
-      .then((res) => {
-        outfitsData[res.data.id] = res.data;
-      })
-      .then(() =>
-        useServerFetch(
-          'get',
-          `products/${productId}/styles`,
-          {},
-          outfitsStylesFetchController
-        )
-          .then((res2) => {
-            const styleOutfits = res2.data.results;
-            const selectedStyle = styleOutfits.find(
-              (style) => style.style_id === styleId
-            );
+    outfitsData[productId] = productInfo;
 
-            if (selectedStyle) {
-              outfitsData[res2.data.product_id].photos = selectedStyle.photos;
-              outfitsData[res2.data.product_id].sale_price =
-                selectedStyle.sale_price;
-              outfitsData[res2.data.product_id].original_price =
-                selectedStyle.original_price;
-              return outfitsData;
-            }
-            console.error('Style not found for style_id: ', styleId);
-          })
-          .catch((err) => {
-            console.error('Error fetching styles data: ', err);
-          })
-      )
-      .catch((err) => {
-        console.error('Error fetching product data: ', err);
-      });
+    const styleOutfits = productStyles.results;
+    const selectedStyle = styleOutfits.find(
+      (style) => style.style_id === styleId
+    );
+
+    if (selectedStyle) {
+      outfitsData[productId].photos = selectedStyle.photos;
+      outfitsData[productId].sale_price = selectedStyle.sale_price;
+      outfitsData[productId].original_price = selectedStyle.original_price;
+      outfitsData[productId].avg_ratings = calculateAverageRating(
+        productReview.ratings
+      );
+      return outfitsData;
+    }
+    console.error('Style not found for style_id: ', styleId);
+    return null;
   };
 
   const onClickAddOutfits = () => {
-    fetchDataAndSetOutfits().then((outfitsData) => {
+    const outfitsData = fetchDataAndSetOutfits();
+    if (outfitsData) {
       setOutfits((prevState) => ({
         ...prevState,
         ...outfitsData,
       }));
-    });
+    }
   };
 
   const setCurrentIdAndUpdateModal = (key) => {
-    fetchDataAndSetOutfits().then((outfitsData) => {
+    const outfitsData = fetchDataAndSetOutfits();
+    if (outfitsData) {
       setCurrentProduct(outfitsData);
       setcurrentId(key);
       setOpenComparisonModal((prev) => !prev);
-    });
+    }
   };
 
   const removeItem = (itemId) => {
@@ -217,6 +221,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
             onClickAddOutfits={onClickAddOutfits}
             removeItem={removeItem}
             onClickRelatedProduct={onClickRelatedProduct}
+            productReview={productReview}
           />
         </div>
       </div>
