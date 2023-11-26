@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 import QuestionsList from './QuestionsList.jsx'; //eslint-disable-line
-import Search from './Search.jsx'; //eslint-disable-line
 
 const SearchBar = styled.input`
 
@@ -20,7 +19,6 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
   const questionFetchController = new AbortController();
 
   const handleChange = (e) => {
-    console.log(e.target.value.length);
     if (e.target.value.length >= 3) {
       setQuery(e.target.value);
     } else {
@@ -36,7 +34,7 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
 
   useEffect(() => {
     if (productId) {
-      useServerFetch('get', `qa/questions?product_id=40345&count=20`, {}, questionFetchController)
+      useServerFetch('get', `qa/questions?product_id=${productId}&count=20`, {}, questionFetchController)
         .then((response) => {
           setQuestions(response.data.results);
           setCurrentQuestions(response.data.results.slice(0, displayNum));

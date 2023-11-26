@@ -24,6 +24,7 @@ font-weight: bold;
 `;
 
 const BtnWrapper = styled.button`
+cursor: pointer;
 `;
 
 const SuccessWrapper = styled.h2`
@@ -42,9 +43,9 @@ function AnswerModal({ productName, questionBody, questionId }) { //eslint-disab
   const handleSubmitAnswer = (e) => {
     e.preventDefault();
     const data = {
-      body: body,
+      body,
       name: nickname,
-      email: email,
+      email,
       photos: images,
     };
     if (questionId) {
@@ -55,7 +56,7 @@ function AnswerModal({ productName, questionBody, questionId }) { //eslint-disab
       })
         .then(() => {
           setSubmitted(true);
-          console.log('posted');
+          console.log('Posted');
         })
         .catch((err) => {
           console.error('Error adding answer:', err);

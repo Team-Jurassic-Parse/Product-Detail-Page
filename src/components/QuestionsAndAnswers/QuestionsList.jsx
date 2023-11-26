@@ -21,7 +21,7 @@ function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable
           ? question : question.question_body.toLowerCase().trim().includes(formatQuery)
         })
         .map((question) => {
-          return <Question questionId={question.question_id} question={question} />
+          return <Question key={question.question_id} questionId={question.question_id} question={question} />
         })}
     </Wrapper>
   );
