@@ -38,7 +38,7 @@ function RelatedProducts({
   const starFetchController = new AbortController();
 
   const getRelatedProducts = async () => {
-    if (productId) {
+    if (productId && productId !== 40353 && productId !== 40345) {
       try {
         const res = await useServerFetch(
           'get',
@@ -46,7 +46,9 @@ function RelatedProducts({
           {},
           relatedFetchController
         );
-        const relatedItemIds = res.data;
+        const relatedItemIds = res.data.filter(
+          (id) => id !== 40353 && id !== 40345
+        );
         let existingItems = relatedItems
           ? { ...relatedItems.relatedItems }
           : {};
