@@ -1,7 +1,15 @@
+/* eslint-disable no-sequences */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+/* eslint-disable import/order */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import RelatedProducts from './index.jsx';
 import ProductStarRating from '../ReviewStars/ProductStarRating.jsx';
 import { TiDelete } from 'react-icons/ti';
 import { IoAddCircleOutline } from 'react-icons/io5';
@@ -30,22 +38,27 @@ function AddOutfitButton({ onClick }) {
   );
 }
 
-function OutfitList({ outfits, onClickAddOutfits, removeItem }) {
+function OutfitList({
+  outfits,
+  onClickAddOutfits,
+  removeItem,
+  onClickRelatedProduct,
+}) {
   const responsive2 = {
     superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
+      breakpoint: { max: 3000, min: 2000 },
       items: 3,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 2000, min: 1200 },
       items: 2,
     },
+    tablet: {
+      breakpoint: { max: 1200, min: 700 },
+      items: 1,
+    },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 700, min: 0 },
       items: 1,
     },
   };
@@ -62,11 +75,16 @@ function OutfitList({ outfits, onClickAddOutfits, removeItem }) {
         >
           {outfits !== null &&
             Object.values(outfits).map((outfitsList) => (
-              <div className="outfit-card" key={outfitsList.id}>
+              <div
+                className="outfit-card"
+                key={outfitsList.id}
+                data-key={outfitsList.id}
+                onClick={onClickRelatedProduct}
+              >
                 {outfitsList.photos && outfitsList.photos.length > 0 ? (
                   <img
                     className="outfit-image"
-                    src={outfitsList.photos[0].thumbnail_url}
+                    src={outfitsList.photos[0].url}
                     alt=""
                   />
                 ) : (

@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
@@ -7,13 +12,14 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 import OutfitList from './OutfitList.jsx';
 import './RelatedProducts.css';
 import './Outfit.css';
-import Modal from '../UI/Modal.jsx';
+import './ComparisonTable.css';
 import ComparisonTable from './ComparisonTable.jsx';
 
 function RelatedProducts({ productId, setProductId, styleId }) {
   const [relatedItems, setRelatedItems] = useState(null);
   const [outfits, setOutfits] = useState(null);
   const [currentId, setcurrentId] = useState(null);
+  const [currentProduct, setCurrentProduct] = useState(null);
   const [openComparisonModal, setOpenComparisonModal] = useState(false);
   const relatedFetchController = new AbortController();
   const productIdFetchController = new AbortController();
@@ -21,64 +27,81 @@ function RelatedProducts({ productId, setProductId, styleId }) {
   const outfitsIdFetchController = new AbortController();
   const outfitsStylesFetchController = new AbortController();
 
-  const getRelatedProducts = () => {
-    useServerFetch(
-      'get',
-      `products/${productId}/related`,
-      {},
-      relatedFetchController
-    )
-      .then((res) => {
-        const items = {};
-        let counter = 0;
-        res.data.forEach((id) => {
-          useServerFetch('get', `products/${id}`, {}, productIdFetchController)
-            .then((res2) => {
-              items[res2.data.id] = res2.data;
-            })
-            .then(() => {
-              useServerFetch(
-                'get',
-                `products/${id}/styles`,
-                {},
-                stylesFetchController
-              )
-                .then((res3) => {
-                  const styles = res3.data.results;
-                  const lowestSalePriceStyle = styles.reduce(
-                    (lowestStyle, currentStyle) => {
-                      if (
-                        !lowestStyle.sale_price ||
-                        (currentStyle.sale_price &&
-                          currentStyle.sale_price < lowestStyle.sale_price)
-                      ) {
-                        return currentStyle;
-                      }
-                      return lowestStyle;
-                    },
-                    {}
-                  );
-                  items[id].photos = lowestSalePriceStyle.photos;
-                  items[id].sale_price =
-                    lowestSalePriceStyle.sale_price || styles[0].sale_price;
-                  items[id].original_price =
-                    lowestSalePriceStyle.original_price;
-                })
-                .then(() => {
-                  counter += 1;
-                  if (Object.keys(items).length === counter) {
-                    setRelatedItems((prevState) => ({
-                      ...prevState,
-                      relatedItems: items,
-                    }));
-                  }
-                });
-            });
+  const getRelatedProducts = async () => {
+    if (productId) {
+      try {
+        const res = await useServerFetch(
+          'get',
+          `products/${productId}/related`,
+          {},
+          relatedFetchController
+        );
+        const relatedItemIds = res.data;
+        let existingItems = relatedItems
+          ? { ...relatedItems.relatedItems }
+          : {};
+
+        const keysToRemove = [];
+        Object.keys(existingItems).forEach((itemId) => {
+          if (!relatedItemIds.includes(Number(itemId))) {
+            keysToRemove.push(itemId);
+          }
         });
-      })
-      .catch((err) => {
-        console.error('Error fetching related items id', err);
-      });
+
+        keysToRemove.forEach((itemId) => {
+          const { [itemId]: removedItem, ...remainingItems } = existingItems;
+          existingItems = remainingItems;
+        });
+
+        const newItems = await Promise.all(
+          relatedItemIds
+            .filter((id) => !existingItems[id])
+            .map(async (id) => {
+              const [productData, stylesData] = await Promise.all([
+                useServerFetch(
+                  'get',
+                  `products/${id}`,
+                  {},
+                  productIdFetchController
+                ).then((res2) => res2.data),
+                useServerFetch(
+                  'get',
+                  `products/${id}/styles`,
+                  {},
+                  stylesFetchController
+                ).then((res3) => res3.data.results),
+              ]);
+
+              const lowestSalePriceStyle = stylesData.reduce(
+                (lowestStyle, currentStyle) => {
+                  if (
+                    !lowestStyle.sale_price ||
+                    (currentStyle.sale_price &&
+                      currentStyle.sale_price < lowestStyle.sale_price)
+                  ) {
+                    return currentStyle;
+                  }
+                  return lowestStyle;
+                },
+                {}
+              );
+
+              productData.photos = lowestSalePriceStyle.photos;
+              productData.sale_price =
+                lowestSalePriceStyle.sale_price || stylesData[0].sale_price;
+              productData.original_price = lowestSalePriceStyle.original_price;
+
+              return { [id]: productData };
+            })
+        );
+
+        const mergedItems = Object.assign({}, existingItems, ...newItems);
+
+        setRelatedItems({ relatedItems: mergedItems });
+      } catch (err) {
+        console.error('Error fetching related items', err);
+      }
+    }
   };
 
   useEffect(() => {
@@ -98,13 +121,18 @@ function RelatedProducts({ productId, setProductId, styleId }) {
     }
   };
 
-  const onClickAddOutfits = () => {
+  const fetchDataAndSetOutfits = () => {
     const outfitsData = {};
-    useServerFetch('get', `products/${productId}`, {}, outfitsIdFetchController)
+    return useServerFetch(
+      'get',
+      `products/${productId}`,
+      {},
+      outfitsIdFetchController
+    )
       .then((res) => {
         outfitsData[res.data.id] = res.data;
       })
-      .then(() => {
+      .then(() =>
         useServerFetch(
           'get',
           `products/${productId}/styles`,
@@ -123,21 +151,34 @@ function RelatedProducts({ productId, setProductId, styleId }) {
                 selectedStyle.sale_price;
               outfitsData[res2.data.product_id].original_price =
                 selectedStyle.original_price;
-              setOutfits((prevState) => ({
-                ...prevState,
-                ...outfitsData,
-              }));
-            } else {
-              console.error('Style not found for style_id: ', styleId);
+              return outfitsData;
             }
+            console.error('Style not found for style_id: ', styleId);
           })
           .catch((err) => {
             console.error('Error fetching styles data: ', err);
-          });
-      })
+          })
+      )
       .catch((err) => {
         console.error('Error fetching product data: ', err);
       });
+  };
+
+  const onClickAddOutfits = () => {
+    fetchDataAndSetOutfits().then((outfitsData) => {
+      setOutfits((prevState) => ({
+        ...prevState,
+        ...outfitsData,
+      }));
+    });
+  };
+
+  const setCurrentIdAndUpdateModal = (key) => {
+    fetchDataAndSetOutfits().then((outfitsData) => {
+      setCurrentProduct(outfitsData);
+      setcurrentId(key);
+      setOpenComparisonModal((prev) => !prev);
+    });
   };
 
   const removeItem = (itemId) => {
@@ -145,11 +186,6 @@ function RelatedProducts({ productId, setProductId, styleId }) {
     delete updatedOutfits[itemId];
 
     setOutfits(updatedOutfits);
-  };
-
-  const setCurrentIdAndUpdateModal = (key) => {
-    setcurrentId(key);
-    setOpenComparisonModal((prev) => !prev);
   };
 
   return (
@@ -165,7 +201,7 @@ function RelatedProducts({ productId, setProductId, styleId }) {
             relatedItems={relatedItems}
             onClickRelatedProduct={onClickRelatedProduct}
             setProductId={setProductId}
-            setCurrentId={setCurrentIdAndUpdateModal}
+            setCurrentIdAndUpdateModal={setCurrentIdAndUpdateModal}
           />
         </div>
       </div>
@@ -180,20 +216,29 @@ function RelatedProducts({ productId, setProductId, styleId }) {
             outfits={outfits}
             onClickAddOutfits={onClickAddOutfits}
             removeItem={removeItem}
+            onClickRelatedProduct={onClickRelatedProduct}
           />
         </div>
       </div>
-      {/* {openComparisonModal && (
-        <Modal
-          handleClose={() => setOpenComparisonModal(false)}
-          children={
+      {openComparisonModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setOpenComparisonModal(false)}
+        >
+          <div className="modal-container">
+            <span
+              className="modal-close-button"
+              onClick={() => setOpenComparisonModal(false)}
+            >
+              &times;
+            </span>
             <ComparisonTable
-              currentProduct={currentProduct}
-              comparedProduct={relatedItems.relatedItems[relatedItems.currentId]}
+              currentProduct={currentProduct[productId]}
+              comparedProduct={relatedItems.relatedItems[currentId]}
             />
-          }
-        ></Modal>
-      )} */}
+          </div>
+        </div>
+      )}
     </>
   );
 }

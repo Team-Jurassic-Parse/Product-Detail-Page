@@ -14,75 +14,56 @@ const BelowAnswer = styled.div`
   font-weight: lighter;
 `;
 
-function Answers({ questionId }) { //eslint-disable-line
-  const [answers, setAnswers] = useState([]);
-  const [helpful, setHelpful] = useState({});
-  const [reported, setReported] = useState({});
-  const answerFetchController = new AbortController();
-
-  const handleFetch = () => {
-    if (questionId) {
-      useServerFetch('get', `qa/questions/${questionId}/answers`, {}, answerFetchController)
-        .then((response) => {
-          const sortResponse = response.data.results.sort((a, b) => b.helpfulness - a.helpfulness)
-          setAnswers(sortResponse);
-        })
-        .catch(() => setAnswers(null));
-    }
-    return (() => {
-      answerFetchController.abort();
-    });
-  }
+function Answers({ answer }) { //eslint-disable-line
+  const [helpful, setHelpful] = useState(false);
+  const [reported, setReported] = useState(false);
+  const [helpfulness, setHelpfulness] = useState(answer.helpfulness)
 
   const handleHelpful = (id) => {
-    if (!helpful[id]) {
-      setHelpful({...helpful, [id]: true})
+    if (!helpful) {
       useServerFetch('put', `qa/answers/${id}/helpful`, {})
-      .then((response) => handleFetch())
-      .catch((err) => console.error(err))
+        .then(() => {
+          setHelpfulness(helpfulness + 1);
+          setHelpful(true);
+        })
+        .catch((err) => console.error(err));
     }
-  }
+  };
 
   const handleReport = (id) => {
-    if (!reported[id]) {
+    if (!reported) {
       useServerFetch('put', `qa/answers/${id}/report`, {})
-      .then((response) => setReported({...reported, [id]: true}))
-      .catch((err) => console.error(err))
+        .then(() => setReported(true))
+        .catch((err) => console.error(err));
     }
-  }
-  useEffect(() => {
-    handleFetch();
-  }, [questionId]);
-  return answers ? (
-    <>
-      {answers.map((answer) => {
-        const formatedDate = new Date(answer.date).toLocaleDateString(
-          {},
-          {
-            timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric',
-          },
-        );
-        const answerId = answer.answer_id;
-        return (
-          <div key={answerId}>
-            <AnswerWrapper>
-              A:
-              {answer.body}
-            </AnswerWrapper>
-            <BelowAnswer>
-              <span>by: </span>
-              {answer.answerer_name === 'Seller'
-                ? <strong>{answer.answerer_name}</strong>
-                : answer.answerer_name}
-              <span>, </span>
-              {formatedDate} | Helpful?
-              <span onClick={() => {handleHelpful(answerId)}}> Yes</span> ({answer.helpfulness})
-              | <span onClick={() => {handleReport(answerId)}}>{reported[answerId] ? 'Reported' : 'Report'}</span>
-            </BelowAnswer>
-          </div>
-        );
-      })}
-    </>
+  };
+
+  const formatedDate = new Date(answer.date).toLocaleDateString(
+    {},
+    {
+      timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric',
+    },
+  );
+
+  return answer ? (
+    <div key={answer.answer_id}>
+      <AnswerWrapper>
+        A:
+        {' '}
+        {answer.body}
+      </AnswerWrapper>
+      <BelowAnswer>
+        <span>by: </span>
+        {answer.answerer_name === 'Seller'
+          ? <strong>{answer.answerer_name}</strong>
+          : answer.answerer_name}
+        <span>, </span>
+        {formatedDate} | Helpful?
+        <span onClick={() => {handleHelpful(answer.answer_id)}}> Yes</span>
+        ({helpfulness})
+        | <span onClick={() => {handleReport(answer.answer_id)}}>{reported ? 'Reported' : 'Report'}</span>
+      </BelowAnswer>
+    </div>
   ) : (
     <div>
       Loading answers

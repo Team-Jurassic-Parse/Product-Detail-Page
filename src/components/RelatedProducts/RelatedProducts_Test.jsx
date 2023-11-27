@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -28,7 +31,7 @@ describe('RelatedProductsList', () => {
         relatedItems={mockRelatedItems}
         onClickRelatedProduct={mockOnClickRelatedProduct}
         setProductId={mockSetProductId}
-      />,
+      />
     );
 
     // Ensure that the related items are rendered
@@ -36,7 +39,7 @@ describe('RelatedProductsList', () => {
       name: /product thumbnail/i,
     });
     expect(relatedItemElements.length).toBe(
-      Object.keys(mockRelatedItems.relatedItems).length,
+      Object.keys(mockRelatedItems.relatedItems).length
     );
 
     // Simulate clicking on a related product
@@ -54,7 +57,7 @@ describe('RelatedProductsList', () => {
 
     // Ensure that the "No related items available" message is rendered
     const noRelatedItemsMessage = screen.getByText(
-      /no related items available/i,
+      /no related items available/i
     );
     expect(noRelatedItemsMessage).toBeInTheDocument();
   });
