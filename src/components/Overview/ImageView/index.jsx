@@ -5,7 +5,7 @@ import Carousel from 'react-multi-carousel'; //eslint-disable-line
 
 function UnstyledImageView({ currentStyle }) { // eslint-disable-line
   if(currentStyle){
-    console.log('picture', currentStyle.photos[0].url)
+    // console.log('picture', currentStyle.photos[0].url)
   }
 
   const [currentImg, setCurrentImg] = useState(0);

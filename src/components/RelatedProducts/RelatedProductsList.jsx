@@ -11,7 +11,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import ProductStarRating from '../ReviewStars/ProductStarRating.jsx';
+import StarsRating from '../ReviewStars/StarsRating.jsx';
 import { BsStarFill } from 'react-icons/bs';
 
 function RelatedProductsList({
@@ -100,9 +100,9 @@ function RelatedProductsList({
             )}
           </h4>
           <div className="RelatedProductsRatingsContainer">
-            <ProductStarRating
-              productId={relatedList.id}
+            <StarsRating
               className="RelatedProductsRatings"
+              stars={relatedList.avg_ratings}
             />
           </div>
         </div>
