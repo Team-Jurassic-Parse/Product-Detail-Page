@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const decimalToPercentageString = (decimal) =>
-  Math.round(decimal * 100)
-    .toString()
-    .concat('%');
+const decimalToPercentageString = (decimal) => Math.round(decimal * 100)
+  .toString()
+  .concat('%');
 
 const BarWrapper = styled.div`
   width: 50%;

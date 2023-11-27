@@ -8,6 +8,8 @@ import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint
 
 const Wrapper = styled.div`
   border: 1px solid;
+  margin-top: 24px;
+  margin-bottom: 24px;
 `;
 
 const SummaryAndListWrapper = styled.div`
@@ -26,7 +28,7 @@ function RatingAndReviews({
   productName = 'Anonymous', // eslint-disable-line
   productReview, // eslint-disable-line
   status, // eslint-disable-line
-  error, // eslint-disable-line
+  error // eslint-disable-line
 }) {
   const [showForm, setShowForm] = useState(false);
   const openModal = () => {
@@ -35,48 +37,35 @@ function RatingAndReviews({
   const closeModal = () => {
     setShowForm(false);
   };
-  const [showWidget, setShowWidget] = useState(false);
 
   return (
-    <div>
-      <button
-        type="button"
-        onClick={() => {
-          setShowWidget((cur) => !cur);
-        }}
-      >
-        Toggle Lance&apos;s widget
-      </button>
-      {showWidget && (
-        <Wrapper>
-          <StarsFilterProvider>
-            <SummaryAndListWrapper>
-              <RatingSummary
-                productId={productId}
-                productReview={productReview}
-                status={status}
-                error={error}
-              />
-              <ReviewsList productId={productId} key={productId} />
-            </SummaryAndListWrapper>
-          </StarsFilterProvider>
-          {status === 'SUCCESS' && (
-            <BtnWrapper>
-              <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
-            </BtnWrapper>
-          )}
-          {showForm && (
-            <Modal handleClose={closeModal}>
-              <ReviewForm
-                productName={productName}
-                productId={productId}
-                currentCharacteristics={productReview.characteristics} // eslint-disable-line
-              />
-            </Modal>
-          )}
-        </Wrapper>
+    <Wrapper>
+      <StarsFilterProvider>
+        <SummaryAndListWrapper>
+          <RatingSummary
+            productId={productId}
+            productReview={productReview}
+            status={status}
+            error={error}
+          />
+          <ReviewsList productId={productId} key={productId} />
+        </SummaryAndListWrapper>
+      </StarsFilterProvider>
+      {status === 'SUCCESS' && (
+        <BtnWrapper>
+          <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
+        </BtnWrapper>
       )}
-    </div>
+      {showForm && (
+        <Modal handleClose={closeModal}>
+          <ReviewForm
+            productName={productName}
+            productId={productId}
+            currentCharacteristics={productReview.characteristics} // eslint-disable-line
+          />
+        </Modal>
+      )}
+    </Wrapper>
   );
 }
 

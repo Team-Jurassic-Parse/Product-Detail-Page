@@ -19,7 +19,9 @@
 .outfit-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
-  margin: auto 1rem;
+  flex: 0 0 calc(25% - 2rem);
+  margin-right: 1rem;
+  margin-left: 1rem;
   text-align: center;
   font-family: arial;
   border: 1px solid #ddd;
@@ -125,24 +127,15 @@
   padding: 5px;
 }
 
-.add-button span {
-  font-size: 0.875rem;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  margin-bottom: 0.75rem;
-  position: relative;
-  text-transform: none;
-  transition: all 0.2s ease-in-out;
-  font-weight: 400;
-}
-
 .add-button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
-  margin: auto 1rem;
   text-align: center;
   font-family: arial;
   border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .add-icon {
@@ -156,10 +149,55 @@
 
 .outfit-button-carousel {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
 .outfit-carousel-item {
   display: flex;
   width: 100%;
+}
+
+.text-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 98px;
+}
+
+.text-container span {
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  position: relative;
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+  font-weight: 400;
+  font-family: Georgia, sans-serif;
+}
+
+.add-button:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); /* Adjust the values for the glowing effect */
+}
+
+@media screen and (max-width: 2000px) {
+  .outfit-card,
+  .add-button {
+    flex: 0 0 calc(33.33% - 2rem);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .outfit-card,
+  .add-button {
+    flex: 0 0 calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .outfit-card,
+  .add-button {
+    flex: 0 0 calc(100% - 2rem);
+  }
 }
