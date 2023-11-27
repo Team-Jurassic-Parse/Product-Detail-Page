@@ -24,11 +24,20 @@ font-weight: bold;
 `;
 
 const BtnWrapper = styled.button`
-cursor: pointer;
+  cursor: pointer;
+  &: hover {
+    background-color: lightblue;
+  }
 `;
 
 const SuccessWrapper = styled.h2`
 color: green;
+`;
+
+const ExitButton = styled.button`
+  margin-top: 20px;
+  cursor: pointer;
+  float: right;
 `;
 
 function AnswerModal({ productName, questionBody, questionId }) { //eslint-disable-line
@@ -84,6 +93,7 @@ function AnswerModal({ productName, questionBody, questionId }) { //eslint-disab
       <div>For authentication reasons, you will not be emailed</div>
       <UploadPhoto images={images} handleImageChange={handleImageChange} />
       <BtnWrapper type="submit">Submit</BtnWrapper>
+      <ExitButton>X</ExitButton>
     </FormWrapper>
   );
 }

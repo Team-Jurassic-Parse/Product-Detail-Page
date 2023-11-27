@@ -5,10 +5,10 @@ import Question from './Question.jsx'; //eslint-disable-line
 //adjust css later
 const Wrapper = styled.div`
   background: white;
-  min-height: 50px;
-  max-height: 50vh;
-  padding: 10px 25px;
-  overflow: scroll;
+  max-height: 100vh;
+  padding: 4px 4px;
+  overflow-y: scroll;
+  max-width: 100vw;
 `;
 
 function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line
