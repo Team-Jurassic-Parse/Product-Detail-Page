@@ -1,66 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Answers from './Answers.jsx'; //eslint-disable-line
-import AnswerModal from './AnswerModal.jsx'; // eslint-disable-line
-import Modal from '../UI/Modal.jsx'; // eslint-disable-line
+import Question from './Question.jsx'; //eslint-disable-line
 
+//adjust css later
 const Wrapper = styled.div`
   background: white;
+  min-height: 50px;
+  max-height: 50vh;
   padding: 10px 25px;
-  font-size: 19px;
-  font-weight: bold;
+  overflow: scroll;
 `;
 
-const InnerWrapper = styled.div`
-  background: lightgrey;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
-
-const AddQuestionBtn = styled.button`
-  position: relative;
-  top: 0;
-  right: 0;
-  font-weight: normal;
-`;
-
-function QuestionsList({ questions, productName = 'placeholder product name' }) { //eslint-disable-line
-  const [showForm, setShowForm] = useState(false);
-
-  const openModal = () => {
-    setShowForm(true);
-  };
-
-  const closeModal = () => {
-    setShowForm(false);
-  };
-
-  return questions ? (
+function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line
+  const formatQuery = query.toLowerCase().trim();
+  return (
     <Wrapper>
-      {questions.map((question) => { //eslint-disable-line
-        const questionId = question.question_id;
-        return (
-          <InnerWrapper key={questionId}>
-            Q:
-            {question.question_body}
-            <AddQuestionBtn onClick={openModal}>Add Answer</AddQuestionBtn>
-            <Answers questionId={questionId} />
-            {showForm && (
-            <Modal handleClose={closeModal}>
-              <AnswerModal
-                productName={productName}
-                questionBody={question.question_body}
-                questionId={questionId}
-              />
-            </Modal>
-            )}
-          </InnerWrapper>
-        );
-      })}
-      <button type="button">More answered questions</button>
+      {currentQuestions
+        .filter((question) => {
+          return formatQuery === ''
+          ? question : question.question_body.toLowerCase().trim().includes(formatQuery)
+        })
+        .map((question) => {
+          return <Question key={question.question_id} questionId={question.question_id} question={question} />
+        })}
     </Wrapper>
-  ) : (
-    <div> Loading questions </div>
   );
 }
 
