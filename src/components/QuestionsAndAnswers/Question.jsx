@@ -12,6 +12,13 @@ const Wrapper = styled.div`
   font-weight: bold;
 `;
 
+// const HelpfulWrapper = styled.span`
+//   font-weight: normal;
+//   font-size: 16px;
+//   text-decoration: ${helpful ? 'none' : 'underline'};
+//   cursor: ${helpful ? 'default' : 'point'};
+// `;
+
 const InnerWrapper = styled.div`
   background: lightgrey;
   margin-top: 10px;
@@ -30,6 +37,8 @@ function Question({ question, questionId, productName = 'placeholder product nam
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [helpful, setHelpful] = useState(false);
+  const [helpfulness, setHelpfulness] = useState(question.question_helpfulness);
   const answerFetchController = new AbortController();
 
   const openModal = () => {
@@ -50,6 +59,17 @@ function Question({ question, questionId, productName = 'placeholder product nam
     setIsExpanded(false);
   };
 
+  const handleHelpful = (id) => {
+    if (!helpful) {
+      useServerFetch('put', `qa/questions/${id}/helpful`, {})
+        .then(() => {
+          setHelpfulness(helpfulness + 1);
+          setHelpful(true);
+        })
+        .catch((err) => console.error(err));
+    }
+  };
+
   const totalAnswers = Object.keys(question.answers).length;
 
   const handleFetch = () => {
@@ -62,9 +82,9 @@ function Question({ question, questionId, productName = 'placeholder product nam
         })
         .catch(() => setAnswers(null));
     }
-    return (() => {
+    return () => {
       answerFetchController.abort();
-    });
+    };
   };
 
   useEffect(() => {
@@ -72,11 +92,19 @@ function Question({ question, questionId, productName = 'placeholder product nam
   }, [questionId]);
 
   return question ? (
-    <Wrapper key={questionId}>
+    <Wrapper>
       <InnerWrapper>
-        Q:
-        {' '}
-        {question.question_body}
+        Q: {question.question_body}
+        <span
+          style={{
+            fontWeight: 'normal',
+            fontSize: '16px',
+            textDecoration: helpful ? 'none' : 'underline',
+            cursor: helpful ? 'default' : 'pointer',
+          }}
+          onClick={() => {handleHelpful(questionId)}}>
+          Helpful? ({helpfulness})
+        </span>
         <AddQuestionBtn onClick={openModal}>Add Answer</AddQuestionBtn>
         <AnswersList
           currentAnswers={currentAnswers}
@@ -86,13 +114,13 @@ function Question({ question, questionId, productName = 'placeholder product nam
           handleCollapseAnswers={handleCollapseAnswers}
         />
         {showForm && (
-        <Modal handleClose={closeModal}>
-          <AnswerModal
-            productName={productName}
-            questionBody={question.question_body}
-            questionId={questionId}
-          />
-        </Modal>
+          <Modal handleClose={closeModal}>
+            <AnswerModal
+              productName={productName}
+              questionBody={question.question_body}
+              questionId={questionId}
+            />
+          </Modal>
         )}
       </InnerWrapper>
     </Wrapper>

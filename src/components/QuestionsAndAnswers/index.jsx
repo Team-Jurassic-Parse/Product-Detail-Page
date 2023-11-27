@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 import QuestionsList from './QuestionsList.jsx'; //eslint-disable-line
+import QuestionModal from './QuestionModal.jsx'; //eslint-disable-line
+import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 
 const SearchBar = styled.input`
-
 `;
 
 const BtnWrapper = styled.button`
@@ -16,7 +17,16 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [displayNum, setDisplayNum] = useState(2);
   const [query, setQuery] = useState('');
+  const [showForm, setShowForm] = useState(false);
   const questionFetchController = new AbortController();
+
+  const openModal = () => {
+    setShowForm(true);
+  };
+
+  const closeModal = () => {
+    setShowForm(false);
+  };
 
   const handleChange = (e) => {
     if (e.target.value.length >= 3) {
@@ -55,7 +65,12 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
       <SearchBar type="text" placeholder="Have a question? Search for answers..." onChange={(e) => handleChange(e)} />
       <QuestionsList questions={questions} query={query} currentQuestions={currentQuestions} />
       {totalQuestions > 2 && currentQuestions.length < totalQuestions && <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>More answered questions</BtnWrapper>}
-      <BtnWrapper type="button">Add a question</BtnWrapper>
+      <BtnWrapper type="button" onClick={openModal}>Add a question</BtnWrapper>
+      {showForm && (
+        <Modal handleClose={closeModal}>
+          <QuestionModal productName="placeholder" productId={productId} />
+        </Modal>
+      )}
     </>
   );
 }
