@@ -23,7 +23,10 @@ font-weight: bold;
 `;
 
 const BtnWrapper = styled.button`
-cursor: pointer;
+  cursor: pointer;
+  &: hover {
+    background-color: lightblue;
+  }
 `;
 
 const SuccessWrapper = styled.h2`

@@ -6,9 +6,26 @@ import QuestionModal from './QuestionModal.jsx'; //eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 
 const SearchBar = styled.input`
+  width: 50%;
+  height: 30px;
+  border: 1px solid black;
+  font-size: 21px;
+  cursor: text;
+  padding: 10px;
 `;
 
 const BtnWrapper = styled.button`
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+  background-color: yellow;
+  cursor: pointer;
+  &: hover {
+    background-color: lightblue;
+  }
 `;
 
 function QuestionsAndAnswers({ productId }) {//eslint-disable-line
@@ -62,7 +79,7 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
   return (
     <>
       <h4>QUESTIONS & ANSWERS </h4>
-      <SearchBar type="text" placeholder="Have a question? Search for answers..." onChange={(e) => handleChange(e)} />
+      <SearchBar type="search" placeholder="Have a question? Search for answers..." onChange={(e) => handleChange(e)} />
       <QuestionsList questions={questions} query={query} currentQuestions={currentQuestions} />
       {totalQuestions > 2 && currentQuestions.length < totalQuestions && <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>More answered questions</BtnWrapper>}
       <BtnWrapper type="button" onClick={openModal}>Add a question</BtnWrapper>

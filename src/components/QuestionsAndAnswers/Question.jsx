@@ -5,12 +5,12 @@ import AnswerModal from './AnswerModal.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
-const Wrapper = styled.div`
-  background: white;
-  padding: 10px 25px;
-  font-size: 19px;
-  font-weight: bold;
-`;
+// const Wrapper = styled.div`
+// background: white;
+// padding: 10px 25px;
+// font-size: 19px;
+// font-weight: bold;
+// `;
 
 // const HelpfulWrapper = styled.span`
 //   font-weight: normal;
@@ -20,16 +20,21 @@ const Wrapper = styled.div`
 // `;
 
 const InnerWrapper = styled.div`
-  background: lightgrey;
+  background: white;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 `;
 
-const AddQuestionBtn = styled.button`
+const AddAnswerBtn = styled.button`
   position: relative;
-  top: 0;
-  right: 0;
-  font-weight: normal;
+  left: 100px;
+  &: hover {
+    background-color: lightblue;
+  }
 `;
 
 function Question({ question, questionId, productName = 'placeholder product name' }) { //eslint-disable-line
@@ -92,20 +97,22 @@ function Question({ question, questionId, productName = 'placeholder product nam
   }, [questionId]);
 
   return question ? (
-    <Wrapper>
+    <div>
       <InnerWrapper>
         Q: {question.question_body}
         <span
           style={{
             fontWeight: 'normal',
             fontSize: '16px',
+            position: 'relative',
+            left: '90px',
             textDecoration: helpful ? 'none' : 'underline',
             cursor: helpful ? 'default' : 'pointer',
           }}
           onClick={() => {handleHelpful(questionId)}}>
           Helpful? ({helpfulness})
         </span>
-        <AddQuestionBtn onClick={openModal}>Add Answer</AddQuestionBtn>
+        <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
         <AnswersList
           currentAnswers={currentAnswers}
           totalAnswers={totalAnswers}
@@ -123,7 +130,7 @@ function Question({ question, questionId, productName = 'placeholder product nam
           </Modal>
         )}
       </InnerWrapper>
-    </Wrapper>
+    </div>
   ) : (
     <div> Loading questions </div>
   );
