@@ -15,8 +15,8 @@ const StarFilterLineWrapper = styled.li`
 const getMaxRating = (ratings) => {
   let max = 0;
   for (const value of Object.values(ratings)) { // eslint-disable-line
-    if (value > max) {
-      max = value;
+    if (Number(value) > max) {
+      max = Number(value);
     }
   }
   return max;
@@ -30,22 +30,29 @@ function StarFilterLine({ children, rating }) { // eslint-disable-line
       isActive={starsFilter[rating]}
       onClick={() => toggleStarsFilter(rating)}
     >
-      <span>{rating} Stars</span>
+      <span>
+        {rating}
+        {' '}
+        Stars
+      </span>
       {children}
     </StarFilterLineWrapper>
   );
 }
 
 function ReviewsFilter({ recommended, ratings }) { // eslint-disable-line
-  const recommendRate =
-    Number(recommended.true) / // eslint-disable-line
+  const recommendRate =    Number(recommended.true) / // eslint-disable-line
     (Number(recommended.true) + Number(recommended.false)); // eslint-disable-line
   const maxRating = getMaxRating(ratings);
+
+  console.log({ maxRating });
+  console.log(ratings);
 
   return (
     <Wrapper>
       <div>
-        {Math.round(recommendRate * 100)}% of reviewers recommend this product.
+        {Math.round(recommendRate * 100)}
+        % of reviewers recommend this product.
       </div>
       <StarsFilter>
         <StarFilterLine rating="5">

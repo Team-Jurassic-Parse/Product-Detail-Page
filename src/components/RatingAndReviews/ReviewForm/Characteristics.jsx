@@ -63,8 +63,8 @@ function Characteristics({ characteristics, setCharacteristics }) { // eslint-di
   return (
     <Wrapper>
       <legend>Characteristics</legend>
-      {characteristics &&
-        Object.keys(characteristics).map((key) => (
+      {characteristics
+        && Object.keys(characteristics).map((key) => (
           <CharacteristicsRow
             key={key}
             char={characteristics[key].value} // eslint-disable-line
