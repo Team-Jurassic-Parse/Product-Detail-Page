@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductStarRating from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
-import SalePrice from './SalePrice.jsx';
 
 function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-disable-line
   const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
-  // console.log(productInfo);
   const OriginalPrice = styled.p`
     ${onSale && (`
       color: red;
@@ -41,7 +39,7 @@ function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-d
   `;
 
   return (
-    <>
+    <div>
       {productInfo && (
         <>
           <ProductRating productId={productInfo.id} /> {/*eslint-disable-line*/}
@@ -53,10 +51,10 @@ function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-d
               {onSale && <p>{`$${currentStyle.sale_price}`}</p>} {/*eslint-disable-line*/}
             </>
           )}
-          <ProductDescription>{productInfo.description}</ProductDescription>
+          <ProductDescription>{productInfo.description}</ProductDescription> {/*eslint-disable-line*/}
         </>
       )}
-    </>
+    </div>
   );
 }
 

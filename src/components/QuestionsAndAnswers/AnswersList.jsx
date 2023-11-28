@@ -8,10 +8,14 @@ const AnswerListWrapper = styled.div`
   min-height: 50px;
   max-height: 50vh;
   padding: 10px 25px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 const BtnWrapper = styled.button`
+  cursor: pointer;
+  &: hover {
+    background-color: lightblue;
+  }
 `;
 
 function AnswersList({ currentAnswers, totalAnswers, handleSeeMoreAnswers, handleCollapseAnswers, isExpanded }) { //eslint-disable-line

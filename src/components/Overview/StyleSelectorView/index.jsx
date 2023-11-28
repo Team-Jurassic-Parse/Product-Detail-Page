@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyleItem from './StyleItem.jsx'; // eslint-disable-line
 
-function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) {
+function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // eslint-disable-line
   // eslint-disable-line
 
   const StyleSelector = styled.div`
@@ -30,8 +30,8 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) {
     <div>
       <h3>Select Your Style</h3>
       <StyleSelector>
-        {productStyles &&
-          productStyles.results.map(
+        {productStyles
+          && productStyles.results.map( // eslint-disable-line
             (
               style // eslint-disable-line
             ) => (
@@ -41,7 +41,7 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) {
                 isActive={style.style_id === styleId}
                 key={style.style_id}
               />
-            )
+            ),
           )}
       </StyleSelector>
     </div>

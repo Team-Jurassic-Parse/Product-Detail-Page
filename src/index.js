@@ -82,6 +82,7 @@ function App() {
           productReview={productReview}
           status={reviewsStatus}
           error={reviewsError}
+          productName={productInfo?.name}
         />
         <RelatedProducts
           productId={productId}

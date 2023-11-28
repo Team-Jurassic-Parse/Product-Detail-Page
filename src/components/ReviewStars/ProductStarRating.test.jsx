@@ -1,4 +1,6 @@
-import { jest, describe, test, expect } from '@jest/globals';
+import {
+  jest, describe, test, expect,
+} from '@jest/globals';
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
@@ -6,7 +8,7 @@ import ProductStarRating from './ProductStarRating';
 
 jest.mock('../../hooks/ReviewStars/useReviewsRating.js', () => {
   const actual = jest.requireActual(
-    '../../hooks/ReviewStars/useReviewsRating.js'
+    '../../hooks/ReviewStars/useReviewsRating.js',
   );
   return {
     __esModule: true,

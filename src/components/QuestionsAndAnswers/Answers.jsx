@@ -11,7 +11,7 @@ const AnswerWrapper = styled.div`
 const BelowAnswer = styled.div`
   padding: 5px 25px;
   font-size: 15px;
-  font-weight: lighter;
+  font-weight: bold;
 `;
 
 function Answers({ answer }) { //eslint-disable-line
@@ -20,7 +20,7 @@ function Answers({ answer }) { //eslint-disable-line
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness)
 
   const handleHelpful = (id) => {
-    if (!helpful) {
+    if (!helpful[id]) {
       useServerFetch('put', `qa/answers/${id}/helpful`, {})
         .then(() => {
           setHelpfulness(helpfulness + 1);
@@ -59,7 +59,7 @@ function Answers({ answer }) { //eslint-disable-line
           : answer.answerer_name}
         <span>, </span>
         {formatedDate} | Helpful?
-        <span onClick={() => {handleHelpful(answer.answer_id)}}> Yes</span>
+        <span style={{cursor: 'pointer'}}onClick={() => {handleHelpful(answer.answer_id)}}> Yes</span>
         ({helpfulness})
         | <span onClick={() => {handleReport(answer.answer_id)}}>{reported ? 'Reported' : 'Report'}</span>
       </BelowAnswer>
