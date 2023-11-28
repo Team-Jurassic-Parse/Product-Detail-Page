@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProductStarRating from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
+import { calculateAverageRating }  from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
+import StarsRating from '../../ReviewStars/StarsRating.jsx' // eslint-disable-line
 
-function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-disable-line
+function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }) { // eslint-disable-line
   const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
-  const OriginalPrice = styled.p`
+
+  const averageStars = React.useMemo(() => (
+    productReview && productReview.ratings ? calculateAverageRating(productReview.ratings) : null // eslint-disable-line
+  ), [productReview]);
+
+  const OriginalPrice = styled.a`
     ${onSale && (`
       color: red;
       text-decoration: line-through
     `)}
   `;
 
-  const ProductRating = styled(ProductStarRating)`
+  const StyledStarsRating = styled(StarsRating)`
     font-size: 1px;
     margin: 0px;
   `;
@@ -42,13 +48,13 @@ function UnstyledProductDetailsView({ productInfo, currentStyle }) { // eslint-d
     <div>
       {productInfo && (
         <>
-          <ProductRating productId={productInfo.id} /> {/*eslint-disable-line*/}
+          {averageStars ? <StyledStarsRating stars={averageStars}/> : <div>Loading...</div>} {/*eslint-disable-line*/}
           <ProductCategory>{productInfo.category.toUpperCase()}</ProductCategory> {/*eslint-disable-line*/}
           <ProductName>{productInfo.name}</ProductName> {/*eslint-disable-line*/}
           { currentStyle && (
             <>
               <OriginalPrice>{`$${currentStyle.original_price}`}</OriginalPrice> {/*eslint-disable-line*/}
-              {onSale && <p>{`$${currentStyle.sale_price}`}</p>} {/*eslint-disable-line*/}
+              {onSale && <a>{`$${currentStyle.sale_price}`}</a>} {/*eslint-disable-line*/}
             </>
           )}
           <ProductDescription>{productInfo.description}</ProductDescription> {/*eslint-disable-line*/}
