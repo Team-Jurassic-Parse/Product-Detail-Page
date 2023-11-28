@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -93,13 +95,23 @@ describe('RelatedProducts', () => {
       },
     };
 
+    const mockRemoveItem = jest.fn();
+    const mockOnClickRelatedProduct = jest.fn();
+    const mockOnClickAddOutfits = jest.fn();
+
+    beforeEach(() => {
+      mockRemoveItem.mockClear();
+      mockOnClickRelatedProduct.mockClear();
+      mockOnClickAddOutfits.mockClear();
+    });
+
     it('renders without crashing', () => {
       render(
         <OutfitList
           outfits={mockOutfits}
-          onClickAddOutfits={jest.fn()}
-          removeItem={jest.fn()}
-          onClickRelatedProduct={jest.fn()}
+          onClickAddOutfits={mockOnClickAddOutfits}
+          removeItem={mockRemoveItem}
+          onClickRelatedProduct={mockOnClickRelatedProduct}
           productReview={{ ratings: [] }}
         />
       );
@@ -136,5 +148,114 @@ describe('RelatedProducts', () => {
         />
       );
     });
+  });
+});
+
+describe('OutfitList', () => {
+  const mockOutfits = {
+    1: {
+      id: 1,
+      category: 'Test Category',
+      name: 'Test Product',
+      default_price: '50.00',
+      sale_price: '40.00',
+      photos: [{ thumbnail_url: 'test_image_url' }],
+      avg_ratings: 4.5,
+    },
+  };
+
+  const mockRemoveItem = jest.fn();
+  const mockOnClickRelatedProduct = jest.fn();
+  const mockOnClickAddOutfits = jest.fn();
+
+  beforeEach(() => {
+    mockRemoveItem.mockClear();
+    mockOnClickRelatedProduct.mockClear();
+    mockOnClickAddOutfits.mockClear();
+  });
+
+  it('renders exactly one AddOutfitButton', () => {
+    render(
+      <OutfitList
+        outfits={mockOutfits}
+        onClickAddOutfits={() => {}}
+        removeItem={() => {}}
+        onClickRelatedProduct={() => {}}
+        productReview={{ ratings: [] }}
+      />
+    );
+    const addOutfitButtons = screen.getAllByTestId('add-outfit-button');
+
+    expect(addOutfitButtons).toHaveLength(1);
+  });
+
+  it('calls onClickAddOutfits when AddOutfitButton is clicked', () => {
+    render(
+      <OutfitList
+        outfits={mockOutfits}
+        onClickAddOutfits={mockOnClickAddOutfits}
+        removeItem={() => {}}
+        onClickRelatedProduct={() => {}}
+        productReview={{ ratings: [] }}
+      />
+    );
+
+    const addOutfitButton = screen.getByTestId('add-outfit-button');
+    fireEvent.click(addOutfitButton);
+
+    expect(mockOnClickAddOutfits).toHaveBeenCalled();
+  });
+});
+
+jest.mock('react-multi-carousel/lib/styles.css', () => ({}));
+
+describe('OutfitList', () => {
+  const mockOutfits = {
+    1: {
+      id: 1,
+      category: 'Test Category',
+      name: 'Test Product',
+      default_price: '50.00',
+      sale_price: '40.00',
+      photos: [{ url: 'test_image_url' }],
+      avg_ratings: 4.5,
+    },
+  };
+
+  const mockRemoveItem = jest.fn();
+  const mockOnClickAddOutfits = jest.fn();
+  const mockOnClickRelatedProduct = jest.fn();
+
+  beforeEach(() => {
+    mockRemoveItem.mockClear();
+    mockOnClickAddOutfits.mockClear();
+    mockOnClickRelatedProduct.mockClear();
+  });
+
+  it('renders without crashing', () => {
+    render(
+      <OutfitList
+        outfits={mockOutfits}
+        onClickAddOutfits={mockOnClickAddOutfits}
+        removeItem={mockRemoveItem}
+        onClickRelatedProduct={mockOnClickRelatedProduct}
+      />
+    );
+  });
+
+  it('calls onClickAddOutfits when AddOutfitButton is clicked', () => {
+    render(
+      <OutfitList
+        outfits={mockOutfits}
+        onClickAddOutfits={mockOnClickAddOutfits}
+        removeItem={mockRemoveItem}
+        onClickRelatedProduct={mockOnClickRelatedProduct}
+      />
+    );
+
+    const addOutfitButton = screen.getByTestId('add-outfit-button');
+    fireEvent.click(addOutfitButton);
+
+    expect(mockOnClickAddOutfits).toHaveBeenCalled();
   });
 });

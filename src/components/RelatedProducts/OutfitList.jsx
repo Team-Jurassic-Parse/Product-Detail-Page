@@ -28,7 +28,11 @@ function AddOutfitButton({ onClick }) {
   };
 
   return (
-    <div className="outfit-card" onClick={onClick}>
+    <div
+      className="outfit-card"
+      onClick={onClick}
+      data-testid="add-outfit-button"
+    >
       <div className="add-button">
         <div
           className="add-icon-container"
@@ -108,6 +112,7 @@ function OutfitList({
                 )}
                 <div
                   className="remove-button"
+                  data-testid="remove-button"
                   onClick={(e) => {
                     e.stopPropagation();
                     removeItem(outfitsList.id);
