@@ -45,9 +45,6 @@ function ReviewsFilter({ recommended, ratings }) { // eslint-disable-line
     (Number(recommended.true) + Number(recommended.false)); // eslint-disable-line
   const maxRating = getMaxRating(ratings);
 
-  console.log({ maxRating });
-  console.log(ratings);
-
   return (
     <Wrapper>
       <div>
