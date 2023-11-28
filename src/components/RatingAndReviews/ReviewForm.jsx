@@ -38,7 +38,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
   const [rating, setRating] = useState(5);
   const [recommend, setRecommend] = useState('yes');
   const [characteristics, setCharacteristics] = useState(
-    initialCharacteristics
+    initialCharacteristics,
   );
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
@@ -88,7 +88,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
           headers: {
             Authorization: process.env.AUTH_TOKEN,
           },
-        }
+        },
       )
       .then((res) => {
         setIsSubmitting(false);

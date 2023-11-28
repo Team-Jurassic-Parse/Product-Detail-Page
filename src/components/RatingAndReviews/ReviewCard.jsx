@@ -11,7 +11,8 @@ function ReviewCard({ review }) { // eslint-disable-line
   return (
     <Wrapper>
       <p>
-        {body} <span>{formatedDate}</span>
+        {body}
+        <span>{formatedDate}</span>
       </p>
       <StarsRating stars={rating} />
       {recommend && <p>Recommend</p>}
