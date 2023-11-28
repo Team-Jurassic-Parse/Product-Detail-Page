@@ -67,7 +67,7 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
   }, [productId]);
 
   useEffect(() => {
-    if (styleId) {
+    if (styleId && productStyles && productStyles.results) {
       setCurrentStyle(
         productStyles.results.filter((style) => style.style_id === styleId)[0],
       );

@@ -1,5 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  PinterestShareButton,
+  TwitterIcon,
+  FacebookIcon,
+  PinterestIcon,
+} from 'react-share';
 import { calculateAverageRating }  from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
 import StarsRating from '../../ReviewStars/StarsRating.jsx' // eslint-disable-line
 
@@ -44,11 +52,39 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }
     }
   `;
 
+  const shareButtonStyle = {
+    margin: '2px',
+    marginTop: '10px',
+    display: 'inline-block',
+  };
+
   return (
     <div>
       {productInfo && (
         <>
           {averageStars ? <StyledStarsRating stars={averageStars}/> : <div>Loading...</div>} {/*eslint-disable-line*/}
+          <div>
+            <FacebookShareButton
+              hashtag="TeamJurassicParse"
+              url={window.location.href}
+              style={shareButtonStyle}
+            >
+              <FacebookIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={window.location.href}
+              style={shareButtonStyle}
+            >
+              <TwitterIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+            </TwitterShareButton>
+            <PinterestShareButton
+              url={window.location.href}
+              media={currentStyle && currentStyle.photos[0] ? currentStyle.photos[0].url : null} // eslint-disable-line
+              style={shareButtonStyle}
+            >
+              <PinterestIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+            </PinterestShareButton>
+          </div>
           <ProductCategory>{productInfo.category.toUpperCase()}</ProductCategory> {/*eslint-disable-line*/}
           <ProductName>{productInfo.name}</ProductName> {/*eslint-disable-line*/}
           { currentStyle && (
