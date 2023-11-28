@@ -5,12 +5,9 @@ import ProductDetailsView from './ProductDetailsView/index.jsx'; //eslint-disabl
 import StyleSelectorView from './StyleSelectorView/index.jsx'; //eslint-disable-line
 import AddToCartView from './AddToCartView/index.jsx'; //eslint-disable-line
 
-function Overview({ productId, styleId, setStyleId }) { //eslint-disable-line
+function Overview({ productId, styleId, setStyleId, productInfo, productReview }) { //eslint-disable-line
   // eslint-disable-line
   // const [currentView, setCurrentView] = useState('default');
-  const [productInfo, setProductInfo] = useState();
-  const productFetchController = new AbortController();
-
   const [productStyles, setProductStyles] = useState();
   const stylesFetchController = new AbortController();
 
@@ -49,13 +46,6 @@ function Overview({ productId, styleId, setStyleId }) { //eslint-disable-line
 
   useEffect(() => {
     if (productId) {
-      useServerFetch('get', `products/${productId}`, {}, productFetchController)
-        .then((res) => {
-          setProductInfo(res.data);
-        })
-        .catch(() => {
-          setProductInfo(null);
-        });
       useServerFetch(
         'get',
         `products/${productId}/styles`,
@@ -73,7 +63,6 @@ function Overview({ productId, styleId, setStyleId }) { //eslint-disable-line
 
     return () => {
       stylesFetchController.abort();
-      productFetchController.abort();
     };
   }, [productId]);
 
@@ -105,6 +94,7 @@ function Overview({ productId, styleId, setStyleId }) { //eslint-disable-line
             <ProductDetailsView
               productInfo={productInfo}
               currentStyle={currentStyle}
+              productReview={productReview}
             />
           </div>
 
@@ -138,6 +128,7 @@ function Overview({ productId, styleId, setStyleId }) { //eslint-disable-line
             <ProductDetailsView
               productInfo={productInfo}
               currentStyle={currentStyle}
+              productReview={productReview}
             />
           </div>
 
