@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Star({ fill }) { // eslint-disable-line
+function Star({ fill }) {
+  // eslint-disable-line
   if (fill > 0.9) {
     return <div aria-label="Full star">🌕</div>;
   }
