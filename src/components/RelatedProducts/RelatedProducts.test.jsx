@@ -1,30 +1,32 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-undef */
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { describe, expect, it, beforeEach } from '@jest/globals';
-import RelatedProducts from './index.jsx';
-import RelatedProductsList from './RelatedProductsList.jsx';
-import OutfitList from './OutfitList.jsx';
-import ComparisonTable from './ComparisonTable.jsx';
-import useServerFetch from '../../hooks/useServerFetch.js';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { describe, expect, it, beforeEach } from "@jest/globals";
+import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
+import RelatedProducts from "./index.jsx";
+import RelatedProductsList from "./RelatedProductsList.jsx";
+import OutfitList from "./OutfitList.jsx";
+import ComparisonTable from "./ComparisonTable.jsx";
+import useServerFetch from "../../hooks/useServerFetch.js";
 
-jest.mock('../../hooks/useServerFetch');
+jest.mock("../../hooks/useServerFetch");
 
-describe('RelatedProducts', () => {
+describe("RelatedProducts", () => {
   const mockProductId = 1;
   const mockSetProductId = jest.fn();
   const mockStyleId = 1;
   const mockProductReview = { ratings: [] };
-  const mockProductInfo = { id: 1, category: 'Test', name: 'Test Product' };
+  const mockProductInfo = { id: 1, category: "Test", name: "Test Product" };
   const mockProductStyles = { results: [] };
 
   beforeEach(() => {
     useServerFetch.mockClear();
   });
 
-  it('renders without crashing', () => {
+  it("renders without crashing", () => {
     render(
       <RelatedProducts
         productId={mockProductId}
@@ -37,11 +39,11 @@ describe('RelatedProducts', () => {
     );
   });
 
-  it('fetches related products and renders RelatedProductsList', async () => {
+  it("fetches related products and renders RelatedProductsList", async () => {
     useServerFetch
       .mockResolvedValueOnce({ data: [2, 3, 4] })
       .mockResolvedValueOnce({
-        data: { 2: { id: 2, category: 'Test', name: 'Related 2' } },
+        data: { 2: { id: 2, category: "Test", name: "Related 2" } },
       })
       .mockResolvedValueOnce({ data: { results: [] } });
 
@@ -57,21 +59,21 @@ describe('RelatedProducts', () => {
     );
   });
 
-  describe('RelatedProductsList', () => {
+  describe("RelatedProductsList", () => {
     const mockRelatedItems = {
       relatedItems: {
         1: {
           id: 1,
-          category: 'Test Category',
-          name: 'Test Product',
-          default_price: '50.00',
-          sale_price: '40.00',
-          photos: [{ thumbnail_url: 'test_image_url' }],
+          category: "Test Category",
+          name: "Test Product",
+          default_price: "50.00",
+          sale_price: "40.00",
+          photos: [{ thumbnail_url: "test_image_url" }],
         },
       },
     };
 
-    it('renders without crashing', () => {
+    it("renders without crashing", () => {
       render(
         <RelatedProductsList
           relatedItems={mockRelatedItems}
@@ -82,15 +84,15 @@ describe('RelatedProducts', () => {
     });
   });
 
-  describe('OutfitList', () => {
+  describe("OutfitList", () => {
     const mockOutfits = {
       1: {
         id: 1,
-        category: 'Test Category',
-        name: 'Test Product',
-        default_price: '50.00',
-        sale_price: '40.00',
-        photos: [{ thumbnail_url: 'test_image_url' }],
+        category: "Test Category",
+        name: "Test Product",
+        default_price: "50.00",
+        sale_price: "40.00",
+        photos: [{ thumbnail_url: "test_image_url" }],
         avg_ratings: 4.5,
       },
     };
@@ -105,7 +107,7 @@ describe('RelatedProducts', () => {
       mockOnClickAddOutfits.mockClear();
     });
 
-    it('renders without crashing', () => {
+    it("renders without crashing", () => {
       render(
         <OutfitList
           outfits={mockOutfits}
@@ -118,29 +120,29 @@ describe('RelatedProducts', () => {
     });
   });
 
-  describe('ComparisonTable', () => {
+  describe("ComparisonTable", () => {
     const mockCurrentProduct = {
       id: 1,
-      name: 'Test Product',
-      default_price: '50.00',
-      category: 'Test Category',
+      name: "Test Product",
+      default_price: "50.00",
+      category: "Test Category",
       features: [
-        { feature: 'Feature 1', value: 'Value 1' },
-        { feature: 'Feature 2', value: 'Value 2' },
+        { feature: "Feature 1", value: "Value 1" },
+        { feature: "Feature 2", value: "Value 2" },
       ],
     };
     const mockComparedProduct = {
       id: 2,
-      name: 'Compared Product',
-      default_price: '60.00',
-      category: 'Compared Category',
+      name: "Compared Product",
+      default_price: "60.00",
+      category: "Compared Category",
       features: [
-        { feature: 'Feature 1', value: 'Value 1' },
-        { feature: 'Feature 2', value: 'Value 3' },
+        { feature: "Feature 1", value: "Value 1" },
+        { feature: "Feature 2", value: "Value 3" },
       ],
     };
 
-    it('renders without crashing', () => {
+    it("renders without crashing", () => {
       render(
         <ComparisonTable
           currentProduct={mockCurrentProduct}
@@ -151,15 +153,15 @@ describe('RelatedProducts', () => {
   });
 });
 
-describe('OutfitList', () => {
+describe("OutfitList", () => {
   const mockOutfits = {
     1: {
       id: 1,
-      category: 'Test Category',
-      name: 'Test Product',
-      default_price: '50.00',
-      sale_price: '40.00',
-      photos: [{ thumbnail_url: 'test_image_url' }],
+      category: "Test Category",
+      name: "Test Product",
+      default_price: "50.00",
+      sale_price: "40.00",
+      photos: [{ thumbnail_url: "test_image_url" }],
       avg_ratings: 4.5,
     },
   };
@@ -174,7 +176,7 @@ describe('OutfitList', () => {
     mockOnClickAddOutfits.mockClear();
   });
 
-  it('renders exactly one AddOutfitButton', () => {
+  it("renders exactly one AddOutfitButton", () => {
     render(
       <OutfitList
         outfits={mockOutfits}
@@ -184,12 +186,12 @@ describe('OutfitList', () => {
         productReview={{ ratings: [] }}
       />
     );
-    const addOutfitButtons = screen.getAllByTestId('add-outfit-button');
+    const addOutfitButtons = screen.getAllByTestId("add-outfit-button");
 
     expect(addOutfitButtons).toHaveLength(1);
   });
 
-  it('calls onClickAddOutfits when AddOutfitButton is clicked', () => {
+  it("calls onClickAddOutfits when AddOutfitButton is clicked", () => {
     render(
       <OutfitList
         outfits={mockOutfits}
@@ -200,24 +202,24 @@ describe('OutfitList', () => {
       />
     );
 
-    const addOutfitButton = screen.getByTestId('add-outfit-button');
+    const addOutfitButton = screen.getByTestId("add-outfit-button");
     fireEvent.click(addOutfitButton);
 
     expect(mockOnClickAddOutfits).toHaveBeenCalled();
   });
 });
 
-jest.mock('react-multi-carousel/lib/styles.css', () => ({}));
+jest.mock("react-multi-carousel/lib/styles.css", () => ({}));
 
-describe('OutfitList', () => {
+describe("OutfitList", () => {
   const mockOutfits = {
     1: {
       id: 1,
-      category: 'Test Category',
-      name: 'Test Product',
-      default_price: '50.00',
-      sale_price: '40.00',
-      photos: [{ url: 'test_image_url' }],
+      category: "Test Category",
+      name: "Test Product",
+      default_price: "50.00",
+      sale_price: "40.00",
+      photos: [{ url: "test_image_url" }],
       avg_ratings: 4.5,
     },
   };
@@ -232,7 +234,7 @@ describe('OutfitList', () => {
     mockOnClickRelatedProduct.mockClear();
   });
 
-  it('renders without crashing', () => {
+  it("renders without crashing", () => {
     render(
       <OutfitList
         outfits={mockOutfits}
@@ -243,7 +245,7 @@ describe('OutfitList', () => {
     );
   });
 
-  it('calls onClickAddOutfits when AddOutfitButton is clicked', () => {
+  it("calls onClickAddOutfits when AddOutfitButton is clicked", () => {
     render(
       <OutfitList
         outfits={mockOutfits}
@@ -253,7 +255,7 @@ describe('OutfitList', () => {
       />
     );
 
-    const addOutfitButton = screen.getByTestId('add-outfit-button');
+    const addOutfitButton = screen.getByTestId("add-outfit-button");
     fireEvent.click(addOutfitButton);
 
     expect(mockOnClickAddOutfits).toHaveBeenCalled();
