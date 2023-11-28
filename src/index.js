@@ -75,6 +75,8 @@ function App() {
           productId={productId}
           styleId={styleId}
           setStyleId={setStyleId}
+          productInfo={productInfo}
+          productReview={productReview}
         />
         <QuestionsAndAnswers productId={productId} />
         <RatingAndReviews
