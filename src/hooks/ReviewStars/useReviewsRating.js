@@ -33,7 +33,7 @@ function useReviewRating(productId) {
       'get',
       `reviews/meta?product_id=${productId}`,
       {},
-      reviewsFetchController
+      reviewsFetchController,
     )
       .then((response) => {
         setStatus(StatusEnum.success);

@@ -28,6 +28,7 @@ function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
         onChange={handleInputChange}
         multiple
         id={`${id}-imageInput`}
+        data-testid="file-input"
       />
       {images.length < 5 && ( // eslint-disable-line
         <button
