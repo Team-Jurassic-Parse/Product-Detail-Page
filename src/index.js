@@ -69,7 +69,6 @@ function App() {
 
   return (
     <div style={{ padding: 12 }}>
-      <h1 className="heading"> {productId} </h1>
       <div className="content">
         <Overview
           productId={productId}
