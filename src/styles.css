@@ -3,3 +3,59 @@ body {
   margin: 0;
   position: relative;
 }
+
+#navbar {
+  height: 70px;
+  width: 100vw;
+  overflow-x: visible;
+  background-color: #000000da;
+  margin: 0px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+#title {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  color: white;
+}
+
+#search {
+  display: inline-block;
+  position: relative;
+  right: 35px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  text-align: right;
+}
+
+#searchInput {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 30px;
+  max-width: calc(40px + 20vw);
+  color: white;
+}
+
+#searchInput:focus {
+  outline: none;
+  background-color: #aaaaaa30;
+}
+
+#magnifyingGlass {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 50px;
+  cursor: pointer;
+  color: white;
+}
