@@ -22,8 +22,8 @@ h3 {
 }
 
 #navbar {
-  height: 70px;
-  width: 100vw;
+  height: 80px;
+  width: 100%;
   overflow-x: visible;
   background-color: #000000da;
   margin: 0px;
@@ -35,7 +35,7 @@ h3 {
 
 #title {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 0px;
   margin-left: 20px;
   color: white;
@@ -45,7 +45,7 @@ h3 {
   display: inline-block;
   position: relative;
   right: 35px;
-  margin-top: 0px;
+  margin-top: 5px;
   margin-bottom: 0px;
   margin-left: auto;
   text-align: right;

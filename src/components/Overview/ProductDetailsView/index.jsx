@@ -69,20 +69,20 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }
               url={window.location.href}
               style={shareButtonStyle}
             >
-              <FacebookIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+              <FacebookIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </FacebookShareButton>
             <TwitterShareButton
               url={window.location.href}
               style={shareButtonStyle}
             >
-              <TwitterIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+              <TwitterIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </TwitterShareButton>
             <PinterestShareButton
               url={window.location.href}
               media={currentStyle && currentStyle.photos[0] ? currentStyle.photos[0].url : null} // eslint-disable-line
               style={shareButtonStyle}
             >
-              <PinterestIcon size={20} borderRadius={10} bgStyle={{ fill: 'black' }} />
+              <PinterestIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </PinterestShareButton>
           </div>
           <ProductCategory>{productInfo.category.toUpperCase()}</ProductCategory> {/*eslint-disable-line*/}

@@ -14,6 +14,8 @@ function App() {
   const [styleId, setStyleId] = React.useState("");
   const [productInfo, setProductInfo] = React.useState();
   const [productStyles, setProductStyles] = React.useState();
+  const [darkMode, setDarkMode] = React.useState(false);
+
   const initialProductFetcher = new AbortController();
   const productFetchController = new AbortController();
   const stylesFetchController = new AbortController();
