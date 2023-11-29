@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Question from './Question.jsx'; //eslint-disable-line
 
-//adjust css later
 const Wrapper = styled.div`
   background: white;
   max-height: 100vh;
   padding: 4px 4px;
   overflow-y: scroll;
   max-width: 100vw;
+  margin-right: 25%;
+  margin-left: 25%;
 `;
 
 function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line

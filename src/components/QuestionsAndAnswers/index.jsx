@@ -14,6 +14,7 @@ const SearchBar = styled.input`
   padding: 10px;
   border-radius: 50px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  margin-left: 25%
 `;
 
 const BtnWrapper = styled.button`
@@ -32,6 +33,7 @@ const BtnWrapper = styled.button`
   text-align: center;
   cursor: pointer;
   overflow: hidden;
+  margin-left: 25%
   &:hover {
     opacity: 0.5;
   }
@@ -93,7 +95,7 @@ function QuestionsAndAnswers({ productId }) {
   }, [productId, displayNum]);
   return (
     <>
-      <h1>QUESTIONS & ANSWERS </h1>
+      <h1 style={{ marginLeft: '25%' }}>QUESTIONS & ANSWERS </h1>
       <SearchBar
         type="search"
         placeholder="Have a question? Search for answers..."
@@ -104,19 +106,21 @@ function QuestionsAndAnswers({ productId }) {
         query={query}
         currentQuestions={currentQuestions}
       />
-      {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
-        <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
-          More Answered Questions
+      <div style={{ marginLeft: '25%' }}>
+        {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
+          <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
+            More Answered Questions
+          </BtnWrapper>
+        )}
+        <BtnWrapper type="button" onClick={openModal}>
+          Add a Question
         </BtnWrapper>
-      )}
-      <BtnWrapper type="button" onClick={openModal}>
-        Add a Question
-      </BtnWrapper>
-      {showForm && (
-        <Modal handleClose={closeModal}>
-          <QuestionModal productName="placeholder" productId={productId} />
-        </Modal>
-      )}
+        {showForm && (
+          <Modal handleClose={closeModal}>
+            <QuestionModal productName="placeholder" productId={productId} closeModal={closeModal} />
+          </Modal>
+        )}
+      </div>
     </>
   );
 }

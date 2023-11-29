@@ -19,7 +19,7 @@ import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-lin
 //   cursor: ${helpful ? 'default' : 'point'};
 // `;
 
-const InnerWrapper = styled.div`
+const OuterWrapper = styled.div`
   background: white;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -27,6 +27,9 @@ const InnerWrapper = styled.div`
   font-weight: bold;
   border-bottom: 2px solid black;
 `;
+
+// const InnerWrapper= styled.div'
+// ';
 
 const AddAnswerBtn = styled.button`
   background: #000000;
@@ -120,7 +123,7 @@ function Question({
 
   return question ? (
     <div>
-      <InnerWrapper>
+      <OuterWrapper>
         Q: {question.question_body}
         <span
           style={{
@@ -151,10 +154,11 @@ function Question({
               productName={productName}
               questionBody={question.question_body}
               questionId={questionId}
+              closeModal={closeModal}
             />
           </Modal>
         )}
-      </InnerWrapper>
+      </OuterWrapper>
     </div>
   ) : (
     <div> Loading questions </div>
