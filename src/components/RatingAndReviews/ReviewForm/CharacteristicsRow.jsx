@@ -1,41 +1,33 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-  padding: 8px 12px;
-  span {
-    flex-shrink: 0;
-    text-transform: capitalize;
-    font-weight: bold;
-    padding-right: 16px;
-  }
+// const Wrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 6px;
+//   padding: 8px 12px;
+//   span {
+//     flex-shrink: 0;
+//     text-transform: capitalize;
+//     font-weight: bold;
+//     padding-right: 16px;
+//   }
+// `;
+
+const CharText = styled.span`
+  border-right: 1px solid #e5e7eb;
 `;
 
 const GroupWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  border-bottom: 1px solid #e5e7eb;
-  padding-left: 6px;
-  padding-right: 6px;
-  @media (min-width: 640px) {
-    border-right: 1px solid #e5e7eb;
-    border-bottom: none;
-  }
-  &:last-child {
-    border-right: none;
-  }
-
+  border-right: 1px solid #e5e7eb;
+  padding: 0 6px;
 `;
 
 function CharacteristicsRow({ char, handleChange, charString, description }) { // eslint-disable-line
   const id = useId();
   return (
-    <Wrapper>
-      <span>{charString}</span>
+    <>
+      <CharText>{charString}</CharText>
       <GroupWrapper>
         <input
           id={`${id}-${charString}-1`}
@@ -91,7 +83,7 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
         />
       <label htmlFor={`${id}-${charString}-5`}>{description[4]}</label> {/* eslint-disable-line */}
       </GroupWrapper>
-    </Wrapper>
+    </>
   );
 }
 

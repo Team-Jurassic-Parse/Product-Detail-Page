@@ -3,13 +3,25 @@ import styled from 'styled-components';
 import RatingBar from './RatingBar.jsx'; // eslint-disable-line
 import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin-bottom: 48px;
 
-const StarsFilter = styled.ol``;
+  p {
+    font-weight: bold;
+  }
+`;
+
+const StarsFilter = styled.ol`
+  padding: 0;
+`;
 
 const StarFilterLineWrapper = styled.li`
   display: flex;
   opacity: ${(props) => (props.isActive ? 1 : 0.2)};
+
+  span {
+    min-width: 60px;
+  }
 `;
 
 const getMaxRating = (ratings) => {
@@ -47,10 +59,10 @@ function ReviewsFilter({ recommended, ratings }) { // eslint-disable-line
 
   return (
     <Wrapper>
-      <div>
+      <p>
         {Math.round(recommendRate * 100)}
         % of reviewers recommend this product.
-      </div>
+      </p>
       <StarsFilter>
         <StarFilterLine rating="5">
           <RatingBar rating={Number(ratings[5]) / maxRating} />

@@ -6,7 +6,7 @@ const SliderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 12px; /* Adjust as needed */
+  margin-bottom: 24px; /* Adjust as needed */
 
   input[type='range'] {
     -webkit-appearance: none; /* Override default appearance */
@@ -44,9 +44,10 @@ input[type='range']::-moz-range-thumb {
   }
 
   label {
-    font-size: 14px; /* Adjust label font size as needed */
-    color: #333; /* Label text color */
-    margin-top: 8px; /* Space between slider and label */
+    font-size: 14px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #333;
   }
   `;
 const FactorLabel = styled.div`
@@ -55,6 +56,7 @@ justify-content: space-between;
 width: 100%;
 font-size: 12px; /* Adjust label font size as needed */
 margin-top: 4px; /* Space between slider and label */
+color: #aaa;
 `;
 
 function FactorSlider({ charact, value }) { // eslint-disable-line
@@ -69,12 +71,12 @@ function FactorSlider({ charact, value }) { // eslint-disable-line
         min={0}
         onChange={() => {}}
       />
-      <label htmlFor={id}>{charact}</label>
       <FactorLabel>
         {descriptioinMap[charact.toLowerCase()].map((desc) => ( // eslint-disable-line
           <span key={desc}>{desc}</span>
         ))}
       </FactorLabel>
+      <label htmlFor={id}>{charact}</label>
     </SliderWrapper>
   );
 }

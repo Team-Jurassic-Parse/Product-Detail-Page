@@ -8,9 +8,12 @@ import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint
 import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
-  border: 1px solid;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 24px 64px;
+
+  h1 {
+    text-transform: uppercase;
+    padding-left: 30px;
+  }
 `;
 
 const SummaryAndListWrapper = styled.div`
@@ -41,6 +44,7 @@ function RatingAndReviews({
   return (
     <Wrapper>
       <StarsFilterProvider>
+        <h1>ratings and reviews</h1>
         <SummaryAndListWrapper>
           <RatingSummary
             productId={productId}

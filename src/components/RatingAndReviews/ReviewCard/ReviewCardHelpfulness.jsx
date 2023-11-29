@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useServerFetch from '../../hooks/useServerFetch.js' // eslint-disable-line
+import useServerFetch from '../../../hooks/useServerFetch.js' // eslint-disable-line
 
 const Wrapper = styled.div`
   display: flex;
