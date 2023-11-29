@@ -4,10 +4,10 @@ import Question from './Question.jsx'; //eslint-disable-line
 
 const Wrapper = styled.div`
   background: white;
-  max-height: 100vh;
+  max-height: 80vh;
   padding: 4px 4px;
   overflow: auto;
-  max-width: 80vw;
+  width: 65%;
   margin-right: 20%;
   margin-left: 20%;
 `;

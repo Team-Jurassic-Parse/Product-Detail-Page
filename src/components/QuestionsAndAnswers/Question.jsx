@@ -27,8 +27,8 @@ const OuterWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  position: absolute;
-  float: right;
+  display: flex;
+  align-items: flex-start;
 `;
 
 const AddAnswerBtn = styled.button`
@@ -123,10 +123,10 @@ function Question({
   return question ? (
     <div>
       <OuterWrapper>
-        <h3>
-          Q: {question.question_body}
-        </h3>
         <InnerWrapper>
+          <h3>
+            Q: {question.question_body}
+          </h3>
           <span
             style={{
               fontWeight: 'normal',
@@ -142,8 +142,8 @@ function Question({
           >
             Helpful? ({helpfulness})
           </span>
+          <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
         </InnerWrapper>
-        <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
         <AnswersList
           currentAnswers={currentAnswers}
           totalAnswers={totalAnswers}

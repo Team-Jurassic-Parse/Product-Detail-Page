@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Answers from './Answers.jsx'; //eslint-disable-line
 
-//adjust css later
 const AnswerListWrapper = styled.div`
   background: white;
   min-height: 50px;
