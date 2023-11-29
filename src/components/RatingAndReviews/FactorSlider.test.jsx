@@ -8,8 +8,8 @@ import FactorSlider from './FactorSlider.jsx'; // eslint-disable-line
 
 describe('Test on FactorSlider component', () => {
   test('it should render', () => {
-    render(<FactorSlider charact="test" value={5} />);
-    const testSlider = screen.getByRole('slider', { name: /test/i });
+    render(<FactorSlider charact="size" value={4} />);
+    const testSlider = screen.getByRole('slider', { name: /size/i });
     expect(testSlider).toBeInTheDocument();
   });
 });
