@@ -20,6 +20,6 @@ describe('Question Modal', () => {
   it('should have 3 buttons: one to upload photos, one to submit the form, one to close the form', () => {
     render(<QuestionModal productName="placeholder" productId="40344" />);
     const modalBtns = screen.getAllByRole('button');
-    expect(modalBtns.length).toBe(1);
+    expect(modalBtns.length).toBe(2);
   });
 });

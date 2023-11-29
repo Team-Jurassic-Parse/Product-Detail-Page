@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import '@testing-library/jest-dom';
-import { describe, expect, it } from '@jest/globals';
-import { render, screen } from '@testing-library/react';
+import { describe, expect, it, jest } from '@jest/globals';
+import { render, screen, fireEvent } from '@testing-library/react';
 import AnswerModal from '../AnswerModal.jsx'; // eslint-disable-line
+
+jest.mock('axios');
 
 describe('Answer Modal', () => {
   it('should render the Modal', () => {
@@ -34,4 +36,8 @@ describe('Answer Modal', () => {
     const modalBtns = screen.getAllByRole('button');
     expect(modalBtns.length).toBe(3);
   });
+
+  // it('should be able to submit the form', () => {
+
+  // });
 });

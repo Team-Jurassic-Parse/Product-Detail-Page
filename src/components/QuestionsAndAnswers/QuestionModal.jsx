@@ -49,7 +49,30 @@ const SuccessWrapper = styled.h2`
   color: green;
 `;
 
-function QuestionModal({ productName, productId }) {
+const ExitButton = styled.button`
+  background: #000000;
+  display: table;
+  position: relative;
+  top: -420px;
+  right: 29px;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 1;
+  transition: background 0.2s ease;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+function QuestionModal({ productName, productId, closeModal}) {
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -115,6 +138,7 @@ function QuestionModal({ productName, productId }) {
       />
       <div>For authentication reasons, you will not be emailed</div>
       <BtnWrapper type="submit">Submit</BtnWrapper>
+      <ExitButton onClick={closeModal}>X</ExitButton>
     </FormWrapper>
   );
 }

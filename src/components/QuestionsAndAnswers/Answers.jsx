@@ -60,18 +60,28 @@ function Answers({ answer }) {
           answer.answerer_name
         )}
         <span> | </span>
-        {formatedDate} | Helpful?
+        {formatedDate}
+        {' '}
+        | Helpful?
+        {' '}
         <span
-          style={{ cursor: 'pointer' }}
+          style={{
+            textDecoration: helpful ? 'none' : 'underline',
+            cursor: helpful ? 'default' : 'pointer',
+         }}
           onClick={() => {
             handleHelpful(answer.answer_id);
           }}
         >
-          {' '}
           Yes
         </span>
+        {' '}
         ({helpfulness}) |{' '}
         <span
+          style={{
+            textDecoration: reported ? 'none' : 'underline',
+            cursor: reported ? 'default' : 'pointer',
+          }}
           onClick={() => {
             handleReport(answer.answer_id);
           }}
