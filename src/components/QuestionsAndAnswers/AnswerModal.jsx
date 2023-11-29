@@ -51,13 +51,29 @@ const SuccessWrapper = styled.h2`
 `;
 
 const ExitButton = styled.button`
-  margin-top: 20px;
-  float: right;
+  background: #000000;
+  display: table;
+  position: relative;
+  top: -520px;
+  right: -226px;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 500;
   cursor: pointer;
-  float: right;
+  font-size: 14px;
+  opacity: 1;
+  transition: background 0.2s ease;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
-function AnswerModal({ productName, questionBody, questionId }) {
+function AnswerModal({ productName, questionBody, questionId, closeModal }) {
   //eslint-disable-line
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
@@ -109,6 +125,7 @@ function AnswerModal({ productName, questionBody, questionId }) {
       </Subtitle>
       <LabelWrapper>Your Answer</LabelWrapper>
       <textarea
+        style={{ height: '100px' }}
         maxLength="1000"
         required
         onChange={(e) => setBody(e.target.value)}
@@ -133,7 +150,7 @@ function AnswerModal({ productName, questionBody, questionId }) {
       <div>For authentication reasons, you will not be emailed</div>
       <UploadPhoto images={images} handleImageChange={handleImageChange} />
       <BtnWrapper type="submit">Submit</BtnWrapper>
-      <ExitButton>X</ExitButton>
+      <ExitButton onClick={closeModal}>X</ExitButton>
     </FormWrapper>
   );
 }
