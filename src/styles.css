@@ -2,6 +2,23 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 35px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 25px;
 }
 
 #navbar {
@@ -59,3 +76,5 @@ body {
   cursor: pointer;
   color: white;
 }
+
+

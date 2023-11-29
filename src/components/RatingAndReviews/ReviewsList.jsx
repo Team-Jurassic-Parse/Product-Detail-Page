@@ -2,20 +2,59 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
-import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
+import ReviewCard from './ReviewCard/ReviewCard.jsx'; // eslint-disable-line
 import filterReviewsByStars from './utils/filterReviewsByStars.js'; // eslint-disable-line
 import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
 import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
   flex: 2;
+  padding: 24px 32px;
+  padding-left: 43px;
   max-height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
+`;
+
+const FilterWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+
+  &::before {
+    content: "Sorted By:";
+    top: 0;
+    left: 0;
+    padding: 8px;
+    font-size: 16px;
+    color: #222;
+  }
+
+  &::after {
+    position: relative;
+    top: 2px;
+    right: 1px;
+    content: "▼";
+    color: #999;
+  }
+`;
+
+const FilterSelector = styled.select`
+  -webkit-appearance: none; /* Remove default style in WebKit browsers */
+  -moz-appearance: none;    /* Remove default style in Firefox browsers */
+  appearance: none;         /* Remove default style for the rest of the browsers */
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  color: #000;
+  background-image: url('path-to-your-down-arrow-icon.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
 `;
 
 const UnorderedList = styled.ul`
-  border: 1px solid;
   list-style-type: none;
+  padding: 0;
 `;
 
 function ReviewsList({ productId }) { // eslint-disable-line
@@ -77,11 +116,13 @@ function ReviewsList({ productId }) { // eslint-disable-line
 
   return (
     <Wrapper>
-      <select value={sort} onChange={handleChangeSort}>
-        <option value="relevant">Relevant</option>
-        <option value="helpful">Helpful</option>
-        <option value="newest">Newest</option>
-      </select>
+      <FilterWrapper>
+        <FilterSelector value={sort} onChange={handleChangeSort}>
+          <option value="relevant">Relevant</option>
+          <option value="helpful">Helpful</option>
+          <option value="newest">Newest</option>
+        </FilterSelector>
+      </FilterWrapper>
       {status !== StatusEnum.error && reviews.length === 0 ? (
         <p>No Reviews yet</p>
       ) : (

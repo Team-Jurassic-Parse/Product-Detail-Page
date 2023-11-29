@@ -4,7 +4,7 @@ import StarsRating from '../ReviewStars/StarsRating.jsx'; // eslint-disable-line
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 

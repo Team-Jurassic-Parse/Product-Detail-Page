@@ -9,6 +9,7 @@ const Wrapper = styled.fieldset`
   legend {
     padding: 0 10px;
     font-weight: bold;
+    font-size: 1.2rem;
   }
 `;
 function Recomended({ recommend, setRecommend }) { // eslint-disable-line

@@ -16,7 +16,7 @@ const StarWrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: gray;
+    background-color: #ddd;
     /* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
   }
 
@@ -35,7 +35,7 @@ const StarWrapper = styled.div`
   }
 
   &[aria-label="Three quarters star"]::after {
-    width: 65%;
+    width: 62%;
     overflow: hidden;
     background-color: ${(p) => p.color || 'gold'};
     z-index: 1;

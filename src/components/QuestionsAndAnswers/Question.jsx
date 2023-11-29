@@ -23,20 +23,19 @@ const OuterWrapper = styled.div`
   background: white;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #D3D3D3;
 `;
 
-// const InnerWrapper= styled.div'
-// ';
+const InnerWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
 
 const AddAnswerBtn = styled.button`
   background: #000000;
   display: table;
   width: 110px;
   height: 30px;
-  margin-top: 10px;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -124,23 +123,27 @@ function Question({
   return question ? (
     <div>
       <OuterWrapper>
-        Q: {question.question_body}
-        <span
-          style={{
-            fontWeight: 'normal',
-            fontSize: '16px',
-            position: 'relative',
-            left: '90px',
-            textDecoration: helpful ? 'none' : 'underline',
-            cursor: helpful ? 'default' : 'pointer',
-          }}
-          onClick={() => {
-            handleHelpful(questionId);
-          }}
-        >
-          Helpful? ({helpfulness})
-        </span>
-        <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+        <InnerWrapper>
+          <h3>
+            Q: {question.question_body}
+          </h3>
+          <span
+            style={{
+              fontWeight: 'normal',
+              fontSize: '16px',
+              position: 'relative',
+              left: '90px',
+              textDecoration: helpful ? 'none' : 'underline',
+              cursor: helpful ? 'default' : 'pointer',
+            }}
+            onClick={() => {
+              handleHelpful(questionId);
+            }}
+          >
+            Helpful? ({helpfulness})
+          </span>
+          <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+        </InnerWrapper>
         <AnswersList
           currentAnswers={currentAnswers}
           totalAnswers={totalAnswers}

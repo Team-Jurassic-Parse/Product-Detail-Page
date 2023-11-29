@@ -6,16 +6,12 @@ import RatingSummaryContent from './RatingSummaryContent.jsx'; // eslint-disable
 const Wrapper = styled.div`
   flex: 1;
   min-height: 200px; // FIXME:
-
-  h3 {
-    text-transform: uppercase;
-  }
+  padding: 24px 36px;
 `;
 
 function RatingSummary({ productId, productReview, status, error }) { // eslint-disable-line
   return (
     <Wrapper>
-      <h3>ratings and reviews</h3>
       {/* FIXME: fancier pending state. */}
       {status === StatusEnum.pending && <div>Pending...</div>}
       {status === StatusEnum.error && <div>{error}</div>}

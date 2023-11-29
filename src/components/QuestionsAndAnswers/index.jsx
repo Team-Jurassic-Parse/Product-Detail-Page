@@ -14,7 +14,7 @@ const SearchBar = styled.input`
   padding: 10px;
   border-radius: 50px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-  margin-left: 25%
+  margin-left: 20%
 `;
 
 const BtnWrapper = styled.button`
@@ -95,7 +95,7 @@ function QuestionsAndAnswers({ productId }) {
   }, [productId, displayNum]);
   return (
     <>
-      <h1 style={{ marginLeft: '25%' }}>QUESTIONS & ANSWERS </h1>
+      <h2 style={{ marginLeft: '20%' }}>QUESTIONS & ANSWERS </h2>
       <SearchBar
         type="search"
         placeholder="Have a question? Search for answers..."
@@ -106,7 +106,7 @@ function QuestionsAndAnswers({ productId }) {
         query={query}
         currentQuestions={currentQuestions}
       />
-      <div style={{ marginLeft: '25%' }}>
+      <div style={{ marginLeft: '20%' }}>
         {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
           <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
             More Answered Questions
