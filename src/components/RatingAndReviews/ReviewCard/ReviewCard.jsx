@@ -6,9 +6,13 @@ import StarsRating from '../../ReviewStars/StarsRating.jsx';
 import ReviewCardHelpfulness from './ReviewCardHelpfulness.jsx';
 import ReviewCardPhoto from './ReviewCardPhoto.jsx';
 import ReviewResponse from './ReviewResponse.jsx';
+import RecommendTag from './RecommendTag.jsx';
 
 const Wrapper = styled.li`
   width: 100%;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #ddd;
 `;
 
 const StarUserDateWrapper = styled.div`
@@ -22,12 +26,17 @@ const NameSpan = styled.span`
 `;
 const DateSpan = styled.span``;
 
+const PhotosWrapper = styled.div`
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+`;
+
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
 function ReviewCard({ review }) {
-  console.log(review);
   const {
     summary, body, rating, recommend, reviewer_name: reviewerName, date: rawDate, photos, response,
   } = review;
@@ -48,9 +57,11 @@ function ReviewCard({ review }) {
       <p>
         {body}
       </p>
-      {photos.map((photo) => (<ReviewCardPhoto photo={photo} key={photo.id} />))}
+      <PhotosWrapper>
+        {photos.map((photo) => (<ReviewCardPhoto photo={photo} key={photo.id} />))}
+      </PhotosWrapper>
       {response && <ReviewResponse response={response} />}
-      {recommend && <p>Recommend</p>}
+      {recommend && <RecommendTag />}
       <ReviewCardHelpfulness
         reviewId={review?.review_id}
         helpfulness={review?.helpfulness}

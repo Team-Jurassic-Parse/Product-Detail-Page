@@ -15,6 +15,43 @@ const Wrapper = styled.div`
   overflow-y: scroll;
 `;
 
+const FilterWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+
+  &::before {
+    content: "Sorted By:";
+    top: 0;
+    left: 0;
+    padding: 8px;
+    font-size: 16px;
+    color: #222;
+  }
+
+  &::after {
+    position: relative;
+    top: 2px;
+    right: 1px;
+    content: "▼";
+    color: #999;
+  }
+`;
+
+const FilterSelector = styled.select`
+  -webkit-appearance: none; /* Remove default style in WebKit browsers */
+  -moz-appearance: none;    /* Remove default style in Firefox browsers */
+  appearance: none;         /* Remove default style for the rest of the browsers */
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  color: #000;
+  background-image: url('path-to-your-down-arrow-icon.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+`;
+
 const UnorderedList = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -79,11 +116,13 @@ function ReviewsList({ productId }) { // eslint-disable-line
 
   return (
     <Wrapper>
-      <select value={sort} onChange={handleChangeSort}>
-        <option value="relevant">Relevant</option>
-        <option value="helpful">Helpful</option>
-        <option value="newest">Newest</option>
-      </select>
+      <FilterWrapper>
+        <FilterSelector value={sort} onChange={handleChangeSort}>
+          <option value="relevant">Relevant</option>
+          <option value="helpful">Helpful</option>
+          <option value="newest">Newest</option>
+        </FilterSelector>
+      </FilterWrapper>
       {status !== StatusEnum.error && reviews.length === 0 ? (
         <p>No Reviews yet</p>
       ) : (

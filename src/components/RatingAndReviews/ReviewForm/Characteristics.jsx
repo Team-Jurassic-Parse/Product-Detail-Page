@@ -4,7 +4,7 @@ import CharacteristicsRow from './CharacteristicsRow.jsx'; // eslint-disable-lin
 import descriptioinMap from '../utils/descriptioinMap.js'; // eslint-disable-line
 
 const Wrapper = styled.fieldset`
-  text-align: left;
+  text-align: center;
   border: 1px solid #ccc;
   padding: 12px;
   margin: 16px 0;
@@ -14,6 +14,16 @@ const Wrapper = styled.fieldset`
     font-weight: bold;
     font-size: 1.2rem;
   }
+`;
+
+const GripWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr repeat(5, 2fr);
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  row-gap: 24px;
+  column-gap: 8px;
 `;
 
 function Characteristics({ characteristics, setCharacteristics }) { // eslint-disable-line
@@ -28,7 +38,8 @@ function Characteristics({ characteristics, setCharacteristics }) { // eslint-di
   return (
     <Wrapper>
       <legend>Characteristics</legend>
-      {characteristics
+      <GripWrapper>
+        {characteristics
         && Object.keys(characteristics).map((key) => (
           <CharacteristicsRow
             key={key}
@@ -38,6 +49,7 @@ function Characteristics({ characteristics, setCharacteristics }) { // eslint-di
             description={descriptioinMap[key]}
           />
         ))}
+      </GripWrapper>
     </Wrapper>
   );
 }
