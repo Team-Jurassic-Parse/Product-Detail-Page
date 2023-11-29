@@ -88,24 +88,32 @@ function ComparisonTable({ currentProduct, comparedProduct }) {
               ${currentProduct.default_price}{' '}
               {currentProduct.default_price &&
                 comparedProduct.default_price &&
-                currentProduct.default_price <=
-                  comparedProduct.default_price && (
+                (Number(currentProduct.default_price) <
+                Number(comparedProduct.default_price) ? (
                   <span style={{ color: 'green', fontSize: '18px' }}>
                     &#10004;
                   </span>
-                )}
+                ) : (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &nbsp;
+                  </span>
+                ))}
             </td>
             <td className="bold-column">Price</td>
             <td>
               ${comparedProduct.default_price}{' '}
               {currentProduct.default_price &&
                 comparedProduct.default_price &&
-                comparedProduct.default_price <
-                  currentProduct.default_price && (
+                (Number(comparedProduct.default_price) <
+                Number(currentProduct.default_price) ? (
                   <span style={{ color: 'green', fontSize: '18px' }}>
                     &#10004;
                   </span>
-                )}
+                ) : (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &nbsp;
+                  </span>
+                ))}
             </td>
           </tr>
           <tr>

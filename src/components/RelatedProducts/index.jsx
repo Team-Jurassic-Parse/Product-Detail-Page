@@ -197,9 +197,9 @@ function RelatedProducts({
   return (
     <>
       <div className="row-related-title">
-        <h1>
+        <h2>
           <b>Related Products</b>
-        </h1>
+        </h2>
       </div>
       <div className="row-related-product">
         <div className="carousel-container">
@@ -212,9 +212,9 @@ function RelatedProducts({
         </div>
       </div>
       <div className="row-outift-title">
-        <h1>
+        <h2>
           <b>Your Outfit</b>
-        </h1>
+        </h2>
       </div>
       <div className="row-outfit-product">
         <div className="outfit-carousel-container">

@@ -112,7 +112,6 @@ function OutfitList({
                 )}
                 <div
                   className="remove-button"
-                  data-testid="remove-button"
                   onClick={(e) => {
                     e.stopPropagation();
                     removeItem(outfitsList.id);
