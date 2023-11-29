@@ -23,13 +23,12 @@ const OuterWrapper = styled.div`
   background: white;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #D3D3D3;
 `;
 
 const InnerWrapper = styled.div`
-  margin-left: 25%;
+  position: absolute;
+  float: right;
 `;
 
 const AddAnswerBtn = styled.button`
@@ -124,7 +123,9 @@ function Question({
   return question ? (
     <div>
       <OuterWrapper>
-        Q: {question.question_body}
+        <h3>
+          Q: {question.question_body}
+        </h3>
         <InnerWrapper>
           <span
             style={{

@@ -59,10 +59,10 @@ function Answers({ answer }) {
         ) : (
           answer.answerer_name
         )}
-        <span> | </span>
+        <span>  |  </span>
         {formatedDate}
-        {' '}
-        | Helpful?
+        {'  '}
+        |  Helpful?
         {' '}
         <span
           style={{
@@ -76,7 +76,7 @@ function Answers({ answer }) {
           Yes
         </span>
         {' '}
-        ({helpfulness}) |{' '}
+        ({helpfulness})  |{'  '}
         <span
           style={{
             textDecoration: reported ? 'none' : 'underline',

@@ -8,7 +8,7 @@ const AnswerListWrapper = styled.div`
   min-height: 50px;
   max-height: 50vh;
   padding: 10px 25px;
-  overflow-y: scroll;
+  overflow: auto;
 `;
 
 const BtnWrapper = styled.button`
