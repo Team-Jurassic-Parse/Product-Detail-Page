@@ -9,6 +9,7 @@ import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
   flex: 2;
+  max-height: 100vh;
   overflow: scroll;
 `;
 
