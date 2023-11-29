@@ -4,12 +4,12 @@ import Question from './Question.jsx'; //eslint-disable-line
 
 const Wrapper = styled.div`
   background: white;
-  max-height: 100vh;
+  max-height: 80vh;
   padding: 4px 4px;
-  overflow-y: scroll;
-  max-width: 100vw;
-  margin-right: 25%;
-  margin-left: 25%;
+  overflow: auto;
+  width: 65%;
+  margin-right: 20%;
+  margin-left: 20%;
 `;
 
 function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line

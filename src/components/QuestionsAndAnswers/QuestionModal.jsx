@@ -53,8 +53,8 @@ const ExitButton = styled.button`
   background: #000000;
   display: table;
   position: relative;
-  top: -420px;
-  right: 29px;
+  top: -489px;
+  right: -371px;
   width: 35px;
   height: 35px;
   color: #fff;
@@ -112,14 +112,21 @@ function QuestionModal({ productName, productId, closeModal}) {
       ) : null}
       <h2>Ask Your Question</h2>
       <Subtitle>About the {productName}</Subtitle>
-      <LabelWrapper>Your Question (mandatory)</LabelWrapper>
+      <LabelWrapper>
+        Your Question
+        <span style={{ color: 'red' }}> *</span>
+      </LabelWrapper>
       <textarea
+        style={{ height: '100px', resize: 'none' }}
         type="text"
         maxLength="1000"
         required
         onChange={(e) => setBody(e.target.value)}
       />
-      <LabelWrapper>What is your nickname (mandatory)</LabelWrapper>
+      <LabelWrapper>
+        What is your nickname
+        <span style={{ color: 'red' }}> *</span>
+      </LabelWrapper>
       <input
         type="text"
         maxLength="60"
@@ -128,7 +135,10 @@ function QuestionModal({ productName, productId, closeModal}) {
         onChange={(e) => setNickname(e.target.value)}
       />
       <div>For privacy reasons, do not use your full name or email address</div>
-      <LabelWrapper>Your email (mandatory)</LabelWrapper>
+      <LabelWrapper>
+        Your email
+        <span style={{ color: 'red' }}> *</span>
+      </LabelWrapper>
       <input
         type="email"
         maxLength="60"
