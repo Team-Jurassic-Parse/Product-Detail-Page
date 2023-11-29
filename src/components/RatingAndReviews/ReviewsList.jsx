@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
-import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
+import ReviewCard from './ReviewCard/ReviewCard.jsx'; // eslint-disable-line
 import filterReviewsByStars from './utils/filterReviewsByStars.js'; // eslint-disable-line
 import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
 import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
   flex: 2;
+  padding: 24px 32px;
+  padding-left: 43px;
   max-height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 const UnorderedList = styled.ul`
-  border: 1px solid;
   list-style-type: none;
+  padding: 0;
 `;
 
 function ReviewsList({ productId }) { // eslint-disable-line
