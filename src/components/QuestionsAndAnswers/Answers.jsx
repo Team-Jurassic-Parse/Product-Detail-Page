@@ -21,7 +21,7 @@ function Answers({ answer }) {
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
 
   const handleHelpful = (id) => {
-    if (!helpful[id]) {
+    if (!helpful) {
       useServerFetch('put', `qa/answers/${id}/helpful`, {})
         .then(() => {
           setHelpfulness(helpfulness + 1);

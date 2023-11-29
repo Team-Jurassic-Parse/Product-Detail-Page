@@ -28,15 +28,15 @@ const OuterWrapper = styled.div`
   border-bottom: 2px solid black;
 `;
 
-// const InnerWrapper= styled.div'
-// ';
+const InnerWrapper = styled.div`
+  margin-left: 25%;
+`;
 
 const AddAnswerBtn = styled.button`
   background: #000000;
   display: table;
   width: 110px;
   height: 30px;
-  margin-top: 10px;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -125,21 +125,23 @@ function Question({
     <div>
       <OuterWrapper>
         Q: {question.question_body}
-        <span
-          style={{
-            fontWeight: 'normal',
-            fontSize: '16px',
-            position: 'relative',
-            left: '90px',
-            textDecoration: helpful ? 'none' : 'underline',
-            cursor: helpful ? 'default' : 'pointer',
-          }}
-          onClick={() => {
-            handleHelpful(questionId);
-          }}
-        >
-          Helpful? ({helpfulness})
-        </span>
+        <InnerWrapper>
+          <span
+            style={{
+              fontWeight: 'normal',
+              fontSize: '16px',
+              position: 'relative',
+              left: '90px',
+              textDecoration: helpful ? 'none' : 'underline',
+              cursor: helpful ? 'default' : 'pointer',
+            }}
+            onClick={() => {
+              handleHelpful(questionId);
+            }}
+          >
+            Helpful? ({helpfulness})
+          </span>
+        </InnerWrapper>
         <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
         <AnswersList
           currentAnswers={currentAnswers}

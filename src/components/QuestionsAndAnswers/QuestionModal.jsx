@@ -54,7 +54,7 @@ const ExitButton = styled.button`
   display: table;
   position: relative;
   top: -420px;
-  right: 29px;
+  right: -371px;
   width: 35px;
   height: 35px;
   color: #fff;
