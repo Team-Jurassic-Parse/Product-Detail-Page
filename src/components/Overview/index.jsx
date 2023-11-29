@@ -18,6 +18,10 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
   const [currentImg, setCurrentImg] = useState(0);
   const [start, setStart] = useState(0);
 
+  useEffect(() => {
+    setView('default');
+  }, [productId]);
+
   const defaultOverviewLayoutStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 33.33%)',
@@ -42,6 +46,7 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
     borderWidth: '1px',
     borderColor: 'black',
     overflow: 'hidden',
+    paddingTop: view === 'expanded' ? '20px' : '0px',
   });
 
   useEffect(() => {
@@ -103,6 +108,7 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
               productStyles={productStyles}
               styleId={styleId}
               setStyleId={setStyleId}
+              currentStyle={currentStyle}
             />
           </div>
 
@@ -137,6 +143,7 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
               productStyles={productStyles}
               styleId={styleId}
               setStyleId={setStyleId}
+              currentStyle={currentStyle}
             />
           </div>
 
