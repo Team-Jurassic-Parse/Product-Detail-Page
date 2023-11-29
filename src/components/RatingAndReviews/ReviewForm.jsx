@@ -17,6 +17,7 @@ const Wrapper = styled.form`
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+  overflow: scroll;
 `;
 
 const ReviewSummary = styled.textarea``;

@@ -40,6 +40,15 @@ const Wrapper = styled.fieldset`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 20px 0;
+
+  legend {
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 `;
 
 function OverallRating({rating, handleChangeRating}) { // eslint-disable-line

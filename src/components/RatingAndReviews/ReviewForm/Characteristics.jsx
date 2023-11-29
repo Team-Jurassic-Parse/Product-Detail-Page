@@ -1,54 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import CharacteristicsRow from './CharacteristicsRow.jsx'; // eslint-disable-line
-
-const descriptioinMap = {
-  size: [
-    'A size too small',
-    'half a size too small',
-    'Perfect',
-    'Half a size too big',
-    'A size too big',
-  ],
-  width: [
-    'Too narrow',
-    'Slightly narrow',
-    'Perfect',
-    'Slightly wide',
-    'Too wide',
-  ],
-  comfort: [
-    'Uncomfortable',
-    'Slightly uncomfortable',
-    'Ok',
-    'Comfortable',
-    'Perfect',
-  ],
-  quality: [
-    'Poor',
-    'Below average',
-    'What I expected',
-    'Pretty great',
-    'Perfect',
-  ],
-  length: [
-    'Runs Short',
-    'Runs slightly short',
-    'Perfect',
-    'Runs slightly long',
-    'Runs long',
-  ],
-  fit: [
-    'Runs tight',
-    'Runs slightly tight',
-    'Perfect',
-    'Runs slightly long',
-    'Runs long',
-  ],
-};
+import descriptioinMap from '../utils/descriptioinMap.js'; // eslint-disable-line
 
 const Wrapper = styled.fieldset`
   text-align: left;
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin: 16px 0;
+
+  legend {
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 `;
 
 function Characteristics({ characteristics, setCharacteristics }) { // eslint-disable-line
