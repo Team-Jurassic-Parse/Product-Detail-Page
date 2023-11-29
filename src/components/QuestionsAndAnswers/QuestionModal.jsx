@@ -3,34 +3,50 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const FormWrapper = styled.form`
-background: white;
-max-width: 560px;
-padding: 24px 36px;
-display: flex;
-gap: 12px;
-flex-direction: column;
-align-items: stretch;
-justify-content: center;
-font-weight: normal;
+  background: white;
+  max-width: 560px;
+  padding: 24px 36px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  font-weight: normal;
 `;
 
 const Subtitle = styled.div`
-font-size: 15px;
+  font-size: 15px;
 `;
 
 const LabelWrapper = styled.label`
-font-weight: bold;
+  font-weight: bold;
 `;
 
 const BtnWrapper = styled.button`
+  background: #000000;
+  display: table;
+  width: 120px;
+  height: 30px;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 700;
   cursor: pointer;
-  &: hover {
-    background-color: lightblue;
+  font-size: 14px;
+  opacity: 1;
+  transition: background 0.2s ease;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    opacity: 0.5;
   }
 `;
 
 const SuccessWrapper = styled.h2`
-color: green;
+  color: green;
 `;
 
 function QuestionModal({ productName, productId }) {

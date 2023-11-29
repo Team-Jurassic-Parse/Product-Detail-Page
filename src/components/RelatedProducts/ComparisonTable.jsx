@@ -30,6 +30,7 @@ const combine = (obj1, obj2) => {
 };
 
 function ComparisonTable({ currentProduct, comparedProduct }) {
+  console.log(currentProduct);
   const [loading, setLoading] = useState(true);
   const [productObj, setProductObj] = useState({});
 
@@ -49,9 +50,31 @@ function ComparisonTable({ currentProduct, comparedProduct }) {
     <table className="related-table">
       <thead>
         <tr>
-          <th>{currentProduct.name}</th>
+          <th className="product-header">
+            <div>
+              <span>{currentProduct.name}</span>
+            </div>
+            <div>
+              <img
+                src={currentProduct.photos[0].thumbnail_url}
+                alt="Product Thumbnail"
+                className="thumbnail-image"
+              />
+            </div>
+          </th>
           <th className="bold-column">Comparison</th>
-          <th>{comparedProduct.name}</th>
+          <th className="product-header">
+            <div>
+              <span>{comparedProduct.name}</span>
+            </div>
+            <div>
+              <img
+                src={comparedProduct.photos[0].thumbnail_url}
+                alt="Product Thumbnail"
+                className="thumbnail-image"
+              />
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody>

@@ -14,10 +14,11 @@ const BelowAnswer = styled.div`
   font-weight: bold;
 `;
 
-function Answers({ answer }) { //eslint-disable-line
+function Answers({ answer }) {
+  //eslint-disable-line
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
-  const [helpfulness, setHelpfulness] = useState(answer.helpfulness)
+  const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
 
   const handleHelpful = (id) => {
     if (!helpful[id]) {
@@ -41,33 +42,46 @@ function Answers({ answer }) { //eslint-disable-line
   const formatedDate = new Date(answer.date).toLocaleDateString(
     {},
     {
-      timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric',
-    },
+      timeZone: 'UTC',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }
   );
 
   return answer ? (
     <div key={answer.answer_id}>
-      <AnswerWrapper>
-        A:
-        {' '}
-        {answer.body}
-      </AnswerWrapper>
+      <AnswerWrapper>A: {answer.body}</AnswerWrapper>
       <BelowAnswer>
         <span>by: </span>
-        {answer.answerer_name === 'Seller'
-          ? <strong>{answer.answerer_name}</strong>
-          : answer.answerer_name}
-        <span>, </span>
+        {answer.answerer_name === 'Seller' ? (
+          <strong>{answer.answerer_name}</strong>
+        ) : (
+          answer.answerer_name
+        )}
+        <span> | </span>
         {formatedDate} | Helpful?
-        <span style={{cursor: 'pointer'}}onClick={() => {handleHelpful(answer.answer_id)}}> Yes</span>
-        ({helpfulness})
-        | <span onClick={() => {handleReport(answer.answer_id)}}>{reported ? 'Reported' : 'Report'}</span>
+        <span
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleHelpful(answer.answer_id);
+          }}
+        >
+          {' '}
+          Yes
+        </span>
+        ({helpfulness}) |{' '}
+        <span
+          onClick={() => {
+            handleReport(answer.answer_id);
+          }}
+        >
+          {reported ? 'Reported' : 'Report'}
+        </span>
       </BelowAnswer>
     </div>
   ) : (
-    <div>
-      Loading answers
-    </div>
+    <div>Loading answers</div>
   );
 }
 

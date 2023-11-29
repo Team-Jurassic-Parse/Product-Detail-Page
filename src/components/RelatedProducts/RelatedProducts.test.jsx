@@ -1,19 +1,11 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-undef */
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, expect, it, beforeEach } from '@jest/globals';
-import userEvent from '@testing-library/user-event';
-import nock from 'nock';
 import { act } from 'react-dom/test-utils';
 import RelatedProducts from './index.jsx';
-import {
-  getRelatedProducts,
-  setProductId,
-  onClickRelatedProduct,
-  setCurrentIdAndUpdateModal,
-} from './index.jsx';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import OutfitList from './OutfitList.jsx';
 import ComparisonTable from './ComparisonTable.jsx';

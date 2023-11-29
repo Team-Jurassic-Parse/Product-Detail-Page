@@ -6,29 +6,39 @@ import QuestionModal from './QuestionModal.jsx'; //eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 
 const SearchBar = styled.input`
-  width: 50%;
-  height: 30px;
-  border: 1px solid black;
+  width: 30%;
+  height: 40px;
+  border: 2px solid black;
   font-size: 21px;
   cursor: text;
   padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 `;
 
 const BtnWrapper = styled.button`
-  border: 1px solid black;
-  border-radius: 15px;
-  text-align: center;
-  color: black;
-  font-size: 16px;
-  padding: 10px;
-  background-color: yellow;
+  background: #000000;
+  display: table;
+  width: 200px;
+  height: 30px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 700;
   cursor: pointer;
-  &: hover {
-    background-color: lightblue;
+  font-size: 14px;
+  opacity: 1;
+  transition: background 0.2s ease;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    opacity: 0.5;
   }
 `;
 
-function QuestionsAndAnswers({ productId }) {//eslint-disable-line
+function QuestionsAndAnswers({ productId }) {
+  //eslint-disable-line
   const [questions, setQuestions] = useState([]);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
@@ -61,7 +71,12 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
 
   useEffect(() => {
     if (productId) {
-      useServerFetch('get', `qa/questions?product_id=${productId}&count=20`, {}, questionFetchController)
+      useServerFetch(
+        'get',
+        `qa/questions?product_id=${productId}&count=20`,
+        {},
+        questionFetchController
+      )
         .then((response) => {
           setQuestions(response.data.results);
           setCurrentQuestions(response.data.results.slice(0, displayNum));
@@ -72,17 +87,31 @@ function QuestionsAndAnswers({ productId }) {//eslint-disable-line
         });
     }
     // console.log('this is the searchbar:', query);
-    return (() => {
+    return () => {
       questionFetchController.abort();
-    });
+    };
   }, [productId, displayNum]);
   return (
     <>
-      <h4>QUESTIONS & ANSWERS </h4>
-      <SearchBar type="search" placeholder="Have a question? Search for answers..." onChange={(e) => handleChange(e)} />
-      <QuestionsList questions={questions} query={query} currentQuestions={currentQuestions} />
-      {totalQuestions > 2 && currentQuestions.length < totalQuestions && <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>More answered questions</BtnWrapper>}
-      <BtnWrapper type="button" onClick={openModal}>Add a question</BtnWrapper>
+      <h1>QUESTIONS & ANSWERS </h1>
+      <SearchBar
+        type="search"
+        placeholder="Have a question? Search for answers..."
+        onChange={(e) => handleChange(e)}
+      />
+      <QuestionsList
+        questions={questions}
+        query={query}
+        currentQuestions={currentQuestions}
+      />
+      {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
+        <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
+          More Answered Questions
+        </BtnWrapper>
+      )}
+      <BtnWrapper type="button" onClick={openModal}>
+        Add a Question
+      </BtnWrapper>
       {showForm && (
         <Modal handleClose={closeModal}>
           <QuestionModal productName="placeholder" productId={productId} />

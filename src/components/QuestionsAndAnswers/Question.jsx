@@ -25,19 +25,34 @@ const InnerWrapper = styled.div`
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
-  border-top: 2px solid black;
   border-bottom: 2px solid black;
 `;
 
 const AddAnswerBtn = styled.button`
-  position: relative;
-  left: 100px;
-  &: hover {
-    background-color: lightblue;
+  background: #000000;
+  display: table;
+  width: 110px;
+  height: 30px;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 1;
+  transition: background 0.2s ease;
+  border-radius: 50px;
+  text-align: center;
+  &:hover {
+    opacity: 0.5;
   }
 `;
 
-function Question({ question, questionId, productName = 'placeholder product name' }) { //eslint-disable-line
+function Question({
+  question,
+  questionId,
+  productName = 'placeholder product name',
+}) {
+  //eslint-disable-line
   const [showForm, setShowForm] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
@@ -79,9 +94,16 @@ function Question({ question, questionId, productName = 'placeholder product nam
 
   const handleFetch = () => {
     if (questionId) {
-      useServerFetch('get', `qa/questions/${questionId}/answers?count=${totalAnswers}`, {}, answerFetchController)
+      useServerFetch(
+        'get',
+        `qa/questions/${questionId}/answers?count=${totalAnswers}`,
+        {},
+        answerFetchController
+      )
         .then((response) => {
-          const sortResponse = response.data.results.sort((a, b) => b.helpfulness - a.helpfulness);
+          const sortResponse = response.data.results.sort(
+            (a, b) => b.helpfulness - a.helpfulness
+          );
           setAnswers(sortResponse);
           setCurrentAnswers(sortResponse.slice(0, 2));
         })
@@ -109,7 +131,10 @@ function Question({ question, questionId, productName = 'placeholder product nam
             textDecoration: helpful ? 'none' : 'underline',
             cursor: helpful ? 'default' : 'pointer',
           }}
-          onClick={() => {handleHelpful(questionId)}}>
+          onClick={() => {
+            handleHelpful(questionId);
+          }}
+        >
           Helpful? ({helpfulness})
         </span>
         <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
