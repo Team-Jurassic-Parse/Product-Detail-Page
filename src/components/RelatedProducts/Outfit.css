@@ -1,6 +1,6 @@
 .outfit-image {
   width: 100%;
-  height: 26em;
+  height: 20em;
   object-fit: cover;
   object-position: center center;
   border: 1px solid #ddd;
@@ -9,7 +9,7 @@
 
 .outfit-alt-text {
   width: 100%;
-  height: 26em;
+  height: 20em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,18 +68,17 @@
 .outfit-card h2,
 .outfit-card h4 {
   margin: 0.25rem 0;
-  font-family: Georgia, sans-serif;
 }
 
 .outfit-card h4 {
   color: #333;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   letter-spacing: 0.03em;
 }
 
 .outfit-card h3 {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: 0.03em;
   line-height: 1;
@@ -87,26 +86,18 @@
 }
 
 .outfit-card h2 {
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   letter-spacing: 0.03em;
   line-height: 1;
   margin-bottom: 0.75rem;
   position: relative;
   text-transform: none;
   transition: all 0.2s ease-in-out;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .row-outift-title {
   text-align: center;
-}
-
-.row-outift-title h1 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  padding: 0 0.75rem;
-  display: inline-block;
 }
 
 .remove-button {
@@ -140,7 +131,7 @@
 
 .add-icon {
   width: 100%;
-  height: 26em;
+  height: 20em;
   object-fit: cover;
   object-position: center center;
   border: 1px solid #ddd;
@@ -163,18 +154,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 98px;
+  min-height: 106px;
 }
 
 .text-container span {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.03em;
   line-height: 1;
   position: relative;
   text-transform: none;
   transition: all 0.2s ease-in-out;
-  font-weight: 400;
-  font-family: Georgia, sans-serif;
+  font-weight: 600;
 }
 
 .add-button:hover {
