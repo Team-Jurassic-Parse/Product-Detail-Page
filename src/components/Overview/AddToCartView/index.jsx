@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable-line
+import ButtonWrapper from '../../UI/StyledButton.js' // eslint-disable-line
 
 function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   const [selectedSku, setSelectedSku] = React.useState(null);
@@ -10,7 +11,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   const [added, setAdded] = React.useState(false);
 
   React.useEffect(() => {
-    if (currentStyle) {
+    if (currentStyle && currentStyle.skus) { // eslint-disable-line
       setAvailableSkus(Object.keys(currentStyle.skus).map((sku) => { // eslint-disable-line
         if (currentStyle.skus[sku].quantity) { // eslint-disable-line
           return (sku);
@@ -21,17 +22,40 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   }, [currentStyle]);
 
   const dropDownStyle = {
-
+    display: 'inline-block',
+    margin: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    width: '10vw',
+    height: '5vh',
   };
 
-  const addToCartButtonStyle = {
+  const AddButton = styled(ButtonWrapper)`
+    display: block;
+    width: 10vw;
+    height: 5vh;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 1vh;
+  `;
 
-  };
+  const AddToCartForm = styled.form`
+    text-align: center;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    max-height: 20vh;
+  `;
 
   return (
     <div>
       {currentStyle && currentStyle.skus ? ( // eslint-disable-line
-        <form onSubmit={(e) => {
+        <AddToCartForm style={{}} onSubmit={(e) => { // eslint-disable-line
           e.preventDefault();
           const posts = [];
           const postObject = { sku_id: selectedSku };
@@ -59,7 +83,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
           {(availableSkus && !added) && (
             <>
 
-              {message && <p>{message}</p>}
+              {message && <p style={{ margin: '1vh' }}>{message}</p>}
               <select
                 defaultValue="Select Size"
                 id="selectSize"
@@ -82,12 +106,12 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
                   (x, num) =><option value={num + 1} key={num}>{num + 1}</option>) // eslint-disable-line
                   : <option value={null}>-</option>}
               </select>
-              <button type="submit" style={addToCartButtonStyle}>Add to Cart</button>
+              <AddButton type="submit">Add to Cart</AddButton>
             </>
           )}
           {!availableSkus && <p>OUT OF STOCK</p>}
           {added && <p>ADDED</p>}
-        </form>
+        </AddToCartForm>
       ) : <p>LOADING...</p>}
     </div>
   );
