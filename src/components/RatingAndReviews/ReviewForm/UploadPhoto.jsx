@@ -1,7 +1,12 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
+import ButtonWrapper from '../../UI/StyledButton';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const ImageInput = styled.input`
   display: none;
 `;
@@ -31,12 +36,13 @@ function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
         data-testid="file-input"
       />
       {images.length < 5 && ( // eslint-disable-line
-        <button
+        <ButtonWrapper
           type="button"
+          width="120px"
           onClick={() => document.getElementById(`${id}-imageInput`).click()}
         >
           Upload Photo
-        </button>
+        </ButtonWrapper>
       )}
       {images.map((image) => (<Thumbnail key={image} src={image} alt={image} />))} {/* eslint-disable-line */}
     </Wrapper>

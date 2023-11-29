@@ -5,11 +5,10 @@ import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
 import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
 import filterReviewsByStars from './utils/filterReviewsByStars.js'; // eslint-disable-line
 import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
+import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
   flex: 2;
-  min-height: 200px; // FIXME:
-  max-height: 100vh;
   overflow: scroll;
 `;
 
@@ -95,9 +94,9 @@ function ReviewsList({ productId }) { // eslint-disable-line
       {status === StatusEnum.pending && <p>Loading Data...</p>}
       {status === StatusEnum.error && <p>{error}</p>}
       {haveMoreReviews && (
-        <button onClick={handleShowMore} type="button">
+        <ButtonWrapper width="100px" onClick={handleShowMore} type="button">
           Show More
-        </button>
+        </ButtonWrapper>
       )}
     </Wrapper>
   );
