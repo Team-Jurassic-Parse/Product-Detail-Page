@@ -27,11 +27,13 @@ const OuterWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 75% 25%;
 `;
 
 const AddAnswerBtn = styled.button`
+  display: inline-block;
   background: #000000;
   display: table;
   width: 110px;
@@ -127,22 +129,24 @@ function Question({
           <h3>
             Q: {question.question_body}
           </h3>
-          <span
+          <div
             style={{
-              fontWeight: 'normal',
-              fontSize: '16px',
-              position: 'relative',
-              left: '90px',
-              textDecoration: helpful ? 'none' : 'underline',
-              cursor: helpful ? 'default' : 'pointer',
-            }}
-            onClick={() => {
-              handleHelpful(questionId);
-            }}
-          >
-            Helpful? ({helpfulness})
-          </span>
-          <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+              display: 'inline-block',
+              textAlign: 'right',
+              }}>
+            <div
+              style={{
+                textDecoration: helpful ? 'none' : 'underline',
+                cursor: helpful ? 'default' : 'pointer',
+              }}
+              onClick={() => {
+                handleHelpful(questionId);
+              }}
+            >
+              Helpful? ({helpfulness})
+            </div>
+            <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+          </div>
         </InnerWrapper>
         <AnswersList
           currentAnswers={currentAnswers}
