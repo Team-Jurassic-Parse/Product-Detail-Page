@@ -7,7 +7,7 @@ const Wrapper = styled.fieldset`
   text-align: center;
   border: 1px solid #ccc;
   padding: 12px;
-  margin: 16px 0;
+  margin: 12px 0;
 
   legend {
     padding: 0 10px;
