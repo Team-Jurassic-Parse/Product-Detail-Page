@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable-line
 import ButtonWrapper from '../../UI/StyledButton.js' // eslint-disable-line
+import AddToCartForm from './AddToCartForm.jsx'; // eslint-disable-line
 
 function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   const [selectedSku, setSelectedSku] = React.useState(null);
+  const [selectedItem, setSelectedItem] = React.useState(null);
   const [quantity, setQuantity] = React.useState(0);
   const [availableSkus, setAvailableSkus] = React.useState();
   const [message, setMessage] = React.useState(null);
@@ -13,13 +15,28 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   React.useEffect(() => {
     if (currentStyle && currentStyle.skus) { // eslint-disable-line
       setAvailableSkus(Object.keys(currentStyle.skus).map((sku) => { // eslint-disable-line
-        if (currentStyle.skus[sku].quantity) { // eslint-disable-line
+        if (currentStyle.skus[sku] && currentStyle.skus[sku].quantity) { // eslint-disable-line
           return (sku);
         }
       }));
+      setSelectedSku(null);
+      setQuantity(0);
       setAdded(false);
+      setSelectedItem('Select Size');
     }
   }, [currentStyle]);
+
+  React.useEffect(() => {
+    console.log(selectedSku);
+    if (selectedSku && currentStyle && currentStyle.skus[selectedSku]) {
+      setSelectedItem(currentStyle.skus[selectedSku].size);
+      setAdded(false);
+    }
+  }, [selectedSku]);
+
+  React.useEffect(() => {
+    console.log(selectedItem);
+  }, [selectedItem])
 
   const dropDownStyle = {
     display: 'inline-block',
@@ -41,17 +58,6 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
     margin: auto;
     margin-top: 1vh;
     font-size: 20px;
-  `;
-
-  const AddToCartForm = styled.form`
-    text-align: center;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    max-height: 20vh;
   `;
 
   return (
@@ -82,12 +88,13 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
           }
         }}
         >
-          {(availableSkus && !added) && (
+          {(availableSkus) && (
             <>
 
               {message && <p style={{ margin: '1vh' }}>{message}</p>}
               <select
-                defaultValue="Select Size"
+                key={currentStyle}
+                defaultValue={selectedItem}
                 id="selectSize"
                 style={dropDownStyle}
                 onChange={(e) => {
@@ -95,7 +102,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
                   setQuantity(quantity || 1);
                 }}
               >
-                <option value={null} disabled hidden>Select Size</option>
+                <option value={null} hidden>Select Size</option>
                 {availableSkus.map((sku) => { // eslint-disable-line
                   if (currentStyle.skus[sku]) { // eslint-disable-line
                     return <option value={sku} key={sku}>{currentStyle.skus[sku].size}</option>; // eslint-disable-line
@@ -104,11 +111,11 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
               </select>
 
               <select defaultValue="-" style={dropDownStyle} disabled={!(selectedSku)} onChange={(e) => setQuantity(e.target.value)}>
-                {selectedSku ? Array(currentStyle.skus[selectedSku].quantity).fill('').slice(0, 15).map( // eslint-disable-line
+                {selectedSku && currentStyle.skus[selectedSku] ? Array(currentStyle.skus[selectedSku].quantity).fill('').slice(0, 15).map( // eslint-disable-line
                   (x, num) =><option value={num + 1} key={num}>{num + 1}</option>) // eslint-disable-line
                   : <option value={null}>-</option>}
               </select>
-              <AddButton type="submit">Add to Cart</AddButton>
+              {!added && <AddButton type="submit">Add to Cart</AddButton>}
             </>
           )}
           {!availableSkus && <p>OUT OF STOCK</p>}
