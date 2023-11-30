@@ -57,7 +57,6 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [images, setImages] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleImageChange = (newImgs) => {
     setImages((curImgs) => [...curImgs, ...newImgs]);
@@ -83,7 +82,6 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
           }
         )
         .then(() => {
-          setSubmitted(true);
           toast.success('Successfully Posted');
           closeModal();
         })
@@ -95,9 +93,6 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
 
   return (
     <FormWrapper onSubmit={handleSubmitAnswer}>
-      {submitted ? (
-        <SuccessWrapper>Successfully submitted!</SuccessWrapper>
-      ) : null}
       <h3>Submit Your Answer</h3>
       <Subtitle>
         {productName}: {questionBody}

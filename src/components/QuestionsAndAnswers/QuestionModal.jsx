@@ -54,7 +54,6 @@ function QuestionModal({ productName, productId, closeModal}) {
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmitQuestion = (e) => {
     e.preventDefault();
@@ -72,10 +71,9 @@ function QuestionModal({ productName, productId, closeModal}) {
           headers: {
             Authorization: process.env.AUTH_TOKEN,
           },
-        }
+        },
       )
       .then(() => {
-        setSubmitted(true);
         toast.success('Successfully Posted');
         closeModal();
       })
@@ -86,9 +84,6 @@ function QuestionModal({ productName, productId, closeModal}) {
 
   return (
     <FormWrapper onSubmit={handleSubmitQuestion}>
-      {submitted ? (
-        <SuccessWrapper>Successfully submitted!</SuccessWrapper>
-      ) : null}
       <h3>Ask Your Question</h3>
       <Subtitle>
         About the {productName}

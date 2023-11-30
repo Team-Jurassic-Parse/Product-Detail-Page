@@ -45,7 +45,7 @@ function Answers({ answer }) {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
-    }
+    },
   );
 
   return answer ? (
