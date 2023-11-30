@@ -44,7 +44,7 @@ const ButtonWrapperWrapper = styled.div`
   justify-content: center;
 `;
 
-function ReviewForm({ productName, productId, currentCharacteristics }) { // eslint-disable-line
+function ReviewForm({ productName, productId, currentCharacteristics, handleClose }) { // eslint-disable-line
 
   const initialCharacteristics = useMemo(() => {
     const result = {};
@@ -113,6 +113,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
       .then(() => {
         setIsSubmitting(false);
         toast.success('Your Form is Submitted Successfully');
+        handleClose();
       })
       .catch((err) => {
         setIsSubmitting(false);
