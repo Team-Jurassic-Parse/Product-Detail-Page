@@ -141,6 +141,7 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
             <ProductDetailsView
               productInfo={productInfo}
               currentStyle={currentStyle}
+              view={view}
               productReview={productReview}
             />
           </div>
@@ -149,13 +150,14 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
             <StyleSelectorView
               productStyles={productStyles}
               styleId={styleId}
+              view={view}
               setStyleId={setStyleId}
               currentStyle={currentStyle}
             />
           </div>
 
           <div style={overviewLayoutSection('3', '9 / 12')}>
-            <AddToCartView currentStyle={currentStyle} />
+            <AddToCartView currentStyle={currentStyle} view={view} />
           </div>
         </div>
       )}
