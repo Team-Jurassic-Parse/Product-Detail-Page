@@ -8,6 +8,7 @@ import RatingAndReviews from "./components/RatingAndReviews/index.jsx";
 import RelatedProducts from "./components/RelatedProducts/index.jsx";
 import useServerFetch from "./hooks/useServerFetch.js"; //eslint-disable-line
 import useReviewRating from "./hooks/ReviewStars/useReviewsRating.js";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [productId, setProductId] = React.useState("");
@@ -94,6 +95,7 @@ function App() {
           productName={productInfo?.name}
         />
       </div>
+      <Toaster />
     </div>
   );
 }
