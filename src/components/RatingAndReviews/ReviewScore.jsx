@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Score = styled.span`
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
 `;
 

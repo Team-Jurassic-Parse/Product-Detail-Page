@@ -51,9 +51,9 @@ function ReviewCard({ review }) {
         <NameSpan>{reviewerName}</NameSpan>
         <DateSpan>{formattedDate}</DateSpan>
       </StarUserDateWrapper>
-      <h2>
+      <h3>
         {summary}
-      </h2>
+      </h3>
       <p>
         {body}
       </p>

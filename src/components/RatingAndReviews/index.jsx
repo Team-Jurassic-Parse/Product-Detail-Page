@@ -10,7 +10,7 @@ import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 const Wrapper = styled.div`
   margin: 24px 64px;
 
-  h1 {
+  h2 {
     text-transform: uppercase;
     padding-left: 30px;
   }
@@ -44,7 +44,7 @@ function RatingAndReviews({
   return (
     <Wrapper>
       <StarsFilterProvider>
-        <h1>ratings and reviews</h1>
+        <h2>ratings and reviews</h2>
         <SummaryAndListWrapper>
           <RatingSummary
             productId={productId}
