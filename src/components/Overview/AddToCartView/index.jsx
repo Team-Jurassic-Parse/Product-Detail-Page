@@ -27,7 +27,6 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   }, [currentStyle]);
 
   React.useEffect(() => {
-    console.log(selectedSku);
     if (selectedSku && currentStyle && currentStyle.skus[selectedSku]) {
       setSelectedItem(currentStyle.skus[selectedSku].size);
       setAdded(false);
@@ -35,8 +34,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   }, [selectedSku]);
 
   React.useEffect(() => {
-    console.log(selectedItem);
-  }, [selectedItem])
+  }, [selectedItem]);
 
   const dropDownStyle = {
     display: 'inline-block',
