@@ -42,6 +42,10 @@ function RelatedProductsList({
           data-key={relatedList.id}
           onClick={onClickRelatedProduct}
           autoPlay={true}
+          autoPlay={true}
+          rewind={true}
+          rewindWithAnimation={true}
+          autoPlaySpeed={7000}
         >
           <div className="product-container">
             {relatedList.photos && relatedList.photos.length > 0 ? (
