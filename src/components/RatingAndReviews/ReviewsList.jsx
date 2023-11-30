@@ -39,9 +39,9 @@ const FilterWrapper = styled.div`
 `;
 
 const FilterSelector = styled.select`
-  -webkit-appearance: none; /* Remove default style in WebKit browsers */
-  -moz-appearance: none;    /* Remove default style in Firefox browsers */
-  appearance: none;         /* Remove default style for the rest of the browsers */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #000;
@@ -50,6 +50,10 @@ const FilterSelector = styled.select`
   background-image: url('path-to-your-down-arrow-icon.svg');
   background-repeat: no-repeat;
   background-position: right center;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const UnorderedList = styled.ul`

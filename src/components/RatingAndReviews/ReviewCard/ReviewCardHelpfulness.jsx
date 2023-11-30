@@ -38,7 +38,7 @@ export default function ReviewCardHelpfulness({ reviewId, helpfulness }) { // es
     useServerFetch('put', `reviews/${reviewId}/helpful`, {})
       .then(() => {
         setLocalHelpfulness((cur) => cur + 1);
-        toast.success('Upvote cuccess');
+        toast.success('Upvote Success');
       })
       .catch((err) => toast.error(err?.message));
   };

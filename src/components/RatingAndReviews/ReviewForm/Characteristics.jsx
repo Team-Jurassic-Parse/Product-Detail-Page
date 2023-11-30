@@ -8,6 +8,7 @@ const Wrapper = styled.fieldset`
   border: 1px solid #ccc;
   padding: 12px;
   margin: 12px 0;
+  text-transform: capitalize;
 
   legend {
     padding: 0 10px;

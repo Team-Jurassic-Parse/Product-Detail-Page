@@ -27,8 +27,16 @@ const Wrapper = styled.form`
   }
 `;
 
-const ReviewSummary = styled.textarea``;
-const ReviewBody = styled.textarea``;
+const ReviewSummary = styled.textarea`
+  &::placeholder {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+`;
+const ReviewBody = styled.textarea`
+  &::placeholder {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+`;
 const InfoInput = styled.input``;
 const ButtonWrapperWrapper = styled.div`
   width: 100%;
@@ -104,7 +112,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
       )
       .then(() => {
         setIsSubmitting(false);
-        toast.success('Your form is successfully submitted');
+        toast.success('Your Form is Submitted Successfully');
       })
       .catch((err) => {
         setIsSubmitting(false);
