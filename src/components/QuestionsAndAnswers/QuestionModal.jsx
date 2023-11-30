@@ -61,7 +61,7 @@ function QuestionModal({ productName, productId, closeModal}) {
       body,
       name: nickname,
       email,
-      product_id: productId,
+      product_id: Number(productId),
     };
     axios
       .post(
