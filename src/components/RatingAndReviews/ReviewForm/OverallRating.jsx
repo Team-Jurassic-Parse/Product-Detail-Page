@@ -41,8 +41,8 @@ const Wrapper = styled.fieldset`
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
-  padding: 16px;
-  margin: 20px 0;
+  padding: 12px;
+  margin: 12px 0;
 
   legend {
     padding: 0 10px;

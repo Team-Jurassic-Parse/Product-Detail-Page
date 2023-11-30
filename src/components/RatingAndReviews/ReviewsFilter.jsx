@@ -18,9 +18,12 @@ const StarsFilter = styled.ol`
 const StarFilterLineWrapper = styled.li`
   display: flex;
   opacity: ${(props) => (props.isActive ? 1 : 0.2)};
+  align-items: center;
+  gap: 4px;
 
   span {
-    min-width: 60px;
+  white-space: nowrap;
+  font-size: 0.9rem;
   }
 `;
 

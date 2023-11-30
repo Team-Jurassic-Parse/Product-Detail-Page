@@ -12,13 +12,18 @@ import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 const Wrapper = styled.form`
   background: white;
   max-width: 680px;
-  padding: 24px 36px;
+  padding: 0 36px 24px;
   display: flex;
   gap: 12px;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
   overflow-y: scroll;
+
+  textarea {
+    resize: none;
+    margin-bottom: 12px;
+  }
 `;
 
 const ReviewSummary = styled.textarea``;
@@ -122,6 +127,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
             onChange={(e) => setSummary(e.target.value)}
             placeholder="Review Summary. Up to 60 characters"
             maxLength={60}
+            rows="2"
             required
           />
           <ReviewBody
@@ -129,6 +135,7 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
             onChange={(e) => setBody(e.target.value)}
             placeholder="Review Body. Up to 1000 characters"
             maxLength={1000}
+            rows="5"
             required
           />
           <UploadPhoto images={images} handleImageChange={handleImageChange} />
@@ -136,12 +143,14 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
             type="text"
             value={name}
             placeholder="Your Nickname"
+            required
             onChange={(e) => setName(e.target.value)}
           />
           <InfoInput
             type="email"
             value={email}
             placeholder="Your email: example@mail.com"
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
         </>

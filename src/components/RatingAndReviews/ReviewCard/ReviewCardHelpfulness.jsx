@@ -7,15 +7,25 @@ const Wrapper = styled.div`
   gap: 4px;
 
   button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
   }
 
   button:hover {
-    cursor: pointer;
+    text-decoration: none;
   }
 
   button:disabled {
     cursor: not-allowed;
   }
+`;
+
+const DisableSpan = styled.span`
+  color: ${(p) => (p.disabled ? '#aaa' : '#111')};
 `;
 
 export default function ReviewCardHelpfulness({ reviewId, helpfulness }) { // eslint-disable-line
@@ -31,19 +41,19 @@ export default function ReviewCardHelpfulness({ reviewId, helpfulness }) { // es
       }) // FIXME: toast
       .catch((err) => console.log(err)); // FIXME: toast
   };
-  const handleClickNo = () => {
-    setClicked(true);
-  };
 
   return (
     <Wrapper>
-      <span>Helpful?</span>
-      <button type="button" onClick={handleClickYes} disabled={clicked}>Yes</button>
       <span>
-        #
-        {localHelpfulness}
+        Helpful?
+        {'  '}
       </span>
-      <button type="button" onClick={handleClickNo} disabled={clicked}>No</button>
+      <button type="button" onClick={handleClickYes} disabled={clicked}>Yes</button>
+      <DisableSpan disabled={clicked}>
+        (
+        {localHelpfulness}
+        )
+      </DisableSpan>
     </Wrapper>
   );
 }
