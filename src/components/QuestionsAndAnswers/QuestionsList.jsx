@@ -7,12 +7,12 @@ const Wrapper = styled.div`
   max-height: 80vh;
   padding: 4px 4px;
   overflow: auto;
-  width: 65%;
-  margin-right: 20%;
-  margin-left: 20%;
+  width: 90%;
+  margin: 0px 64px;
+  padding-left: 30px;
 `;
 
-function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable-line
+function QuestionsList({ questions, currentQuestions, query, productName}) { //eslint-disable-line
   const formatQuery = query.toLowerCase().trim();
   return (
     <Wrapper>
@@ -22,7 +22,7 @@ function QuestionsList({ questions, currentQuestions, query}) { //eslint-disable
           ? question : question.question_body.toLowerCase().trim().includes(formatQuery)
         })
         .map((question) => {
-          return <Question key={question.question_id} questionId={question.question_id} question={question} />
+          return <Question key={question.question_id} questionId={question.question_id} question={question} productName={productName}/>
         })}
     </Wrapper>
   );
