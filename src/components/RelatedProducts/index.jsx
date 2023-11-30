@@ -1,11 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable consistent-return */
-/* eslint-disable no-param-reassign */
-/* eslint-disable react/no-children-prop */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
 import React, { useState, useEffect } from 'react';
 import useServerFetch from '../../hooks/useServerFetch.js';
 import RelatedProductsList from './RelatedProductsList.jsx';

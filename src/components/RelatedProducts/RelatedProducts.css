@@ -33,7 +33,7 @@
 }
 
 .carousel-container {
-  width: 50%;
+  width: 75%;
   margin: auto;
   height: auto;
 }
@@ -102,9 +102,10 @@
 .favorite-button {
   position: absolute;
   top: 15px;
-  right: 25px;
+  right: 15px;
   cursor: pointer;
   transition: color 0.3s;
+  z-index: 1000;
 }
 
 .favorite-button:hover .star-icon {
@@ -115,4 +116,8 @@
   color: white;
   font-size: 20px;
   padding: 5px;
+}
+
+.product-container {
+  position: relative;
 }
