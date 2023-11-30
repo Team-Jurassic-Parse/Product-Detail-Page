@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import useServerFetch from '../../hooks/useServerFetch.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import OutfitList from './OutfitList.jsx';
@@ -167,6 +168,7 @@ function RelatedProducts({
         ...prevState,
         ...outfitsData,
       }));
+      toast.success('Successfully added outfit');
     }
   };
 
