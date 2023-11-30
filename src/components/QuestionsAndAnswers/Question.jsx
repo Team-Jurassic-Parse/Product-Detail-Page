@@ -140,8 +140,6 @@ function Question({
           >
             <div
               style={{
-                textDecoration: helpful ? 'none' : 'underline',
-                cursor: helpful ? 'default' : 'pointer',
                 float: 'right',
                 marginTop: '27px',
                 marginBottom: '25px',
@@ -151,7 +149,12 @@ function Question({
                 handleHelpful(questionId);
               }}
             >
-              Helpful? ({helpfulness})
+              Helpful? <span style={{
+                textDecoration: helpful ? 'none' : 'underline',
+                cursor: helpful ? 'default' : 'pointer',
+                }}>
+                Yes</span>
+                {' '}({helpfulness})
             </div>
             <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
           </div>
