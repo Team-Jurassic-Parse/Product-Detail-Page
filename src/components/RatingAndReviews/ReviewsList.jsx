@@ -1,11 +1,13 @@
+/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating';
-import ReviewCard from './ReviewCard/ReviewCard.jsx'; // eslint-disable-line
-import filterReviewsByStars from './utils/filterReviewsByStars.js'; // eslint-disable-line
-import useStarsFilter from './hooks/useStarsFilter.js'; // eslint-disable-line
-import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
+import ReviewCard from './ReviewCard/ReviewCard.jsx';
+import filterReviewsByStars from './utils/filterReviewsByStars.js';
+import filterReviewsByQuery from './utils/filterReviewsByQuery.js';
+import useStarsFilter from './hooks/useStarsFilter.js';
+import ButtonWrapper from '../UI/StyledButton.js';
 
 const Wrapper = styled.div`
   flex: 2;
@@ -61,7 +63,7 @@ const UnorderedList = styled.ul`
   padding: 0;
 `;
 
-function ReviewsList({ productId }) { // eslint-disable-line
+function ReviewsList({ productId, query }) { // eslint-disable-line
 
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
@@ -131,7 +133,7 @@ function ReviewsList({ productId }) { // eslint-disable-line
         <p>No Reviews yet</p>
       ) : (
         <UnorderedList>
-          {filterReviewsByStars(reviews, starsFilter).map((review) => (
+          {filterReviewsByQuery(filterReviewsByStars(reviews, starsFilter), query).map((review) => (
             <ReviewCard key={review.review_id} review={review} />
           ))}
         </UnorderedList>
