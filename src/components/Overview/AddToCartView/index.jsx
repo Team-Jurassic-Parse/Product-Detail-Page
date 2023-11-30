@@ -30,6 +30,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
     marginRight: '20px',
     width: '10vw',
     height: '5vh',
+    fontSize: '20px',
   };
 
   const AddButton = styled(ButtonWrapper)`
@@ -39,6 +40,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
     overflow: hidden;
     margin: auto;
     margin-top: 1vh;
+    font-size: 20px;
   `;
 
   const AddToCartForm = styled.form`
