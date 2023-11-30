@@ -7,6 +7,7 @@ import OverallRating from './ReviewForm/OverallRating.jsx'; // eslint-disable-li
 import Recomended from './ReviewForm/Recomended.jsx'; // eslint-disable-line
 import Characteristics from './ReviewForm/Characteristics.jsx'; // eslint-disable-line
 import UploadPhoto from './ReviewForm/UploadPhoto.jsx'; // eslint-disable-line
+import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.form`
   background: white;
@@ -17,12 +18,12 @@ const Wrapper = styled.form`
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+  overflow-y: scroll;
 `;
 
 const ReviewSummary = styled.textarea``;
 const ReviewBody = styled.textarea``;
 const InfoInput = styled.input``;
-const SumbitBtn = styled.input``;
 
 function ReviewForm({ productName, productId, currentCharacteristics }) { // eslint-disable-line
 
@@ -145,7 +146,8 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
           />
         </>
       )}
-      <SumbitBtn
+      <ButtonWrapper
+        as="input"
         type="submit"
         value={isSubmitting ? 'Submitting...' : 'Submit'}
         disabled={isSubmitting}

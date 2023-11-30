@@ -9,7 +9,6 @@ import { calculateAverageRating } from '../ReviewStars/ProductStarRating.jsx'; /
 const ContentWrapper = styled.div``;
 
 function RatingSummaryContent({ productReview }) { // eslint-disable-line
-  // console.log(productReview); FIXME: Delete in production
   const avgScore = useMemo(() => calculateAverageRating(productReview.ratings), [productReview]); // eslint-disable-line
 
   return (

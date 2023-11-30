@@ -30,7 +30,6 @@ const combine = (obj1, obj2) => {
 };
 
 function ComparisonTable({ currentProduct, comparedProduct }) {
-  console.log(currentProduct);
   const [loading, setLoading] = useState(true);
   const [productObj, setProductObj] = useState({});
 
@@ -47,56 +46,119 @@ function ComparisonTable({ currentProduct, comparedProduct }) {
   }
 
   return (
-    <table className="related-table">
-      <thead>
-        <tr>
-          <th className="product-header">
-            <div>
-              <span>{currentProduct.name}</span>
-            </div>
-            <div>
-              <img
-                src={currentProduct.photos[0].thumbnail_url}
-                alt="Product Thumbnail"
-                className="thumbnail-image"
-              />
-            </div>
-          </th>
-          <th className="bold-column">Comparison</th>
-          <th className="product-header">
-            <div>
-              <span>{comparedProduct.name}</span>
-            </div>
-            <div>
-              <img
-                src={comparedProduct.photos[0].thumbnail_url}
-                alt="Product Thumbnail"
-                className="thumbnail-image"
-              />
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>${currentProduct.default_price}</td>
-          <td className="bold-column">Price</td>
-          <td>${comparedProduct.default_price}</td>
-        </tr>
-        <tr>
-          <td>{currentProduct.category}</td>
-          <td className="bold-column">Category</td>
-          <td>{comparedProduct.category}</td>
-        </tr>
-        {Object.keys(productObj).map((key, index) => (
-          <tr key={index}>
-            <td>{productObj[key].currentProduct}</td>
-            <td className="bold-column">{key}</td>
-            <td>{productObj[key].comparedProduct}</td>
+    <div className="table-container">
+      <table className="related-table">
+        <thead>
+          <tr>
+            <th colSpan="3" className="table-header">
+              Comparison Table
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          <tr>
+            <th className="product-header">
+              <div>
+                <span>{currentProduct.name}</span>
+              </div>
+              <div>
+                <img
+                  src={currentProduct.photos[0].thumbnail_url}
+                  alt="Product Thumbnail"
+                  className="thumbnail-image"
+                />
+              </div>
+            </th>
+            <th className="bold-column">Name</th>
+            <th className="product-header">
+              <div>
+                <span>{comparedProduct.name}</span>
+              </div>
+              <div>
+                <img
+                  src={comparedProduct.photos[0].thumbnail_url}
+                  alt="Product Thumbnail"
+                  className="thumbnail-image"
+                />
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              ${currentProduct.default_price}{' '}
+              {currentProduct.default_price &&
+                comparedProduct.default_price &&
+                (Number(currentProduct.default_price) <
+                Number(comparedProduct.default_price) ? (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &#10004;
+                  </span>
+                ) : (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &nbsp;
+                  </span>
+                ))}
+            </td>
+            <td className="bold-column">Price</td>
+            <td>
+              ${comparedProduct.default_price}{' '}
+              {currentProduct.default_price &&
+                comparedProduct.default_price &&
+                (Number(comparedProduct.default_price) <
+                Number(currentProduct.default_price) ? (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &#10004;
+                  </span>
+                ) : (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &nbsp;
+                  </span>
+                ))}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {currentProduct.category}{' '}
+              {currentProduct.category && (
+                <span style={{ color: 'green', fontSize: '18px' }}>
+                  &#10004;
+                </span>
+              )}
+            </td>
+            <td className="bold-column">Category</td>
+            <td>
+              {comparedProduct.category}{' '}
+              {comparedProduct.category && (
+                <span style={{ color: 'green', fontSize: '18px' }}>
+                  &#10004;
+                </span>
+              )}
+            </td>
+          </tr>
+          {Object.keys(productObj).map((key, index) => (
+            <tr key={index}>
+              <td>
+                {productObj[key].currentProduct}{' '}
+                {productObj[key].currentProduct && (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &#10004;
+                  </span>
+                )}
+              </td>
+              <td className="bold-column">{key}</td>
+              <td>
+                {productObj[key].comparedProduct}{' '}
+                {productObj[key].comparedProduct && (
+                  <span style={{ color: 'green', fontSize: '18px' }}>
+                    &#10004;
+                  </span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

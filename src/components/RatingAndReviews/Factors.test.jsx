@@ -8,8 +8,9 @@ import Factors from './Factors.jsx'; // eslint-disable-line
 
 describe('Test on Factors component', () => {
   test('it should render', () => {
-    render(<Factors characteristics={{ test: 5 }} />);
-    const testSlider = screen.getByRole('slider', { name: /test/i });
+    const mockChar = { Fit: { id: 1, value: '3.3' } };
+    render(<Factors characteristics={mockChar} />);
+    const testSlider = screen.getByRole('slider', { name: /fit/i });
     expect(testSlider).toBeInTheDocument();
   });
 });

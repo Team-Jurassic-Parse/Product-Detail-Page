@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
-
 function Modal({ children, handleClose }) { // eslint-disable-line
 
   return (
@@ -32,6 +31,7 @@ function Modal({ children, handleClose }) { // eslint-disable-line
           justifyContent: 'center',
           alignItems: 'center',
           zIndex: 1000,
+          overflow: 'scroll',
         }}
       >
         <div
@@ -40,7 +40,8 @@ function Modal({ children, handleClose }) { // eslint-disable-line
           }}
         >
           {children}
-        </div>{' '}
+        </div>
+        {' '}
       </button>
     </div>
   );

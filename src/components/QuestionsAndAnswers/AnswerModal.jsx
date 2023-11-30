@@ -119,7 +119,7 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       {submitted ? (
         <SuccessWrapper>Successfully submitted!</SuccessWrapper>
       ) : null}
-      <h2>Submit your Answer</h2>
+      <h3>Submit your Answer</h3>
       <Subtitle>
         {productName}: {questionBody}
       </Subtitle>

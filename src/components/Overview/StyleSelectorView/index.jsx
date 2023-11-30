@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyleItem from './StyleItem.jsx'; // eslint-disable-line
 
-function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // eslint-disable-line
+function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, currentStyle }) { // eslint-disable-line
   // eslint-disable-line
 
   const StyleSelector = styled.div`
@@ -12,7 +12,7 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // 
     grid-auto-rows: calc(30px + 3vw);
     border-bottom: 1px solid lightgray;
     max-height: 20vh;
-    max-width: 90%;
+    max-width: calc((35px + 3vw) * 4);
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -28,7 +28,7 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId }) { // 
 
   return (
     <div>
-      <h3>Select Your Style</h3>
+      <h3>{currentStyle && currentStyle.name}</h3> {/*eslint-disable-line*/}
       <StyleSelector>
         {productStyles
           && productStyles.results.map( // eslint-disable-line

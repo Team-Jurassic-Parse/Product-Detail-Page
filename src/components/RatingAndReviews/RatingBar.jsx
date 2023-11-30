@@ -6,10 +6,10 @@ const decimalToPercentageString = (decimal) => Math.round(decimal * 100)
   .concat('%');
 
 const BarWrapper = styled.div`
-  width: 50%;
+  width: 100%;
   height: 12px;
-  background: gray;
-  margin: 6px;
+  background: #ddd;
+  margin: 8px 6px;
   border-radius: 4px;
 `;
 const BarContent = styled.div`

@@ -1,5 +1,4 @@
 .related-table {
-  font-family: "Georgia", sans-serif;
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -9,7 +8,7 @@
 .related-table td {
   border: 1px solid #ddd;
   padding: 12px;
-  text-align: left;
+  text-align: center;
 }
 
 .related-table th {
@@ -35,11 +34,11 @@
 }
 
 .related-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 .related-table tbody tr:nth-child(odd) {
-  background-color: white;
+  background-color: #f9f9f9;
 }
 
 .modal-overlay {
@@ -74,8 +73,37 @@
 }
 
 .thumbnail-image {
-  width: 200px; /* Adjust the size as needed */
-  height: 300px; /* Adjust the size as needed */
+  width: 200px;
+  height: 300px;
   object-fit: cover;
   margin-top: 5px;
+}
+
+.related-table th.table-header {
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.table-container {
+  max-height: 700px;
+  padding-right: 16px;
+  overflow-y: auto;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  border-radius: 8px;
 }

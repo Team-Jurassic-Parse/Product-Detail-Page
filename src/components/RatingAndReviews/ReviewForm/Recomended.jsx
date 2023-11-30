@@ -1,7 +1,17 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.fieldset``;
+const Wrapper = styled.fieldset`
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 20px 0;
+
+  legend {
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+`;
 function Recomended({ recommend, setRecommend }) { // eslint-disable-line
   const id = useId();
   const handleChange = (e) => setRecommend(e.target.value);

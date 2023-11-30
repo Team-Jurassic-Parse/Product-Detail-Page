@@ -20,7 +20,6 @@ import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-lin
 // `;
 
 const OuterWrapper = styled.div`
-  background: white;
   margin-top: 10px;
   margin-bottom: 10px;
   border-bottom: 2px solid #D3D3D3;
@@ -29,11 +28,10 @@ const OuterWrapper = styled.div`
 const InnerWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 60% 40%;
 `;
 
 const AddAnswerBtn = styled.button`
-  display: inline-block;
   background: #000000;
   display: table;
   width: 110px;
@@ -132,12 +130,15 @@ function Question({
           <div
             style={{
               display: 'inline-block',
-              textAlign: 'right',
-              }}>
+              // alignContent: 'right',
+              // justifyItems: 'end',
+            }}
+          >
             <div
               style={{
                 textDecoration: helpful ? 'none' : 'underline',
                 cursor: helpful ? 'default' : 'pointer',
+                float: 'right',
               }}
               onClick={() => {
                 handleHelpful(questionId);

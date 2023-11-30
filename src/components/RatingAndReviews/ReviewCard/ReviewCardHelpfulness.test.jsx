@@ -5,9 +5,9 @@ import {
 } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ReviewCardHelpfulness from './ReviewCardHelpfulness'; // eslint-disable-line
-import useServerFetch from '../../hooks/useServerFetch.js'; // eslint-disable-line
+import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable-line
 
-jest.mock('../../hooks/useServerFetch.js');
+jest.mock('../../../hooks/useServerFetch.js');
 
 describe('Test on FactorSlider component', () => {
   beforeEach(() => {

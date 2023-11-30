@@ -5,22 +5,25 @@ import ReviewsList from './ReviewsList.jsx'; // eslint-disable-line
 import ReviewForm from './ReviewForm.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint-disable-line
+import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
-  border: 1px solid;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 24px 64px;
+
+  h1 {
+    text-transform: uppercase;
+    padding-left: 30px;
+  }
 `;
 
 const SummaryAndListWrapper = styled.div`
   display: flex;
 `;
 
-const BtnWrapper = styled.div``;
-
-const AddFormBtn = styled.button`
-  display: block;
-  margin: auto;
+const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 12px auto;
 `;
 
 function RatingAndReviews({
@@ -41,6 +44,7 @@ function RatingAndReviews({
   return (
     <Wrapper>
       <StarsFilterProvider>
+        <h1>ratings and reviews</h1>
         <SummaryAndListWrapper>
           <RatingSummary
             productId={productId}
@@ -53,7 +57,7 @@ function RatingAndReviews({
       </StarsFilterProvider>
       {status === 'SUCCESS' && (
         <BtnWrapper>
-          <AddFormBtn onClick={openModal}>Add +</AddFormBtn>
+          <ButtonWrapper width="120px" onClick={openModal}>Add +</ButtonWrapper>
         </BtnWrapper>
       )}
       {showForm && (

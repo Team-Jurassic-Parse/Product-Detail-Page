@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import FactorSlider from './FactorSlider.jsx'; // eslint-disable-line
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+`;
 
 function Factors({ characteristics }) { // eslint-disable-line
   return (

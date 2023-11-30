@@ -110,8 +110,10 @@ function QuestionModal({ productName, productId, closeModal}) {
       {submitted ? (
         <SuccessWrapper>Successfully submitted!</SuccessWrapper>
       ) : null}
-      <h2>Ask Your Question</h2>
-      <Subtitle>About the {productName}</Subtitle>
+      <h3>Ask Your Question</h3>
+      <Subtitle>
+        About the {productName}
+      </Subtitle>
       <LabelWrapper>
         Your Question
         <span style={{ color: 'red' }}> *</span>
