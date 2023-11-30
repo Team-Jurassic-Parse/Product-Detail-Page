@@ -1,17 +1,17 @@
 /* eslint-disable */
-import ReactDOM from "react-dom/client";
-import React from "react";
-import "./styles.css";
-import Overview from "./components/Overview/index.jsx";
-import QuestionsAndAnswers from "./components/QuestionsAndAnswers/index.jsx";
-import RatingAndReviews from "./components/RatingAndReviews/index.jsx";
-import RelatedProducts from "./components/RelatedProducts/index.jsx";
-import useServerFetch from "./hooks/useServerFetch.js"; //eslint-disable-line
-import useReviewRating from "./hooks/ReviewStars/useReviewsRating.js";
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+import './styles.css';
+import Overview from './components/Overview/index.jsx';
+import QuestionsAndAnswers from './components/QuestionsAndAnswers/index.jsx';
+import RatingAndReviews from './components/RatingAndReviews/index.jsx';
+import RelatedProducts from './components/RelatedProducts/index.jsx';
+import useServerFetch from './hooks/useServerFetch.js'; //eslint-disable-line
+import useReviewRating from './hooks/ReviewStars/useReviewsRating.js';
 
 function App() {
-  const [productId, setProductId] = React.useState("");
-  const [styleId, setStyleId] = React.useState("");
+  const [productId, setProductId] = React.useState('');
+  const [styleId, setStyleId] = React.useState('');
   const [productInfo, setProductInfo] = React.useState();
   const [productStyles, setProductStyles] = React.useState();
   const [darkMode, setDarkMode] = React.useState(false);
@@ -26,9 +26,9 @@ function App() {
   } = useReviewRating(productId);
 
   React.useEffect(() => {
-    useServerFetch("get", `products`, {}, initialProductFetcher)
+    useServerFetch('get', `products`, {}, initialProductFetcher)
       .then((res) => {
-        setProductId(res.data[3].id);
+        setProductId(res.data[4].id);
       })
       .catch((err) => {
         console.error(err);
@@ -41,7 +41,7 @@ function App() {
 
   React.useEffect(() => {
     if (productId) {
-      useServerFetch("get", `products/${productId}`, {}, productFetchController)
+      useServerFetch('get', `products/${productId}`, {}, productFetchController)
         .then((res) => {
           setProductInfo(res.data);
         })
@@ -49,7 +49,7 @@ function App() {
           setProductInfo(null);
         });
       useServerFetch(
-        "get",
+        'get',
         `products/${productId}/styles`,
         {},
         stylesFetchController
@@ -100,5 +100,5 @@ function App() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<App />);

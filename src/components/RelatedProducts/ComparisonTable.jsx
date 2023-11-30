@@ -1,12 +1,6 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-return-assign */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import './ComparisonTable.css';
 
-// Utility Functions
 const combine = (obj1, obj2) => {
   const newObj = {};
 

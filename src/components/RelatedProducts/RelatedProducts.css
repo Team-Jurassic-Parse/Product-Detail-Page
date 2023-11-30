@@ -23,6 +23,11 @@
   text-align: center;
   font-family: arial;
   border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
 .row-related-product {
@@ -33,7 +38,7 @@
 }
 
 .carousel-container {
-  width: 50%;
+  width: 75%;
   margin: auto;
   height: auto;
 }
@@ -102,9 +107,10 @@
 .favorite-button {
   position: absolute;
   top: 15px;
-  right: 25px;
+  right: 15px;
   cursor: pointer;
   transition: color 0.3s;
+  z-index: 1000;
 }
 
 .favorite-button:hover .star-icon {
@@ -115,4 +121,8 @@
   color: white;
   font-size: 20px;
   padding: 5px;
+}
+
+.product-container {
+  position: relative;
 }
