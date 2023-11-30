@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const FormWrapper = styled.form`
   background: white;
@@ -49,29 +50,6 @@ const SuccessWrapper = styled.h2`
   color: green;
 `;
 
-const ExitButton = styled.button`
-  background: #000000;
-  display: table;
-  position: relative;
-  top: -489px;
-  right: -371px;
-  width: 35px;
-  height: 35px;
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 14px;
-  opacity: 1;
-  transition: background 0.2s ease;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
 function QuestionModal({ productName, productId, closeModal}) {
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
@@ -98,10 +76,11 @@ function QuestionModal({ productName, productId, closeModal}) {
       )
       .then(() => {
         setSubmitted(true);
-        console.log('Posted');
+        toast.success('Successfully Posted');
+        closeModal();
       })
       .catch((err) => {
-        console.error('Error adding question:', err);
+        toast.error('Error adding question:', err);
       });
   };
 
@@ -115,7 +94,7 @@ function QuestionModal({ productName, productId, closeModal}) {
         About the {productName}
       </Subtitle>
       <LabelWrapper>
-        Your Question
+        Your question
         <span style={{ color: 'red' }}> *</span>
       </LabelWrapper>
       <textarea
@@ -150,7 +129,6 @@ function QuestionModal({ productName, productId, closeModal}) {
       />
       <div>For authentication reasons, you will not be emailed</div>
       <BtnWrapper type="submit">Submit</BtnWrapper>
-      <ExitButton onClick={closeModal}>X</ExitButton>
     </FormWrapper>
   );
 }

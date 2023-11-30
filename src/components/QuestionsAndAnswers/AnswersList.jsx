@@ -57,6 +57,7 @@ function AnswersList({
           Collapse Answers
         </BtnWrapper>
       )}
+      <br />
     </div>
   );
 }

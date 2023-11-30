@@ -19,7 +19,7 @@ const Wrapper = styled.form`
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  overflow-y: scroll;
+  overflow: auto;
 
   textarea {
     resize: none;

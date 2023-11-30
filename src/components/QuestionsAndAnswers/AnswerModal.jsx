@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import UploadPhoto from '../RatingAndReviews/ReviewForm/UploadPhoto.jsx'; //eslint-disable-line
 
 const FormWrapper = styled.form`
@@ -50,29 +51,6 @@ const SuccessWrapper = styled.h2`
   color: green;
 `;
 
-const ExitButton = styled.button`
-  background: #000000;
-  display: table;
-  position: relative;
-  top: -520px;
-  right: -540px;
-  width: 35px;
-  height: 35px;
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 14px;
-  opacity: 1;
-  transition: background 0.2s ease;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
 function AnswerModal({ productName, questionBody, questionId, closeModal }) {
   //eslint-disable-line
   const [body, setBody] = useState('');
@@ -106,10 +84,11 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
         )
         .then(() => {
           setSubmitted(true);
-          console.log('Posted');
+          toast.success('Successfully Posted');
+          closeModal();
         })
         .catch((err) => {
-          console.error('Error adding answer:', err);
+          toast.error('Error adding answer:', err);
         });
     }
   };
@@ -119,12 +98,12 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       {submitted ? (
         <SuccessWrapper>Successfully submitted!</SuccessWrapper>
       ) : null}
-      <h3>Submit your Answer</h3>
+      <h3>Submit Your Answer</h3>
       <Subtitle>
         {productName}: {questionBody}
       </Subtitle>
       <LabelWrapper>
-        Your Answer
+        Your answer
         <span style={{ color: 'red' }}> *</span>
       </LabelWrapper>
       <textarea
@@ -159,7 +138,6 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       <div>For authentication reasons, you will not be emailed</div>
       <UploadPhoto images={images} handleImageChange={handleImageChange} />
       <BtnWrapper type="submit">Submit</BtnWrapper>
-      <ExitButton onClick={closeModal}>X</ExitButton>
     </FormWrapper>
   );
 }
