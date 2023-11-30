@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const FormWrapper = styled.form`
   background: white;
@@ -75,10 +76,11 @@ function QuestionModal({ productName, productId, closeModal}) {
       )
       .then(() => {
         setSubmitted(true);
-        console.log('Posted');
+        toast.success('Successfully Posted');
+        closeModal();
       })
       .catch((err) => {
-        console.error('Error adding question:', err);
+        toast.error('Error adding question:', err);
       });
   };
 

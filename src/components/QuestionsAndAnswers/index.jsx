@@ -33,7 +33,6 @@ const BtnWrapper = styled.button`
   text-align: center;
   cursor: pointer;
   overflow: hidden;
-  margin-left: 25%
   &:hover {
     opacity: 0.5;
   }
@@ -95,7 +94,7 @@ function QuestionsAndAnswers({ productId, productInfo }) {
   }, [productId, displayNum]);
   return (
     <>
-      <h2 style={{ margin: '24px 64px', paddingLeft: '30px' }}>QUESTIONS & ANSWERS </h2>
+      <h2 style={{ margin: '60px 64px 20px' }}>QUESTIONS & ANSWERS </h2>
       <SearchBar
         type="search"
         placeholder="Have a question? Search for answers..."
@@ -107,7 +106,7 @@ function QuestionsAndAnswers({ productId, productInfo }) {
         currentQuestions={currentQuestions}
         productName={productInfo}
       />
-      <div style={{ margin: '24px 64px', paddingLeft: '30px' }}>
+      <div style={{ margin: '24px 64px' }}>
         {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
           <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
             More Answered Questions

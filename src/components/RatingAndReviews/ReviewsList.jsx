@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   padding: 24px 32px;
   padding-left: 43px;
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow: auto;
 `;
 
 const FilterWrapper = styled.div`

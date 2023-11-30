@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import UploadPhoto from '../RatingAndReviews/ReviewForm/UploadPhoto.jsx'; //eslint-disable-line
 
 const FormWrapper = styled.form`
@@ -83,10 +84,11 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
         )
         .then(() => {
           setSubmitted(true);
-          console.log('Posted');
+          toast.success('Successfully Posted');
+          closeModal();
         })
         .catch((err) => {
-          console.error('Error adding answer:', err);
+          toast.error('Error adding answer:', err);
         });
     }
   };
