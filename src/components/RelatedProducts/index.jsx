@@ -190,7 +190,7 @@ function RelatedProducts({
     <>
       <div className="row-related-title">
         <h2>
-          <b>Related Products</b>
+          <b>RELATED PRODUCTS</b>
         </h2>
       </div>
       <div className="row-related-product">
@@ -205,7 +205,7 @@ function RelatedProducts({
       </div>
       <div className="row-outift-title">
         <h2>
-          <b>Your Outfit</b>
+          <b>YOUR OUTFITS</b>
         </h2>
       </div>
       <div className="row-outfit-product">
