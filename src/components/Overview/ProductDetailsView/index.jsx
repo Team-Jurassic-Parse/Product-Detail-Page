@@ -35,10 +35,10 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }
     margin-bottom: 10px;
   `;
 
-  const ProductName = styled.h2`
+  const ProductName = styled.h1`
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 30px;
+    text-transform: uppercase;
   `;
   const ProductDescription = styled.p`
     margin-top: 10px;

@@ -28,7 +28,7 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, current
 
   return (
     <div>
-      <h3>{currentStyle && currentStyle.name}</h3> {/*eslint-disable-line*/}
+      <h3 style={{textTransform: 'uppercase'}}>{currentStyle && currentStyle.name}</h3> {/*eslint-disable-line*/}
       <StyleSelector>
         {productStyles
           && productStyles.results.map( // eslint-disable-line
