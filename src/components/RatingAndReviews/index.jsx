@@ -8,7 +8,8 @@ import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint
 import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
 
 const Wrapper = styled.div`
-  margin: 24px 64px;
+  margin: 60px auto;
+  padding: 0 30px;
 
   h2 {
     text-transform: uppercase;

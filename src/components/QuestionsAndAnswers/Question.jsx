@@ -28,7 +28,7 @@ const OuterWrapper = styled.div`
 const InnerWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 70% 30%;
 `;
 
 const AddAnswerBtn = styled.button`
@@ -133,6 +133,7 @@ function Question({
             style={{
               display: 'inline-block',
               textAlign: 'right',
+              paddingRight: '32px',
               // alignContent: 'right',
               // justifyItems: 'end',
             }}

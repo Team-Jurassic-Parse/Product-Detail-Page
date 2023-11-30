@@ -5,11 +5,10 @@ import Question from './Question.jsx'; //eslint-disable-line
 const Wrapper = styled.div`
   background: white;
   max-height: 80vh;
-  padding: 4px 4px;
   overflow: auto;
-  width: 90%;
-  margin: 0px 64px;
-  padding-left: 30px;
+  margin: 24px auto;
+  padding: 0 30px;
+  padding-left: 75px;
 `;
 
 function QuestionsList({ questions, currentQuestions, query, productName}) { //eslint-disable-line

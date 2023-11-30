@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
 const AnswerWrapper = styled.div`
-  font-size: 16px;
   font-weight: normal;
   padding: 5px;
 `;
