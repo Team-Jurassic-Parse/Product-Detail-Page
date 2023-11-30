@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import toast from 'react-hot-toast';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
 const AnswerWrapper = styled.div`
@@ -25,6 +26,7 @@ function Answers({ answer }) {
         .then(() => {
           setHelpfulness(helpfulness + 1);
           setHelpful(true);
+          toast.success('Upvote Successful');
         })
         .catch((err) => console.error(err));
     }
@@ -33,7 +35,10 @@ function Answers({ answer }) {
   const handleReport = (id) => {
     if (!reported) {
       useServerFetch('put', `qa/answers/${id}/report`, {})
-        .then(() => setReported(true))
+        .then(() => {
+          setReported(true);
+          toast.success('Report Successful');
+        })
         .catch((err) => console.error(err));
     }
   };
@@ -67,6 +72,7 @@ function Answers({ answer }) {
           style={{
             textDecoration: helpful ? 'none' : 'underline',
             cursor: helpful ? 'default' : 'pointer',
+            opacity: helpful? '0.5' : 'default',
          }}
           onClick={() => {
             handleHelpful(answer.answer_id);
@@ -80,6 +86,7 @@ function Answers({ answer }) {
           style={{
             textDecoration: reported ? 'none' : 'underline',
             cursor: reported ? 'default' : 'pointer',
+            opacity: reported? '0.5' : 'default'
           }}
           onClick={() => {
             handleReport(answer.answer_id);
