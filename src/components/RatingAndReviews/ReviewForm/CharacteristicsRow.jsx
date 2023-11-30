@@ -1,27 +1,25 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
 
-// const Wrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 6px;
-//   padding: 8px 12px;
-//   span {
-//     flex-shrink: 0;
-//     text-transform: capitalize;
-//     font-weight: bold;
-//     padding-right: 16px;
-//   }
-// `;
-
 const CharText = styled.span`
   border-right: 1px solid #e5e7eb;
   text-transform: capitalize;
+  font-weight: bold;
+  align-self: center;
+  justify-self: center;
 `;
 
 const GroupWrapper = styled.div`
   border-right: 1px solid #e5e7eb;
   padding: 0 6px;
+  input {
+    align-self: center;
+    justify-self: center;
+  }
+  label {
+    align-self: center;
+    justify-self: center;
+  }
 `;
 
 function CharacteristicsRow({ char, handleChange, charString, description }) { // eslint-disable-line
