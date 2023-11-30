@@ -20,15 +20,15 @@ import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-lin
 // `;
 
 const OuterWrapper = styled.div`
-  background: white;
   margin-top: 10px;
   margin-bottom: 10px;
   border-bottom: 2px solid #D3D3D3;
 `;
 
 const InnerWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 60% 40%;
 `;
 
 const AddAnswerBtn = styled.button`
@@ -127,22 +127,27 @@ function Question({
           <h3>
             Q: {question.question_body}
           </h3>
-          <span
+          <div
             style={{
-              fontWeight: 'normal',
-              fontSize: '16px',
-              position: 'relative',
-              left: '90px',
-              textDecoration: helpful ? 'none' : 'underline',
-              cursor: helpful ? 'default' : 'pointer',
-            }}
-            onClick={() => {
-              handleHelpful(questionId);
+              display: 'inline-block',
+              // alignContent: 'right',
+              // justifyItems: 'end',
             }}
           >
-            Helpful? ({helpfulness})
-          </span>
-          <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+            <div
+              style={{
+                textDecoration: helpful ? 'none' : 'underline',
+                cursor: helpful ? 'default' : 'pointer',
+                float: 'right',
+              }}
+              onClick={() => {
+                handleHelpful(questionId);
+              }}
+            >
+              Helpful? ({helpfulness})
+            </div>
+            <AddAnswerBtn onClick={openModal}>Add Answer</AddAnswerBtn>
+          </div>
         </InnerWrapper>
         <AnswersList
           currentAnswers={currentAnswers}
