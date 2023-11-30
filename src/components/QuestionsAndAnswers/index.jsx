@@ -14,7 +14,7 @@ const SearchBar = styled.input`
   padding: 10px;
   border-radius: 50px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-  margin-left: 20%
+  margin: 5px 64px;
 `;
 
 const BtnWrapper = styled.button`
@@ -39,7 +39,7 @@ const BtnWrapper = styled.button`
   }
 `;
 
-function QuestionsAndAnswers({ productId }) {
+function QuestionsAndAnswers({ productId, productInfo }) {
   //eslint-disable-line
   const [questions, setQuestions] = useState([]);
   const [totalQuestions, setTotalQuestions] = useState(0);
@@ -95,7 +95,7 @@ function QuestionsAndAnswers({ productId }) {
   }, [productId, displayNum]);
   return (
     <>
-      <h2 style={{ marginLeft: '20%' }}>QUESTIONS & ANSWERS </h2>
+      <h2 style={{ margin: '24px 64px', paddingLeft: '30px' }}>QUESTIONS & ANSWERS </h2>
       <SearchBar
         type="search"
         placeholder="Have a question? Search for answers..."
@@ -105,8 +105,9 @@ function QuestionsAndAnswers({ productId }) {
         questions={questions}
         query={query}
         currentQuestions={currentQuestions}
+        productName={productInfo}
       />
-      <div style={{ marginLeft: '20%' }}>
+      <div style={{ margin: '24px 64px', paddingLeft: '30px' }}>
         {totalQuestions > 2 && currentQuestions.length < totalQuestions && (
           <BtnWrapper type="button" onClick={handleMoreAnsweredQuestions}>
             More Answered Questions
@@ -117,7 +118,11 @@ function QuestionsAndAnswers({ productId }) {
         </BtnWrapper>
         {showForm && (
           <Modal handleClose={closeModal}>
-            <QuestionModal productName="placeholder" productId={productId} closeModal={closeModal} />
+            <QuestionModal
+              productName={productInfo}
+              productId={productId}
+              closeModal={closeModal}
+            />
           </Modal>
         )}
       </div>

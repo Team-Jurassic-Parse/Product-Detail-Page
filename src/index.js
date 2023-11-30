@@ -88,7 +88,9 @@ function App() {
           productInfo={productInfo}
           productStyles={productStyles}
         />
-        <QuestionsAndAnswers productId={productId} />
+        <QuestionsAndAnswers productId={productId}
+          productInfo={productInfo?.name}
+        />
         <RatingAndReviews
           productId={productId}
           productReview={productReview}

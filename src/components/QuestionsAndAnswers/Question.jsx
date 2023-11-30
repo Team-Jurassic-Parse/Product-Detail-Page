@@ -33,7 +33,9 @@ const InnerWrapper = styled.div`
 
 const AddAnswerBtn = styled.button`
   background: #000000;
-  display: table;
+  display: inline-block;
+  margin-top: 25px;
+  margin-bottom: 25px;
   width: 110px;
   height: 30px;
   color: #fff;
@@ -52,7 +54,7 @@ const AddAnswerBtn = styled.button`
 function Question({
   question,
   questionId,
-  productName = 'placeholder product name',
+  productName,
 }) {
   //eslint-disable-line
   const [showForm, setShowForm] = useState(false);
@@ -130,6 +132,7 @@ function Question({
           <div
             style={{
               display: 'inline-block',
+              textAlign: 'right',
               // alignContent: 'right',
               // justifyItems: 'end',
             }}
@@ -139,6 +142,9 @@ function Question({
                 textDecoration: helpful ? 'none' : 'underline',
                 cursor: helpful ? 'default' : 'pointer',
                 float: 'right',
+                marginTop: '27px',
+                marginBottom: '25px',
+                marginLeft: '10px',
               }}
               onClick={() => {
                 handleHelpful(questionId);
