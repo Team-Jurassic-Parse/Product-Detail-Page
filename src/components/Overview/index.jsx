@@ -20,7 +20,14 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
 
   useEffect(() => {
     setView('default');
+    setCurrentImg(0);
+    setStart(0);
   }, [productId]);
+
+  useEffect(() => {
+    setCurrentImg(0);
+    setStart(0);
+  }, [styleId]);
 
   const defaultOverviewLayoutStyle = {
     display: 'grid',
