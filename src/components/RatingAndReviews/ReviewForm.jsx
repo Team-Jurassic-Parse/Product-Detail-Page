@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import FormHeading from './ReviewForm/FormHeading.jsx'; // eslint-disable-line
 import OverallRating from './ReviewForm/OverallRating.jsx'; // eslint-disable-line
 import Recomended from './ReviewForm/Recomended.jsx'; // eslint-disable-line
@@ -29,6 +30,11 @@ const Wrapper = styled.form`
 const ReviewSummary = styled.textarea``;
 const ReviewBody = styled.textarea``;
 const InfoInput = styled.input``;
+const ButtonWrapperWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 function ReviewForm({ productName, productId, currentCharacteristics }) { // eslint-disable-line
 
@@ -96,13 +102,13 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
           },
         },
       )
-      .then((res) => {
+      .then(() => {
         setIsSubmitting(false);
-        alert(JSON.stringify(res)); // FIXME: GIVE A SUCCESS TOAST
+        toast.success('Your form is successfully submitted');
       })
       .catch((err) => {
         setIsSubmitting(false);
-        alert(err.message); // FIXME: GIVE A Error TOAST
+        toast.error(err.message);
       });
   };
 
@@ -155,12 +161,15 @@ function ReviewForm({ productName, productId, currentCharacteristics }) { // esl
           />
         </>
       )}
-      <ButtonWrapper
-        as="input"
-        type="submit"
-        value={isSubmitting ? 'Submitting...' : 'Submit'}
-        disabled={isSubmitting}
-      />
+      <ButtonWrapperWrapper>
+        <ButtonWrapper
+          as="input"
+          type="submit"
+          width="120px"
+          value={isSubmitting ? 'Submitting...' : 'Submit'}
+          disabled={isSubmitting}
+        />
+      </ButtonWrapperWrapper>
     </Wrapper>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import toast from 'react-hot-toast';
 import useServerFetch from '../../../hooks/useServerFetch.js' // eslint-disable-line
 
 const Wrapper = styled.div`
@@ -35,11 +36,11 @@ export default function ReviewCardHelpfulness({ reviewId, helpfulness }) { // es
   const handleClickYes = () => {
     setClicked(true);
     useServerFetch('put', `reviews/${reviewId}/helpful`, {})
-      .then((res) => {
+      .then(() => {
         setLocalHelpfulness((cur) => cur + 1);
-        console.log(res);
-      }) // FIXME: toast
-      .catch((err) => console.log(err)); // FIXME: toast
+        toast.success('Upvote cuccess');
+      })
+      .catch((err) => toast.error(err?.message));
   };
 
   return (

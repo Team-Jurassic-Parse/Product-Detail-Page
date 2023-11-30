@@ -16,6 +16,7 @@ import styled from 'styled-components';
 
 const CharText = styled.span`
   border-right: 1px solid #e5e7eb;
+  text-transform: capitalize;
 `;
 
 const GroupWrapper = styled.div`
