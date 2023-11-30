@@ -66,7 +66,7 @@ function OutfitList({
     },
     tablet: {
       breakpoint: { max: 1200, min: 700 },
-      items: 1,
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 700, min: 0 },

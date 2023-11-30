@@ -23,6 +23,11 @@
   text-align: center;
   font-family: arial;
   border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
 .row-related-product {

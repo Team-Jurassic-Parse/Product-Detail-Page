@@ -34,18 +34,21 @@ function RelatedProductsList({
   const relatedItemsArray = Object.values(relatedItems.relatedItems);
 
   return (
-    <Carousel responsive={responsive} swipeable={false} draggable={false}>
+    <Carousel
+      responsive={responsive}
+      swipeable={false}
+      draggable={false}
+      autoPlay={true}
+      rewind={true}
+      rewindWithAnimation={true}
+      autoPlaySpeed={7000}
+    >
       {relatedItemsArray.map((relatedList) => (
         <div
           className="card"
           key={relatedList.id}
           data-key={relatedList.id}
           onClick={onClickRelatedProduct}
-          autoPlay={true}
-          autoPlay={true}
-          rewind={true}
-          rewindWithAnimation={true}
-          autoPlaySpeed={7000}
         >
           <div className="product-container">
             {relatedList.photos && relatedList.photos.length > 0 ? (
