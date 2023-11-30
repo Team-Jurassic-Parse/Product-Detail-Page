@@ -11,7 +11,7 @@ import {
 import { calculateAverageRating }  from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
 import StarsRating from '../../ReviewStars/StarsRating.jsx' // eslint-disable-line
 
-function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }) { // eslint-disable-line
+function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, view }) { // eslint-disable-line
   const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
 
   const averageStars = React.useMemo(() => (
@@ -40,11 +40,12 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }
     margin-bottom: 10px;
     text-transform: uppercase;
   `;
+
   const ProductDescription = styled.p`
     margin-top: 10px;
     margin-bottom: 10px;
-    max-height: 10.5vh;
-    overflow-y: scroll;
+    max-height: calc(30vh - 215px);
+    overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -59,7 +60,7 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview }
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: view === 'expanded' ? '30px' : '0px' }}>
       {productInfo && (
         <>
           {averageStars ? <StyledStarsRating stars={averageStars}/> : <div>Loading...</div>} {/*eslint-disable-line*/}

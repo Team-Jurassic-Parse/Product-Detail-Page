@@ -56,7 +56,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
   };
 
   const imageViewStyle = {
-    marginRight: '20px',
+    marginRight: view === 'default' ? '20px' : '0px',
     backgroundColor: 'lightgray',
     overflow: 'hidden',
     display: 'grid',
@@ -134,6 +134,8 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
     color: '#fffffa0',
     background: 'none',
     left: 'calc(100% - 50px)',
+    top: '3px',
+    transform: 'scale(1.2, 1)',
   };
 
   return (
@@ -169,7 +171,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
                 setStart(start - 1);
               }}
             >
-              ˄
+              <p style={{ transform: 'scale(2, 1)' }}>˄</p>
             </button>
           ) : <div style={{ visibility: 'hidden', backgroundColor: 'transparent', color: 'transparent' }} />}
           {displayedThumbnails.map((item, index) => (
@@ -203,7 +205,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
                 }}
                 type="button"
               >
-                ˅
+                <p style={{ transform: 'scale(2, 1)' }}>˅</p>
               </button>
             )}
         </div>
@@ -216,7 +218,15 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
               setCurrentImg(currentImg + 1);
             }}
           >
-            {'>'}
+            <p style={{
+              transform: 'scale(1, 1.5)',
+              position: 'relative',
+              top: '-30px',
+              left: '2px',
+            }}
+            >
+              {'>'}
+            </p>
           </button>
         )}
         {currentStyle.photos && currentImg > 0 && ( // eslint-disable-line
@@ -228,7 +238,15 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
               setCurrentImg(currentImg - 1);
             }}
           >
-            {'<'}
+            <p style={{
+              transform: 'scale(1, 1.5)',
+              position: 'relative',
+              top: '-30px',
+              right: '2px',
+            }}
+            >
+              {'<'}
+            </p>
           </button>
         )}
         {view === "expanded" && ( // eslint-disable-line

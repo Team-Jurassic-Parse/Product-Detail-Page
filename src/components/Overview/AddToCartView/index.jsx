@@ -4,7 +4,7 @@ import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable
 import ButtonWrapper from '../../UI/StyledButton.js' // eslint-disable-line
 import AddToCartForm from './AddToCartForm.jsx'; // eslint-disable-line
 
-function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
+function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
   const [selectedSku, setSelectedSku] = React.useState(null);
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [quantity, setQuantity] = React.useState(0);
@@ -59,7 +59,7 @@ function UnstyledAddToCartView({ currentStyle }) { // eslint-disable-line
   `;
 
   return (
-    <div>
+    <div style={{ marginRight: view === 'expanded' ? '30px' : '0px', marginTop: view === 'expanded' ? '50px' : '0px' }}>
       {currentStyle && currentStyle.skus ? ( // eslint-disable-line
         <AddToCartForm style={{}} onSubmit={(e) => { // eslint-disable-line
           e.preventDefault();
