@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import toast from 'react-hot-toast';
 import AnswersList from './AnswersList.jsx'; //eslint-disable-line
 import AnswerModal from './AnswerModal.jsx'; // eslint-disable-line
 import Modal from '../UI/Modal.jsx'; // eslint-disable-line
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
-
-// const Wrapper = styled.div`
-// background: white;
-// padding: 10px 25px;
-// font-size: 19px;
-// font-weight: bold;
-// `;
-
-// const HelpfulWrapper = styled.span`
-//   font-weight: normal;
-//   font-size: 16px;
-//   text-decoration: ${helpful ? 'none' : 'underline'};
-//   cursor: ${helpful ? 'default' : 'point'};
-// `;
 
 const OuterWrapper = styled.div`
   margin-top: 10px;
@@ -89,6 +76,7 @@ function Question({
         .then(() => {
           setHelpfulness(helpfulness + 1);
           setHelpful(true);
+          toast.success('Upvote Successful');
         })
         .catch((err) => console.error(err));
     }
@@ -152,6 +140,7 @@ function Question({
               Helpful? <span style={{
                 textDecoration: helpful ? 'none' : 'underline',
                 cursor: helpful ? 'default' : 'pointer',
+                opacity: helpful? '0.5' : 'default'
                 }}>
                 Yes</span>
                 {' '}({helpfulness})
