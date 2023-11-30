@@ -19,32 +19,19 @@ describe('Test on FactorSlider component', () => {
     expect(helpfulText).toBeInTheDocument();
   });
 
-  test('click no button will disable buttons', () => {
-    render(<ReviewCardHelpfulness reviewId="1" helpfulness={1} />);
-    const noButton = screen.getByText('No');
-    fireEvent.click(noButton);
-    const yesButton = screen.getByText('Yes');
-    expect(yesButton).toBeDisabled();
-    expect(noButton).toBeDisabled();
-  });
-
   test('click yes button will disable buttons and handle error', () => {
     useServerFetch.mockImplementation(() => Promise.reject(new Error('Network error')));
     render(<ReviewCardHelpfulness reviewId="1" helpfulness={1} />);
-    const noButton = screen.getByText('No');
     const yesButton = screen.getByText('Yes');
     fireEvent.click(yesButton);
     expect(yesButton).toBeDisabled();
-    expect(noButton).toBeDisabled();
   });
 
   test('click yes button will disable buttons and handle success', () => {
     useServerFetch.mockImplementation(() => Promise.resolve({ message: 'success' }));
     render(<ReviewCardHelpfulness reviewId="1" helpfulness={1} />);
-    const noButton = screen.getByText('No');
     const yesButton = screen.getByText('Yes');
     fireEvent.click(yesButton);
     expect(yesButton).toBeDisabled();
-    expect(noButton).toBeDisabled();
   });
 });

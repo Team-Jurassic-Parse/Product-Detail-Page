@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -476,5 +474,3 @@ test('renders OutfitList component with outfits and handles interactions', () =>
   fireEvent.click(addButton);
   expect(onClickAddOutfits).toHaveBeenCalled();
 });
-
-jest.mock('../../hooks/useServerFetch');

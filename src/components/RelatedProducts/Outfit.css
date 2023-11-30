@@ -25,6 +25,11 @@
   text-align: center;
   font-family: arial;
   border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.outfit-card:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
 .row-outfit-product {
@@ -35,7 +40,7 @@
 }
 
 .outfit-carousel-container {
-  width: 50%;
+  width: 75%;
   margin: auto;
   height: auto;
 }
@@ -103,7 +108,7 @@
 .remove-button {
   position: absolute;
   top: 15px;
-  right: 25px;
+  right: 15px;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -114,7 +119,7 @@
 
 .remove-icon {
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   padding: 5px;
 }
 
@@ -127,6 +132,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 .add-icon {
@@ -168,10 +174,14 @@
 }
 
 .add-button:hover {
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); /* Adjust the values for the glowing effect */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width: 2000px) {
+.outfit-product-container {
+  position: relative;
+}
+
+/* @media screen and (max-width: 2000px) {
   .outfit-card,
   .add-button {
     flex: 0 0 calc(33.33% - 2rem);
@@ -190,4 +200,4 @@
   .add-button {
     flex: 0 0 calc(100% - 2rem);
   }
-}
+} */
