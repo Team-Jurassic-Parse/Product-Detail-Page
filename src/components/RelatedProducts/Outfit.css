@@ -180,24 +180,3 @@
 .outfit-product-container {
   position: relative;
 }
-
-/* @media screen and (max-width: 2000px) {
-  .outfit-card,
-  .add-button {
-    flex: 0 0 calc(33.33% - 2rem);
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .outfit-card,
-  .add-button {
-    flex: 0 0 calc(50% - 2rem);
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .outfit-card,
-  .add-button {
-    flex: 0 0 calc(100% - 2rem);
-  }
-} */

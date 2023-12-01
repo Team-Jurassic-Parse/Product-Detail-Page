@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import toast from "react-hot-toast";
-import useServerFetch from "../../hooks/useServerFetch.js";
-import RelatedProductsList from "./RelatedProductsList.jsx";
-import OutfitList from "./OutfitList.jsx";
-import "./RelatedProducts.css";
-import "./Outfit.css";
-import "./ComparisonTable.css";
-import ComparisonTable from "./ComparisonTable.jsx";
-import { calculateAverageRating } from "../ReviewStars/ProductStarRating.jsx";
+import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
+import useServerFetch from '../../hooks/useServerFetch.js';
+import RelatedProductsList from './RelatedProductsList.jsx';
+import OutfitList from './OutfitList.jsx';
+import './RelatedProducts.css';
+import './Outfit.css';
+import './ComparisonTable.css';
+import ComparisonTable from './ComparisonTable.jsx';
+import { calculateAverageRating } from '../ReviewStars/ProductStarRating.jsx';
 
 function RelatedProducts({
   productId,
@@ -19,7 +19,7 @@ function RelatedProducts({
 }) {
   const [relatedItems, setRelatedItems] = useState(null);
   const [outfits, setOutfits] = useState(() => {
-    const storedOutfits = localStorage.getItem("userOutfits");
+    const storedOutfits = localStorage.getItem('userOutfits');
     return storedOutfits ? JSON.parse(storedOutfits) : null;
   });
   const [currentId, setcurrentId] = useState(null);
@@ -34,7 +34,7 @@ function RelatedProducts({
     if (productId && productId !== 40353 && productId !== 40345) {
       try {
         const res = await useServerFetch(
-          "get",
+          'get',
           `products/${productId}/related`,
           {},
           relatedFetchController
@@ -64,19 +64,19 @@ function RelatedProducts({
             .map(async (id) => {
               const [productData, stylesData, ratingsData] = await Promise.all([
                 useServerFetch(
-                  "get",
+                  'get',
                   `products/${id}`,
                   {},
                   productIdFetchController
                 ).then((res2) => res2.data),
                 useServerFetch(
-                  "get",
+                  'get',
                   `products/${id}/styles`,
                   {},
                   stylesFetchController
                 ).then((res3) => res3.data.results),
                 useServerFetch(
-                  "get",
+                  'get',
                   `reviews/meta?product_id=${id}`,
                   {},
                   starFetchController
@@ -111,7 +111,7 @@ function RelatedProducts({
 
         setRelatedItems({ relatedItems: mergedItems });
       } catch (err) {
-        console.error("Error fetching related items", err);
+        console.error('Error fetching related items', err);
       }
     }
   };
@@ -128,17 +128,17 @@ function RelatedProducts({
 
   useEffect(() => {
     if (outfits) {
-      localStorage.setItem("userOutfits", JSON.stringify(outfits));
+      localStorage.setItem('userOutfits', JSON.stringify(outfits));
     }
   }, [outfits]);
 
   const onClickRelatedProduct = (e) => {
-    const currentProductId = e.currentTarget.getAttribute("data-key");
+    const currentProductId = e.currentTarget.getAttribute('data-key');
     if (currentProductId) {
       setProductId(currentProductId);
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -161,7 +161,7 @@ function RelatedProducts({
       );
       return outfitsData;
     }
-    console.error("Style not found for style_id: ", styleId);
+    console.error('Style not found for style_id: ', styleId);
     return null;
   };
 
@@ -172,11 +172,7 @@ function RelatedProducts({
         ...prevState,
         ...outfitsData,
       }));
-      toast.success("Successfully added outfit");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      toast.success('Successfully added outfit');
     }
   };
 
