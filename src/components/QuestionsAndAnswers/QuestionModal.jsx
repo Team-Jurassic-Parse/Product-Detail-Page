@@ -46,10 +46,6 @@ const BtnWrapper = styled.button`
   }
 `;
 
-const SuccessWrapper = styled.h2`
-  color: green;
-`;
-
 function QuestionModal({ productName, productId, closeModal}) {
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
@@ -90,7 +86,7 @@ function QuestionModal({ productName, productId, closeModal}) {
       </Subtitle>
       <LabelWrapper>
         Your question
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <textarea
         style={{ height: '100px', resize: 'none' }}
@@ -101,7 +97,7 @@ function QuestionModal({ productName, productId, closeModal}) {
       />
       <LabelWrapper>
         What is your nickname
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <input
         type="text"
@@ -113,7 +109,7 @@ function QuestionModal({ productName, productId, closeModal}) {
       <div>For privacy reasons, do not use your full name or email address</div>
       <LabelWrapper>
         Your email
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <input
         type="email"

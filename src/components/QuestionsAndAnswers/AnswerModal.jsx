@@ -99,7 +99,7 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       </Subtitle>
       <LabelWrapper>
         Your answer
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <textarea
         style={{ height: '100px', resize: 'none' }}
@@ -109,7 +109,7 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       />
       <LabelWrapper>
         What is your nickname
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <input
         type="text"
@@ -121,7 +121,7 @@ function AnswerModal({ productName, questionBody, questionId, closeModal }) {
       <div>For privacy reasons, do not use your full name or email address</div>
       <LabelWrapper>
         Your email
-        <span style={{ color: 'red' }}> *</span>
+        <span style={{ color: '#AD0101' }}> *</span>
       </LabelWrapper>
       <input
         type="email"
