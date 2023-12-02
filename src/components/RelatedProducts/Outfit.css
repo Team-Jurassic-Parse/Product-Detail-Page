@@ -82,7 +82,7 @@
   letter-spacing: 0.03em;
 }
 
-.outfit-card h3 {
+.outfit-card h2 {
   font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -90,7 +90,7 @@
   text-transform: none;
 }
 
-.outfit-card h2 {
+.outfit-card h3 {
   font-size: 1.1rem;
   letter-spacing: 0.03em;
   line-height: 1;

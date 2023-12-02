@@ -136,8 +136,8 @@ function OutfitList({
                     />
                   </div>
                 </div>
-                <h3>{outfitsList.category}</h3>
-                <h2>{outfitsList.name}</h2>
+                <h2>{outfitsList.category}</h2>
+                <h3>{outfitsList.name}</h3>
                 <h4>
                   {outfitsList.sale_price ? (
                     <>
@@ -145,11 +145,12 @@ function OutfitList({
                         style={{
                           textDecoration: 'line-through',
                           marginRight: '5px',
+                          color: '#000000',
                         }}
                       >
-                        ${outfitsList.default_price}
+                        ${outfitsList.default_price}{' '}
                       </span>
-                      <span style={{ color: 'red' }}>
+                      <span style={{ color: '#AD0101' }}>
                         ${outfitsList.sale_price}
                       </span>
                     </>

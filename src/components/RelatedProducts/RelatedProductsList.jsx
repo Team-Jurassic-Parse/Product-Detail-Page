@@ -88,17 +88,17 @@ function RelatedProductsList({
               />
             </div>
           </div>
-          <h3>{relatedList.category}</h3>
-          <h2>{relatedList.name}</h2>
+          <h2>{relatedList.category}</h2>
+          <h3>{relatedList.name}</h3>
           <h4>
             {relatedList.sale_price ? (
               <>
                 <span
-                  style={{ textDecoration: 'line-through', marginRight: '5px' }}
+                  style={{ textDecoration: 'line-through', marginRight: '5px', color: '#000000' }}
                 >
-                  ${relatedList.default_price}
+                  ${relatedList.default_price}{' '}
                 </span>
-                <span style={{ color: 'red' }}>${relatedList.sale_price}</span>
+                <span style={{ color: '#AD0101' }}>${relatedList.sale_price}</span>
               </>
             ) : (
               `$${relatedList.default_price}`
