@@ -48,10 +48,6 @@ const FilterSelector = styled.select`
   border: none;
   border-bottom: 1px solid #000;
   font-size: 16px;
-  color: #000;
-  background-image: url('path-to-your-down-arrow-icon.svg');
-  background-repeat: no-repeat;
-  background-position: right center;
 
   &:focus {
     outline: none;
