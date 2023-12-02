@@ -62,8 +62,3 @@ This service centers around the product details page of an online retail store, 
 * Axios
 * Jest
 * AWS EC2
-
-
-# Custom Hooks Documentation
-
-* [useServerFetch](./documentation/useServerFetch.md)
