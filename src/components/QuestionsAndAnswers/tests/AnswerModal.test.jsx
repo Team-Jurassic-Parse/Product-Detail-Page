@@ -3,7 +3,7 @@ import axios from 'axios';
 import '@testing-library/jest-dom';
 import { describe, expect, it, jest } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
-import AnswerModal from '../AnswerModal.jsx'; // eslint-disable-line
+import AnswerModal from '../AnswerModal.jsx';
 
 jest.mock('axios');
 

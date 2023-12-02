@@ -4,8 +4,8 @@ import {
   describe, test, expect, jest, beforeEach,
 } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ReviewCardHelpfulness from './ReviewCardHelpfulness'; // eslint-disable-line
-import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable-line
+import ReviewCardHelpfulness from './ReviewCardHelpfulness';
+import useServerFetch from '../../../hooks/useServerFetch.js';
 
 jest.mock('../../../hooks/useServerFetch.js');
 

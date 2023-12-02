@@ -5,7 +5,7 @@ import {
   beforeEach,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import Overview from './index.jsx'; // eslint-disable-line
+import Overview from './index.jsx';
 
 describe('Overview', () => {
   beforeEach(() => {

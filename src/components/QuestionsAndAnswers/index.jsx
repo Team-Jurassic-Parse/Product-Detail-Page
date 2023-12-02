@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 import QuestionsList from './QuestionsList.jsx'; //eslint-disable-line
 import QuestionModal from './QuestionModal.jsx'; //eslint-disable-line
-import Modal from '../UI/Modal.jsx'; // eslint-disable-line
+import Modal from '../UI/Modal.jsx';
 
 const SearchBar = styled.input`
   width: 30%;

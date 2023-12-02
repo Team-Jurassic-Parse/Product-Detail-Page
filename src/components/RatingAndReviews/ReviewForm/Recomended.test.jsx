@@ -4,7 +4,7 @@ import {
   describe, test, expect, beforeEach,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import Recomended from './Recomended.jsx'; // eslint-disable-line
+import Recomended from './Recomended.jsx';
 
 describe('Recomended component test', () => {
   beforeEach(() => {

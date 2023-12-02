@@ -4,7 +4,7 @@ import {
   describe, test, expect,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import RatingAndReviews from './index.jsx'; // eslint-disable-line
+import RatingAndReviews from './index.jsx';
 
 describe('Test on RatingAndReviews Widget', () => {
   test('RatingAndReviews should be rendered in pending state', () => {

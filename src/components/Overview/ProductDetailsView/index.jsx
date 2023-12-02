@@ -8,14 +8,14 @@ import {
   FacebookIcon,
   PinterestIcon,
 } from 'react-share';
-import { calculateAverageRating }  from '../../ReviewStars/ProductStarRating.jsx'; // eslint-disable-line
-import StarsRating from '../../ReviewStars/StarsRating.jsx' // eslint-disable-line
+import { calculateAverageRating }  from '../../ReviewStars/ProductStarRating.jsx';
+import StarsRating from '../../ReviewStars/StarsRating.jsx'
 
-function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, view }) { // eslint-disable-line
-  const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle]) // eslint-disable-line
+function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, view }) {
+  const onSale = React.useMemo(() => currentStyle ? !!currentStyle.sale_price : false, [currentStyle])
 
   const averageStars = React.useMemo(() => (
-    productReview && productReview.ratings ? calculateAverageRating(productReview.ratings) : null // eslint-disable-line
+    productReview && productReview.ratings ? calculateAverageRating(productReview.ratings) : null
   ), [productReview]);
 
   const OriginalPrice = styled.a`
@@ -82,7 +82,7 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, 
             </TwitterShareButton>
             <PinterestShareButton
               url={window.location.href}
-              media={currentStyle && currentStyle.photos[0] ? currentStyle.photos[0].url : null} // eslint-disable-line
+              media={currentStyle && currentStyle.photos[0] ? currentStyle.photos[0].url : null}
               style={shareButtonStyle}
               name="PinterestShare"
             >

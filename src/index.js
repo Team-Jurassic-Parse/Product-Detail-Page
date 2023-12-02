@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 import './styles.css';
@@ -88,8 +88,7 @@ function App() {
           productInfo={productInfo}
           productStyles={productStyles}
         />
-        <QuestionsAndAnswers
-          productId={productId}
+        <QuestionsAndAnswers productId={productId}
           productInfo={productInfo?.name}
         />
         <RatingAndReviews

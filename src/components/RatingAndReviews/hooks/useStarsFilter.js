@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StarsFilterContext } from '../providers/StarsFilterProvider.jsx'; // eslint-disable-line
+import { StarsFilterContext } from '../providers/StarsFilterProvider.jsx';
 
 const useStarsFilter = () => useContext(StarsFilterContext);
 

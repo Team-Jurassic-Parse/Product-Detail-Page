@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import useServerFetch from '../../../hooks/useServerFetch.js' // eslint-disable-line
+import useServerFetch from '../../../hooks/useServerFetch.js'
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const DisableSpan = styled.span`
   color: ${(p) => (p.disabled ? '#aaa' : '#111')};
 `;
 
-export default function ReviewCardHelpfulness({ reviewId, helpfulness }) { // eslint-disable-line
+export default function ReviewCardHelpfulness({ reviewId, helpfulness }) {
   const [clicked, setClicked] = useState(false);
   const [localHelpfulness, setLocalHelpfulness] = useState(helpfulness);
 

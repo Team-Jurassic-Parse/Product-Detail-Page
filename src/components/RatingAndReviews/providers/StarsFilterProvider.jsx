@@ -2,7 +2,7 @@ import React, { createContext, useState, useCallback, useMemo } from 'react';
 
 export const StarsFilterContext = createContext();
 
-function StarsFilterProvider({ children }) { // eslint-disable-line
+function StarsFilterProvider({ children }) {
   const [starsFilter, setStarsFilter] = useState({
     1: true,
     2: true,

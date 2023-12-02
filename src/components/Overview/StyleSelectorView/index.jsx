@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyleItem from './StyleItem.jsx'; // eslint-disable-line
+import StyleItem from './StyleItem.jsx';
 
-function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, currentStyle, view }) { // eslint-disable-line
-  // eslint-disable-line
+function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, currentStyle, view }) {
+
 
   const StyleSelector = styled.div`
     display: grid;
@@ -31,9 +31,9 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, current
       <h3 style={{textTransform: 'uppercase', marginLeft: '3vw'}}>{currentStyle && currentStyle.name}</h3> {/*eslint-disable-line*/}
       <StyleSelector>
         {productStyles
-          && productStyles.results.map( // eslint-disable-line
+          && productStyles.results.map(
             (
-              style // eslint-disable-line
+              style
             ) => (
               <StyleItem
                 item={style}

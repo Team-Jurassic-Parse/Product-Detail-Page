@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CharacteristicsRow from './CharacteristicsRow.jsx'; // eslint-disable-line
-import descriptioinMap from '../utils/descriptioinMap.js'; // eslint-disable-line
+import CharacteristicsRow from './CharacteristicsRow.jsx';
+import descriptioinMap from '../utils/descriptioinMap.js';
 
 const Wrapper = styled.fieldset`
   text-align: center;
@@ -27,7 +27,7 @@ const GripWrapper = styled.div`
   column-gap: 8px;
 `;
 
-function Characteristics({ characteristics, setCharacteristics }) { // eslint-disable-line
+function Characteristics({ characteristics, setCharacteristics }) {
 
   const handleChange = (e) => {
     setCharacteristics((cur) => ({
@@ -44,7 +44,7 @@ function Characteristics({ characteristics, setCharacteristics }) { // eslint-di
         && Object.keys(characteristics).map((key) => (
           <CharacteristicsRow
             key={key}
-            char={characteristics[key].value} // eslint-disable-line
+            char={characteristics[key].value}
             charString={key}
             handleChange={handleChange}
             description={descriptioinMap[key]}

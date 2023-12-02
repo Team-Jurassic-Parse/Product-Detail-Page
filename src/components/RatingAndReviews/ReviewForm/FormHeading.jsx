@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function FormHeading({ productName }) { // eslint-disable-line
+function FormHeading({ productName }) {
   return (
     <Wrapper>
       <h3>Review Form For:</h3>

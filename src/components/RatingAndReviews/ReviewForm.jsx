@@ -1,14 +1,13 @@
-/* eslint-disable no-restricted-syntax */
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import FormHeading from './ReviewForm/FormHeading.jsx'; // eslint-disable-line
-import OverallRating from './ReviewForm/OverallRating.jsx'; // eslint-disable-line
-import Recomended from './ReviewForm/Recomended.jsx'; // eslint-disable-line
-import Characteristics from './ReviewForm/Characteristics.jsx'; // eslint-disable-line
-import UploadPhoto from './ReviewForm/UploadPhoto.jsx'; // eslint-disable-line
-import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
+import FormHeading from './ReviewForm/FormHeading.jsx';
+import OverallRating from './ReviewForm/OverallRating.jsx';
+import Recomended from './ReviewForm/Recomended.jsx';
+import Characteristics from './ReviewForm/Characteristics.jsx';
+import UploadPhoto from './ReviewForm/UploadPhoto.jsx';
+import ButtonWrapper from '../UI/StyledButton.js';
 
 const Wrapper = styled.form`
   background: white;
@@ -44,7 +43,7 @@ const ButtonWrapperWrapper = styled.div`
   justify-content: center;
 `;
 
-function ReviewForm({ productName, productId, currentCharacteristics, handleClose }) { // eslint-disable-line
+function ReviewForm({ productName, productId, currentCharacteristics, handleClose }) {
 
   const initialCharacteristics = useMemo(() => {
     const result = {};

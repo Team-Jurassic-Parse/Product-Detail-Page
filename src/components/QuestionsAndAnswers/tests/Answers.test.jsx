@@ -3,7 +3,7 @@ import axios from 'axios';
 import '@testing-library/jest-dom';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import Answers from '../Answers.jsx'; // eslint-disable-line
+import Answers from '../Answers.jsx';
 
 describe('Answers', () => {
   const MockAnswer = {

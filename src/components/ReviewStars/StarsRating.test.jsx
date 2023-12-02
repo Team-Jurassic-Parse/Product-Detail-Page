@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, test, expect } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import StarsRating from './StarsRating.jsx'; // eslint-disable-line
+import StarsRating from './StarsRating.jsx';
 
 describe('StarsRating Component test', () => {
   test('Renders 5 stars correctly with full rating', () => {

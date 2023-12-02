@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import AnswersList from '../AnswersList.jsx'; // eslint-disable-line
+import AnswersList from '../AnswersList.jsx';
 
 describe('Answers List', () => {
   const MockAnswers = [

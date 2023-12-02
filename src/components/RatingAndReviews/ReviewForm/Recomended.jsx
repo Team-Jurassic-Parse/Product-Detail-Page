@@ -12,7 +12,7 @@ const Wrapper = styled.fieldset`
     font-size: 1.2rem;
   }
 `;
-function Recomended({ recommend, setRecommend }) { // eslint-disable-line
+function Recomended({ recommend, setRecommend }) {
   const id = useId();
   const handleChange = (e) => setRecommend(e.target.value);
 
@@ -27,7 +27,7 @@ function Recomended({ recommend, setRecommend }) { // eslint-disable-line
         checked={recommend === 'yes'}
         onChange={handleChange}
       />
-      <label htmlFor={`${id}-recomend-yes`}>Yes</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-recomend-yes`}>Yes</label>
       <br />
       <input
         id={`${id}-recomend-no`}
@@ -37,7 +37,7 @@ function Recomended({ recommend, setRecommend }) { // eslint-disable-line
         checked={recommend === 'no'}
         onChange={handleChange}
       />
-      <label htmlFor={`${id}-recomend-no`}>No</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-recomend-no`}>No</label>
     </Wrapper>
   );
 }

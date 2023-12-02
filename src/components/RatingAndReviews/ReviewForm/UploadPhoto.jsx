@@ -16,7 +16,7 @@ const Thumbnail = styled.img`
   width: 100px;
 `;
 
-function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
+function UploadPhoto({ images, handleImageChange }) {
   const id = useId();
 
   const handleInputChange = (event) => {
@@ -35,7 +35,7 @@ function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
         id={`${id}-imageInput`}
         data-testid="file-input"
       />
-      {images.length < 5 && ( // eslint-disable-line
+      {images.length < 5 && (
         <ButtonWrapper
           type="button"
           width="120px"
@@ -44,7 +44,7 @@ function UploadPhoto({ images, handleImageChange }) { // eslint-disable-line
           Upload Photo
         </ButtonWrapper>
       )}
-      {images.map((image) => (<Thumbnail key={image} src={image} alt={image} />))} {/* eslint-disable-line */}
+      {images.map((image) => (<Thumbnail key={image} src={image} alt={image} />))}
     </Wrapper>
   );
 }

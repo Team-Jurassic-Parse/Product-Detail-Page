@@ -4,7 +4,7 @@ import {
   describe, test, expect,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import OverallRating from './OverallRating.jsx'; // eslint-disable-line
+import OverallRating from './OverallRating.jsx';
 
 describe('OverallRating component test', () => {
   test('it shows the rating component', () => {

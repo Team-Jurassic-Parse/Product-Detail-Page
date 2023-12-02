@@ -4,7 +4,7 @@ import {
   describe, test, expect,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import ReviewCard from './ReviewCard.jsx'; // eslint-disable-line
+import ReviewCard from './ReviewCard.jsx';
 
 describe('Test on FactorSlider component', () => {
   test('it should render 4 fullstars when rating is 4', () => {

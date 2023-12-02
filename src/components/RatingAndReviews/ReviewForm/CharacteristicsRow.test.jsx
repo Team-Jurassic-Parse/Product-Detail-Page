@@ -4,7 +4,7 @@ import {
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import CharacteristicsRow from './CharacteristicsRow.jsx'; // eslint-disable-line
+import CharacteristicsRow from './CharacteristicsRow.jsx';
 
 describe('CharacteristicsRow component test', () => {
   test('it should render', () => {

@@ -19,7 +19,7 @@ const BarContent = styled.div`
   background: gold;
 `;
 
-function RatingBar({ rating }) { // eslint-disable-line
+function RatingBar({ rating }) {
   return (
     <BarWrapper>
       <BarContent rating={rating} />

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { test, expect, describe } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import Star from './Star.jsx'; // eslint-disable-line
+import Star from './Star.jsx';
 
 describe('Start should show different star icon with correct aria label based on fill proerty', () => {
   test('it should show an empty star div by default', () => {

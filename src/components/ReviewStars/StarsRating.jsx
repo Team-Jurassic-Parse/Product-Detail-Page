@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Star from './Star.jsx'; // eslint-disable-line
+import Star from './Star.jsx';
 
 const Wrapper = styled.div`
   display: flex;
   gap: 2px;
 `;
 
-function StarsRating({ stars }) { // eslint-disable-line
+function StarsRating({ stars }) {
   let n = stars;
   if (n < 0 || n > 5) {
     throw new Error('Input must be between 0 and 5');

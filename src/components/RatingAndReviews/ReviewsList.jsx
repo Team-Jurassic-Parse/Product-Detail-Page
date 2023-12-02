@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -59,7 +58,7 @@ const UnorderedList = styled.ul`
   padding: 0;
 `;
 
-function ReviewsList({ productId, query }) { // eslint-disable-line
+function ReviewsList({ productId, query }) {
 
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);

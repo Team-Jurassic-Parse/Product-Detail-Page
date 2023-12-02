@@ -4,7 +4,7 @@ import {
   describe, test, expect,
 } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import Factors from './Factors.jsx'; // eslint-disable-line
+import Factors from './Factors.jsx';
 
 describe('Test on Factors component', () => {
   test('it should render', () => {

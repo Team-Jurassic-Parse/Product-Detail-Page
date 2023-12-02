@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function UnstyledStyleItem({ item, setStyleId, isActive }) { // eslint-disable-line
+function UnstyledStyleItem({ item, setStyleId, isActive }) {
   return (
     <div style={{
       width: '100%',
@@ -13,7 +13,7 @@ function UnstyledStyleItem({ item, setStyleId, isActive }) { // eslint-disable-l
       borderStyle: isActive ? 'solid' : 'none',
     }}
     >
-      <img // eslint-disable-line
+      <img
         style={{
           width: '90%',
           aspectRatio: '1',
@@ -23,9 +23,9 @@ function UnstyledStyleItem({ item, setStyleId, isActive }) { // eslint-disable-l
           marginTop: 'calc(5% + 1px)',
           cursor: 'pointer',
         }}
-        src={item.photos[0].thumbnail_url} // eslint-disable-line
-        alt={item.style_id} // eslint-disable-line
-        onClick={() => setStyleId(item.style_id)} // eslint-disable-line
+        src={item.photos[0].thumbnail_url}
+        alt={item.style_id}
+        onClick={() => setStyleId(item.style_id)}
       />
     </div>
   );

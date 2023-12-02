@@ -3,7 +3,7 @@ import axios from 'axios';
 import '@testing-library/jest-dom';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import QuestionModal from '../QuestionModal.jsx'; // eslint-disable-line
+import QuestionModal from '../QuestionModal.jsx';
 
 describe('Question Modal', () => {
   it('should render the Modal', () => {

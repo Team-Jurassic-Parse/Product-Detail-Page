@@ -5,7 +5,7 @@ import {
   describe, test, expect, jest,
 } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ReviewForm from './ReviewForm'; // eslint-disable-line
+import ReviewForm from './ReviewForm';
 
 jest.mock('axios');
 

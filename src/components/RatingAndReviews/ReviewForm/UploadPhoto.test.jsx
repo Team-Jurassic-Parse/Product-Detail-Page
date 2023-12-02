@@ -4,7 +4,7 @@ import {
   describe, test, expect, jest,
 } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
-import UploadPhoto from './UploadPhoto.jsx'; // eslint-disable-line
+import UploadPhoto from './UploadPhoto.jsx';
 
 describe('UploadPhoto component test', () => {
   test('upload btn should exist', () => {

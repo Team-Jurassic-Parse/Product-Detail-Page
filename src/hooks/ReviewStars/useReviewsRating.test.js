@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import {
   test, expect, describe, jest, afterEach,
 } from '@jest/globals';
-import useReviewRating, { StatusEnum } from './useReviewsRating.js'; // eslint-disable-line
+import useReviewRating, { StatusEnum } from './useReviewsRating.js';
 import useServerFetch from '../useServerFetch';
 
 // Mock useServerFetch

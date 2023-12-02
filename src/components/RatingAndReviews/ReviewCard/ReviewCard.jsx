@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import StarsRating from '../../ReviewStars/StarsRating.jsx';

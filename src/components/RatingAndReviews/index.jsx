@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import RatingSummary from './RatingSummary.jsx'; // eslint-disable-line
-import ReviewsList from './ReviewsList.jsx'; // eslint-disable-line
-import ReviewForm from './ReviewForm.jsx'; // eslint-disable-line
-import Modal from '../UI/Modal.jsx'; // eslint-disable-line
-import StarsFilterProvider from './providers/StarsFilterProvider.jsx'; // eslint-disable-line
-import ButtonWrapper from '../UI/StyledButton.js'; // eslint-disable-line
+import RatingSummary from './RatingSummary.jsx';
+import ReviewsList from './ReviewsList.jsx';
+import ReviewForm from './ReviewForm.jsx';
+import Modal from '../UI/Modal.jsx';
+import StarsFilterProvider from './providers/StarsFilterProvider.jsx';
+import ButtonWrapper from '../UI/StyledButton.js';
 
 const Wrapper = styled.div`
   margin: 60px auto;
@@ -40,11 +40,11 @@ const SearchBar = styled.input`
 `;
 
 function RatingAndReviews({
-  productId, // eslint-disable-line
-  productName = 'Anonymous', // eslint-disable-line
-  productReview, // eslint-disable-line
-  status, // eslint-disable-line
-  error // eslint-disable-line
+  productId,
+  productName = 'Anonymous',
+  productReview,
+  status,
+  error
 }) {
   const [showForm, setShowForm] = useState(false);
   const [query, setQuery] = useState('');
@@ -94,7 +94,7 @@ function RatingAndReviews({
             productName={productName}
             productId={productId}
             handleClose={closeModal}
-            currentCharacteristics={productReview.characteristics} // eslint-disable-line
+            currentCharacteristics={productReview.characteristics}
           />
         </Modal>
       )}

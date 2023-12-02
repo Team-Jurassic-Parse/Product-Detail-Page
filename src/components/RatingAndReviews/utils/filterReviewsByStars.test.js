@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import filterReviewsByStars from './filterReviewsByStars.js'; // eslint-disable-line
+import filterReviewsByStars from './filterReviewsByStars.js';
 
 describe('filterReviewsByStars', () => {
   it('should filter reviews based on star ratings', () => {

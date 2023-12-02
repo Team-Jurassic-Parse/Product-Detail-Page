@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
 import AnswersList from './AnswersList.jsx'; //eslint-disable-line
-import AnswerModal from './AnswerModal.jsx'; // eslint-disable-line
-import Modal from '../UI/Modal.jsx'; // eslint-disable-line
+import AnswerModal from './AnswerModal.jsx';
+import Modal from '../UI/Modal.jsx';
 import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
 
 const OuterWrapper = styled.div`

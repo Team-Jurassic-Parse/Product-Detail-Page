@@ -6,7 +6,7 @@ import StyleSelectorView from './StyleSelectorView/index.jsx'; //eslint-disable-
 import AddToCartView from './AddToCartView/index.jsx'; //eslint-disable-line
 
 function Overview({ productId, styleId, setStyleId, productInfo, productReview }) { //eslint-disable-line
-  // eslint-disable-line
+
   // const [currentView, setCurrentView] = useState('default');
   const [productStyles, setProductStyles] = useState();
   const stylesFetchController = new AbortController();

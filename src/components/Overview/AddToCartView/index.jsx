@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import useServerFetch from '../../../hooks/useServerFetch.js'; // eslint-disable-line
-import ButtonWrapper from '../../UI/StyledButton.js' // eslint-disable-line
-import AddToCartForm from './AddToCartForm.jsx'; // eslint-disable-line
+import useServerFetch from '../../../hooks/useServerFetch.js';
+import ButtonWrapper from '../../UI/StyledButton.js'
+import AddToCartForm from './AddToCartForm.jsx';
 
-function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
+function UnstyledAddToCartView({ currentStyle, view }) {
   const [selectedSku, setSelectedSku] = React.useState(null);
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [quantity, setQuantity] = React.useState(0);
@@ -13,9 +13,9 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
   const [added, setAdded] = React.useState(false);
 
   React.useEffect(() => {
-    if (currentStyle && currentStyle.skus) { // eslint-disable-line
-      setAvailableSkus(Object.keys(currentStyle.skus).map((sku) => { // eslint-disable-line
-        if (currentStyle.skus[sku] && currentStyle.skus[sku].quantity) { // eslint-disable-line
+    if (currentStyle && currentStyle.skus) {
+      setAvailableSkus(Object.keys(currentStyle.skus).map((sku) => {
+        if (currentStyle.skus[sku] && currentStyle.skus[sku].quantity) {
           return (sku);
         }
       }));
@@ -60,14 +60,14 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
 
   return (
     <div style={{ marginRight: view === 'expanded' ? '30px' : '0px', marginTop: view === 'expanded' ? '50px' : '0px' }}>
-      {currentStyle && currentStyle.skus ? ( // eslint-disable-line
-        <AddToCartForm style={{}} onSubmit={(e) => { // eslint-disable-line
+      {currentStyle && currentStyle.skus ? (
+        <AddToCartForm style={{}} onSubmit={(e) => {
           e.preventDefault();
           const posts = [];
           const postObject = { sku_id: selectedSku };
           if (selectedSku) {
             setAdded(true);
-            for (let i = 0; i < quantity; i++) { // eslint-disable-line
+            for (let i = 0; i < quantity; i++) {
               posts.push(useServerFetch('post', 'cart', postObject));
             }
             Promise.all(posts)
@@ -104,9 +104,9 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
                 }}
               >
                 <option value={null} hidden>Select Size</option>
-                {availableSkus.map((sku) => { // eslint-disable-line
-                  if (currentStyle.skus[sku]) { // eslint-disable-line
-                    return <option value={sku} key={sku}>{currentStyle.skus[sku].size}</option>; // eslint-disable-line
+                {availableSkus.map((sku) => {
+                  if (currentStyle.skus[sku]) {
+                    return <option value={sku} key={sku}>{currentStyle.skus[sku].size}</option>;
                   }
                 })}
               </select>
@@ -114,8 +114,8 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
               <label htmlFor="selectQuantity" style={{ display: 'hidden' }}>Select Quantity</label>
 
               <select defaultValue="-" id="selectQuantity" style={dropDownStyle} disabled={!(selectedSku)} onChange={(e) => setQuantity(e.target.value)}>
-                {selectedSku && currentStyle.skus[selectedSku] ? Array(currentStyle.skus[selectedSku].quantity).fill('').slice(0, 15).map( // eslint-disable-line
-                  (x, num) =><option value={num + 1} key={num}>{num + 1}</option>) // eslint-disable-line
+                {selectedSku && currentStyle.skus[selectedSku] ? Array(currentStyle.skus[selectedSku].quantity).fill('').slice(0, 15).map(
+                  (x, num) =><option value={num + 1} key={num}>{num + 1}</option>)
                   : <option value={null}>-</option>}
               </select>
               {!added && <AddButton type="submit">Add to Cart</AddButton>}

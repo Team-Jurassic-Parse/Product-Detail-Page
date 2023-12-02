@@ -50,7 +50,7 @@ const StarWrapper = styled.div`
 
 `;
 
-function Star({ fill }) { // eslint-disable-line
+function Star({ fill }) {
   if (fill > 0.9) {
     return <StarWrapper aria-label="Full star" size="24px" />;
   }

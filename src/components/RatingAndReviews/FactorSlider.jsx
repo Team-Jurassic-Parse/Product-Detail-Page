@@ -1,6 +1,6 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
-import descriptioinMap from './utils/descriptioinMap.js'; // eslint-disable-line
+import descriptioinMap from './utils/descriptioinMap.js';
 
 const SliderWrapper = styled.div`
   display: flex;
@@ -59,7 +59,7 @@ margin-top: 4px; /* Space between slider and label */
 color: #aaa;
 `;
 
-function FactorSlider({ charact, value }) { // eslint-disable-line
+function FactorSlider({ charact, value }) {
   const id = useId();
   return (
     <SliderWrapper>
@@ -72,7 +72,7 @@ function FactorSlider({ charact, value }) { // eslint-disable-line
         onChange={() => {}}
       />
       <FactorLabel>
-        {descriptioinMap[charact.toLowerCase()].map((desc) => ( // eslint-disable-line
+        {descriptioinMap[charact.toLowerCase()].map((desc) => (
           <span key={desc}>{desc}</span>
         ))}
       </FactorLabel>

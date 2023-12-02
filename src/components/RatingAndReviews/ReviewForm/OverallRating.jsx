@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ClickableStarsRating from '../../ReviewStars/ClickableStarsRating.jsx'; // eslint-disable-line
+import ClickableStarsRating from '../../ReviewStars/ClickableStarsRating.jsx';
 
 const ratingMap = {
   1: 'Poor',
@@ -51,7 +51,7 @@ const Wrapper = styled.fieldset`
   }
 `;
 
-function OverallRating({rating, handleChangeRating}) { // eslint-disable-line
+function OverallRating({rating, handleChangeRating}) {
   return (
     <Wrapper>
       <legend>Overall Rating</legend>

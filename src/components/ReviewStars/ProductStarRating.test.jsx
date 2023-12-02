@@ -17,7 +17,7 @@ jest.mock('../../hooks/ReviewStars/useReviewsRating.js', () => {
   };
 });
 
-import useReviewRating from '../../hooks/ReviewStars/useReviewsRating'; // eslint-disable-line
+import useReviewRating from '../../hooks/ReviewStars/useReviewsRating';
 
 describe('ProductStarRating Tests', () => {
   test('Should render pending status correctly', () => {

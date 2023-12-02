@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating.js'; // eslint-disable-line
-import RatingSummaryContent from './RatingSummaryContent.jsx'; // eslint-disable-line
+import { StatusEnum } from '../../hooks/ReviewStars/useReviewsRating.js';
+import RatingSummaryContent from './RatingSummaryContent.jsx';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding: 24px 36px;
 `;
 
-function RatingSummary({ productId, productReview, status, error }) { // eslint-disable-line
+function RatingSummary({ productId, productReview, status, error }) {
   return (
     <Wrapper>
       {/* FIXME: fancier pending state. */}

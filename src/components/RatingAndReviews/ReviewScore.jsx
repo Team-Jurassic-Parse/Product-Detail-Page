@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StarsRating from '../ReviewStars/StarsRating.jsx'; // eslint-disable-line
+import StarsRating from '../ReviewStars/StarsRating.jsx';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const Score = styled.span`
   font-weight: 700;
 `;
 
-function ReviewScore({ score }) { // eslint-disable-line
+function ReviewScore({ score }) {
   return (
     <Wrapper>
       <Score>{Math.round(score * 10) / 10}</Score>

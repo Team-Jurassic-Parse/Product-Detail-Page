@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Carousel from 'react-multi-carousel'; //eslint-disable-line
 
-function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrentImg, start, setStart }) { // eslint-disable-line
+function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrentImg, start, setStart }) {
 
   const [zooming, setZooming] = useState(false);
 
   const displayedThumbnails = React.useMemo(() => {
     const newThumbs = [];
     if (currentStyle) {
-      currentStyle.photos.slice(start, start + 4).map((photo) => { // eslint-disable-line
+      currentStyle.photos.slice(start, start + 4).map((photo) => {
         if (photo && photo.thumbnail_url) {
           newThumbs.push(photo.thumbnail_url);
         }
@@ -139,7 +139,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
   };
 
   return (
-    <div // eslint-disable-line
+    <div
       style={imageViewStyle}
       onClick={() => {
         if (view === 'default') {
@@ -147,11 +147,11 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
         }
       }}
     >
-      {currentStyle && currentStyle.photos && ( // eslint-disable-line
-        <img // eslint-disable-line
+      {currentStyle && currentStyle.photos && (
+        <img
           style={imgStyle}
-          src={currentStyle.photos[currentImg].url} // eslint-disable-line
-          alt={currentStyle.name} // eslint-disable-line
+          src={currentStyle.photos[currentImg].url}
+          alt={currentStyle.name}
           onClick={() => {
             if (view === 'expanded') {
               setZooming(!zooming);
@@ -175,7 +175,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
             </button>
           ) : <div style={{ visibility: 'hidden', backgroundColor: 'transparent', color: 'transparent' }} />}
           {displayedThumbnails.map((item, index) => (
-            <img  // eslint-disable-line
+            <img
               style={{
                 height: 'calc(min(10vh, 5vw))',
                 width: 'calc(min(10vh, 5vw))',
@@ -195,7 +195,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
               key={item}
             />
           ))}
-          {start + 4 < currentStyle.photos.length  // eslint-disable-line
+          {start + 4 < currentStyle.photos.length
             && (
               <button
                 style={arrowStyle}
@@ -209,7 +209,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
               </button>
             )}
         </div>
-        {currentStyle.photos && currentImg < currentStyle.photos.length - 1 && ( // eslint-disable-line
+        {currentStyle.photos && currentImg < currentStyle.photos.length - 1 && (
           <button
             type="button"
             style={rightArrowStyle}
@@ -229,7 +229,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
             </p>
           </button>
         )}
-        {currentStyle.photos && currentImg > 0 && ( // eslint-disable-line
+        {currentStyle.photos && currentImg > 0 && (
           <button
             type="button"
             style={leftArrowStyle}
@@ -249,7 +249,7 @@ function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrent
             </p>
           </button>
         )}
-        {view === "expanded" && ( // eslint-disable-line
+        {view === "expanded" && (
           <button
             type="button"
             style={exitButtonStyle}

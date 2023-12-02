@@ -22,7 +22,7 @@ const GroupWrapper = styled.div`
   }
 `;
 
-function CharacteristicsRow({ char, handleChange, charString, description }) { // eslint-disable-line
+function CharacteristicsRow({ char, handleChange, charString, description }) {
   const id = useId();
   return (
     <>
@@ -33,10 +33,10 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
           type="radio"
           name={charString}
           value="1"
-        checked={char === '1'} // eslint-disable-line
+        checked={char === '1'}
           onChange={handleChange}
         />
-      <label htmlFor={`${id}-${charString}-1`}>{description[0]}</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-${charString}-1`}>{description[0]}</label>
       </GroupWrapper>
       <GroupWrapper>
         <input
@@ -44,10 +44,10 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
           type="radio"
           name={charString}
           value="2"
-        checked={char === '2'} // eslint-disable-line
+        checked={char === '2'}
           onChange={handleChange}
         />
-      <label htmlFor={`${id}-${charString}-2`}>{description[1]}</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-${charString}-2`}>{description[1]}</label>
       </GroupWrapper>
       <GroupWrapper>
         <input
@@ -55,10 +55,10 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
           type="radio"
           name={charString}
           value="3"
-        checked={char === '3'} // eslint-disable-line
+        checked={char === '3'}
           onChange={handleChange}
         />
-      <label htmlFor={`${id}-${charString}-3`}>{description[2]}</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-${charString}-3`}>{description[2]}</label>
       </GroupWrapper>
       <GroupWrapper>
         <input
@@ -66,10 +66,10 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
           type="radio"
           name={charString}
           value="4"
-        checked={char === '4'} // eslint-disable-line
+        checked={char === '4'}
           onChange={handleChange}
         />
-      <label htmlFor={`${id}-${charString}-4`}>{description[3]}</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-${charString}-4`}>{description[3]}</label>
       </GroupWrapper>
       <GroupWrapper>
         <input
@@ -77,10 +77,10 @@ function CharacteristicsRow({ char, handleChange, charString, description }) { /
           type="radio"
           name={charString}
           value="5"
-        checked={char === '5'} // eslint-disable-line
+        checked={char === '5'}
           onChange={handleChange}
         />
-      <label htmlFor={`${id}-${charString}-5`}>{description[4]}</label> {/* eslint-disable-line */}
+      <label htmlFor={`${id}-${charString}-5`}>{description[4]}</label>
       </GroupWrapper>
     </>
   );
