@@ -10,7 +10,7 @@ const AnswerWrapper = styled.div`
 
 const BelowAnswer = styled.div`
   padding: 5px 25px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 `;
 

@@ -94,7 +94,7 @@ function Question({
       )
         .then((response) => {
           const sortResponse = response.data.results.sort(
-            (a, b) => b.helpfulness - a.helpfulness
+            (a, b) => b.helpfulness - a.helpfulness,
           );
           setAnswers(sortResponse);
           setCurrentAnswers(sortResponse.slice(0, 2));
