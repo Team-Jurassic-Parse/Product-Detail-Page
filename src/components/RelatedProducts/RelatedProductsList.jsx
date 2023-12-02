@@ -15,7 +15,7 @@ function RelatedProductsList({
       items: 5,
     },
     desktop: {
-      breakpoint: { max: 2000, min: 1200 },
+      breakpoint: { max: 2000, min: 1600 },
       items: 4,
     },
     smallDesktop: {
