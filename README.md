@@ -26,6 +26,11 @@
 # Product-Detail-Page
 This service centers around the product details page of an online retail store, utilizing webpack, RESTful API, and React to power the module's UI. It constitutes one component of a broader service-oriented architecture.
 
+# Documentation
+1. [Project ReadMe](./README.md)
+2. [useServerFetch](./documentation/useServerFetch.md)
+3. [useReviewRating](./documentation/useReviewRating.md)
+
 # Getting Started
 1. Clone the Github repository: `https://github.com/Team-Jurassic-Parse/Product-Detail-Page.git`
 2. Navigate inside of the directory `./Product-Detail-Page` and run the following commands:
@@ -35,7 +40,7 @@ This service centers around the product details page of an online retail store, 
 6. Open a new browser to see the application: `http://localhost:3000/`
 
 # Challenges
-1. Building an interactive product detail page from scratch with multiple responsive changes
+1. Built an interactive product detail page from scratch with multiple responsive changes
 2. Efficient Data Fetching: Retrieved data from various external server endpoints and managed application state effectively.
 3. State Distribution: Ensured smooth state propagation throughout the app components.
 4. RESTful API State Sync: Implemented real-time synchronization of app states with API updates, both user-generated and external.
@@ -46,6 +51,17 @@ This service centers around the product details page of an online retail store, 
 # Sprint Management
 ![image](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/5a3cbfa8-9739-47ad-a17c-32d522fe41fa)
 
+# Requirements
+* Node >= 16.20
+* Github API token: `.env` `AUTH_TOKEN`
+
+# Technologies
+* React
+* Node.js
+* Webpack
+* Axios
+* Jest
+* AWS EC2
 
 
 # Custom Hooks Documentation
