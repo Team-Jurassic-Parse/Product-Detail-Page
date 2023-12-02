@@ -69,12 +69,14 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, 
               hashtag="TeamJurassicParse"
               url={window.location.href}
               style={shareButtonStyle}
+              name="FacebookShare"
             >
               <FacebookIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </FacebookShareButton>
             <TwitterShareButton
               url={window.location.href}
               style={shareButtonStyle}
+              name="TwitterShare"
             >
               <TwitterIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </TwitterShareButton>
@@ -82,6 +84,7 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, 
               url={window.location.href}
               media={currentStyle && currentStyle.photos[0] ? currentStyle.photos[0].url : null} // eslint-disable-line
               style={shareButtonStyle}
+              name="PinterestShare"
             >
               <PinterestIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </PinterestShareButton>

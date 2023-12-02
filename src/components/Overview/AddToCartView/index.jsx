@@ -90,6 +90,9 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
             <>
 
               {message && <p style={{ margin: '1vh' }}>{message}</p>}
+
+              <label htmlFor="selectSize" style={{ display: 'hidden' }}>Select Size</label>
+
               <select
                 key={currentStyle}
                 defaultValue={selectedItem}
@@ -108,7 +111,9 @@ function UnstyledAddToCartView({ currentStyle, view }) { // eslint-disable-line
                 })}
               </select>
 
-              <select defaultValue="-" style={dropDownStyle} disabled={!(selectedSku)} onChange={(e) => setQuantity(e.target.value)}>
+              <label htmlFor="selectQuantity" style={{ display: 'hidden' }}>Select Quantity</label>
+
+              <select defaultValue="-" id="selectQuantity" style={dropDownStyle} disabled={!(selectedSku)} onChange={(e) => setQuantity(e.target.value)}>
                 {selectedSku && currentStyle.skus[selectedSku] ? Array(currentStyle.skus[selectedSku].quantity).fill('').slice(0, 15).map( // eslint-disable-line
                   (x, num) =><option value={num + 1} key={num}>{num + 1}</option>) // eslint-disable-line
                   : <option value={null}>-</option>}
