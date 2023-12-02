@@ -61,8 +61,12 @@ function OutfitList({
       items: 5,
     },
     desktop: {
-      breakpoint: { max: 2000, min: 1200 },
+      breakpoint: { max: 2000, min: 1600 },
       items: 4,
+    },
+    smallDesktop: {
+      breakpoint: { max: 1600, min: 1200 },
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1200, min: 700 },
