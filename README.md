@@ -26,6 +26,13 @@
 # Product-Detail-Page
 This service centers around the product details page of an online retail store, utilizing webpack, RESTful API, and React to power the module's UI. It constitutes one component of a broader service-oriented architecture.
 
+
+
+![ProjectAtelier](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/6cd2e6dc-14ba-4e70-8295-75f32944f032)
+
+
+
+
 # Getting Started
 1. Clone the Github repository: `https://github.com/Team-Jurassic-Parse/Product-Detail-Page.git`
 2. Navigate inside of the directory `./Product-Detail-Page` and run the following commands:
