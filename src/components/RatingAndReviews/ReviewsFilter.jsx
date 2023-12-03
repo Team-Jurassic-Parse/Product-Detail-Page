@@ -35,7 +35,7 @@ const getMaxRating = (ratings) => {
     }
   }
   return max;
-}; // FIXME: move to a util folder.
+};
 
 function StarFilterLine({ children, rating }) {
   const { starsFilter, toggleStarsFilter } = useStarsFilter();

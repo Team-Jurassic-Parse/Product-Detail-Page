@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import AnswersList from './AnswersList.jsx'; //eslint-disable-line
+import AnswersList from './AnswersList.jsx';
 import AnswerModal from './AnswerModal.jsx';
 import Modal from '../UI/Modal.jsx';
-import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
+import useServerFetch from '../../hooks/useServerFetch.js';
 
 const OuterWrapper = styled.div`
   margin-top: 10px;
@@ -43,7 +43,6 @@ function Question({
   questionId,
   productName,
 }) {
-  //eslint-disable-line
   const [showForm, setShowForm] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
@@ -122,8 +121,6 @@ function Question({
               display: 'inline-block',
               textAlign: 'right',
               paddingRight: '32px',
-              // alignContent: 'right',
-              // justifyItems: 'end',
             }}
           >
             <div

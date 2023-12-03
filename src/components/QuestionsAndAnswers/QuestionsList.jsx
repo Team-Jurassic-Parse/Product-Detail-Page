@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Question from './Question.jsx'; //eslint-disable-line
+import Question from './Question.jsx';
 
 const Wrapper = styled.div`
   background: white;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   padding-left: 75px;
 `;
 
-function QuestionsList({ questions, currentQuestions, query, productName}) { //eslint-disable-line
+function QuestionsList({ questions, currentQuestions, query, productName}) {
   const formatQuery = query.toLowerCase().trim();
   return (
     <Wrapper>

@@ -63,7 +63,7 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, 
     <div style={{ marginLeft: view === 'expanded' ? '30px' : '0px' }}>
       {productInfo && (
         <>
-          {averageStars ? <StyledStarsRating stars={averageStars}/> : <div>Loading...</div>} {/*eslint-disable-line*/}
+          {averageStars ? <StyledStarsRating stars={averageStars}/> : <div>Loading...</div>}
           <div>
             <FacebookShareButton
               hashtag="TeamJurassicParse"
@@ -89,15 +89,15 @@ function UnstyledProductDetailsView({ productInfo, currentStyle, productReview, 
               <PinterestIcon size={30} borderRadius={10} bgStyle={{ fill: 'black' }} />
             </PinterestShareButton>
           </div>
-          <ProductCategory>{productInfo.category.toUpperCase()}</ProductCategory> {/*eslint-disable-line*/}
-          <ProductName>{productInfo.name}</ProductName> {/*eslint-disable-line*/}
+          <ProductCategory>{productInfo.category.toUpperCase()}</ProductCategory>
+          <ProductName>{productInfo.name}</ProductName>
           { currentStyle && (
             <>
-              <OriginalPrice>{`$${currentStyle.original_price}`}</OriginalPrice> {/*eslint-disable-line*/}
-              {onSale && <a>{`$${currentStyle.sale_price}`}</a>} {/*eslint-disable-line*/}
+              <OriginalPrice>{`$${currentStyle.original_price}`}</OriginalPrice>
+              {onSale && <a>{`$${currentStyle.sale_price}`}</a>}
             </>
           )}
-          <ProductDescription>{productInfo.description}</ProductDescription> {/*eslint-disable-line*/}
+          <ProductDescription>{productInfo.description}</ProductDescription>
         </>
       )}
     </div>

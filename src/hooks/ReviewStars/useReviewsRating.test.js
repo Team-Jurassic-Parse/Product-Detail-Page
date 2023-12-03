@@ -5,7 +5,6 @@ import {
 import useReviewRating, { StatusEnum } from './useReviewsRating.js';
 import useServerFetch from '../useServerFetch';
 
-// Mock useServerFetch
 jest.mock('../useServerFetch', () => ({
   __esModule: true,
   default: jest.fn(),

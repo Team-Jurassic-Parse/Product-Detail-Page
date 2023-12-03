@@ -6,7 +6,7 @@ import Overview from './components/Overview/index.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers/index.jsx';
 import RatingAndReviews from './components/RatingAndReviews/index.jsx';
 import RelatedProducts from './components/RelatedProducts/index.jsx';
-import useServerFetch from './hooks/useServerFetch.js'; //eslint-disable-line
+import useServerFetch from './hooks/useServerFetch.js';
 import useReviewRating from './hooks/ReviewStars/useReviewsRating.js';
 import { Toaster } from 'react-hot-toast';
 

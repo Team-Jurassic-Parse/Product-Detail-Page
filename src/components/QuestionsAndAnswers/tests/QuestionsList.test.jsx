@@ -19,7 +19,6 @@ describe('Questions List', () => {
   it('should render the question', () => {
     render(<QuestionsList query='' currentQuestions={mockQuestions} />);
     expect(screen.findByText('Q:What is this?').toBeTruthy);
-    // expect('Add Answer').toBeInTheDocument();
   });
 
   it('should render the AddAnswerBtn', () => {

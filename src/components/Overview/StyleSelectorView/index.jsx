@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import StyleItem from './StyleItem.jsx';
 
 function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, currentStyle, view }) {
-
-
   const StyleSelector = styled.div`
     display: grid;
     grid-gap: 5px;
@@ -28,7 +26,7 @@ function UnstyledStyleSelectorView({ productStyles, styleId, setStyleId, current
 
   return (
     <div style={{ marginTop: view === 'expanded' ? '30px' : '0px' }}>
-      <h3 style={{textTransform: 'uppercase', marginLeft: '3vw'}}>{currentStyle && currentStyle.name}</h3> {/*eslint-disable-line*/}
+      <h3 style={{textTransform: 'uppercase', marginLeft: '3vw'}}>{currentStyle && currentStyle.name}</h3>
       <StyleSelector>
         {productStyles
           && productStyles.results.map(

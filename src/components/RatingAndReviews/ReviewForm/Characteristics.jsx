@@ -28,7 +28,6 @@ const GripWrapper = styled.div`
 `;
 
 function Characteristics({ characteristics, setCharacteristics }) {
-
   const handleChange = (e) => {
     setCharacteristics((cur) => ({
       ...cur,

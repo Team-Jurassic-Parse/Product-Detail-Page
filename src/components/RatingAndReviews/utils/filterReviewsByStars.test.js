@@ -18,7 +18,6 @@ describe('filterReviewsByStars', () => {
 
     const filteredReviews = filterReviewsByStars(reviews, starsFilter);
 
-    // Expect filteredReviews to only contain reviews with ratings of 5 and 3
     expect(filteredReviews).toEqual([
       { id: 1, rating: 5 },
       { id: 3, rating: 5 },

@@ -36,8 +36,4 @@ describe('Answer Modal', () => {
     const modalBtns = screen.getAllByRole('button');
     expect(modalBtns.length).toBe(3);
   });
-
-  // it('should be able to submit the form', () => {
-
-  // });
 });

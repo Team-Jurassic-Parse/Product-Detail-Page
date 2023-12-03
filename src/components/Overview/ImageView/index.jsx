@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Carousel from 'react-multi-carousel'; //eslint-disable-line
+import Carousel from 'react-multi-carousel';
 
 function UnstyledImageView({ currentStyle, view, setView, currentImg, setCurrentImg, start, setStart }) {
 

@@ -133,7 +133,6 @@ function ReviewsList({ productId, query }) {
           ))}
         </UnorderedList>
       )}
-      {/* FIXME: fancier pending state. */}
       {status === StatusEnum.pending && <p>Loading Data...</p>}
       {status === StatusEnum.error && <p>{error}</p>}
       {haveMoreReviews && (

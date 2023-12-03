@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
-import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
+import useServerFetch from '../../hooks/useServerFetch.js';
 
 const AnswerWrapper = styled.div`
   font-weight: normal;
@@ -15,7 +15,6 @@ const BelowAnswer = styled.div`
 `;
 
 function Answers({ answer }) {
-  //eslint-disable-line
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness);

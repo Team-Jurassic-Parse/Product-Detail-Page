@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
-import ImageView from './ImageView/index.jsx'; //eslint-disable-line
-import ProductDetailsView from './ProductDetailsView/index.jsx'; //eslint-disable-line
-import StyleSelectorView from './StyleSelectorView/index.jsx'; //eslint-disable-line
-import AddToCartView from './AddToCartView/index.jsx'; //eslint-disable-line
+import useServerFetch from '../../hooks/useServerFetch.js';
+import ImageView from './ImageView/index.jsx';
+import ProductDetailsView from './ProductDetailsView/index.jsx';
+import StyleSelectorView from './StyleSelectorView/index.jsx';
+import AddToCartView from './AddToCartView/index.jsx';
 
-function Overview({ productId, styleId, setStyleId, productInfo, productReview }) { //eslint-disable-line
-
-  // const [currentView, setCurrentView] = useState('default');
+function Overview({ productId, styleId, setStyleId, productInfo, productReview }) {
   const [productStyles, setProductStyles] = useState();
   const stylesFetchController = new AbortController();
 
@@ -166,6 +164,3 @@ function Overview({ productId, styleId, setStyleId, productInfo, productReview }
 }
 
 export default Overview;
-
-//  this is the overview
-// second change

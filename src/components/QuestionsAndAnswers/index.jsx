@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import useServerFetch from '../../hooks/useServerFetch.js'; //eslint-disable-line
-import QuestionsList from './QuestionsList.jsx'; //eslint-disable-line
-import QuestionModal from './QuestionModal.jsx'; //eslint-disable-line
+import useServerFetch from '../../hooks/useServerFetch.js';
+import QuestionsList from './QuestionsList.jsx';
+import QuestionModal from './QuestionModal.jsx';
 import Modal from '../UI/Modal.jsx';
 
 const SearchBar = styled.input`
@@ -39,7 +39,6 @@ const BtnWrapper = styled.button`
 `;
 
 function QuestionsAndAnswers({ productId, productInfo }) {
-  //eslint-disable-line
   const [questions, setQuestions] = useState([]);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
@@ -87,7 +86,6 @@ function QuestionsAndAnswers({ productId, productInfo }) {
           setQuestions(null);
         });
     }
-    // console.log('this is the searchbar:', query);
     return () => {
       questionFetchController.abort();
     };

@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 function RatingSummary({ productId, productReview, status, error }) {
   return (
     <Wrapper>
-      {/* FIXME: fancier pending state. */}
       {status === StatusEnum.pending && <div>Pending...</div>}
       {status === StatusEnum.error && <div>{error}</div>}
       {status === StatusEnum.success && (

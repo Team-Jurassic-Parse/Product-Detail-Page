@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Answers from './Answers.jsx'; //eslint-disable-line
+import Answers from './Answers.jsx';
 
 const AnswerListWrapper = styled.div`
   background: white;
@@ -38,8 +38,6 @@ function AnswersList({
   handleCollapseAnswers,
   isExpanded,
 }) {
-  //eslint-disable-line
-
   return (
     <div>
       <AnswerListWrapper>

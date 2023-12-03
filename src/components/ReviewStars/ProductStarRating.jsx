@@ -5,7 +5,6 @@ import useReviewRating, {
 import StarsRating from './StarsRating.jsx';
 
 export function calculateAverageRating(ratings) {
-  // FIXME: move to a util folder.
   const totalScore =
     (1 * Number(ratings[1]) || 0) +
     (2 * Number(ratings[2]) || 0) +
@@ -26,7 +25,7 @@ export function calculateAverageRating(ratings) {
 function ProductStarRating({ productId }) {
   const { productReview, status, error } = useReviewRating(productId);
   if (status === StatusEnum.pending) {
-    return <div>Pending...</div>; // FIXME: Fancier pending state.
+    return <div>Pending...</div>;
   }
   if (status === StatusEnum.error) {
     return <div>{error}</div>;

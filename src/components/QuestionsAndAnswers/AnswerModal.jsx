@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import UploadPhoto from '../RatingAndReviews/ReviewForm/UploadPhoto.jsx'; //eslint-disable-line
+import UploadPhoto from '../RatingAndReviews/ReviewForm/UploadPhoto.jsx';
 
 const FormWrapper = styled.form`
   background: white;
@@ -52,7 +52,6 @@ const SuccessWrapper = styled.h2`
 `;
 
 function AnswerModal({ productName, questionBody, questionId, closeModal }) {
-  //eslint-disable-line
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
