@@ -26,16 +26,11 @@
 # Product-Detail-Page
 This service centers around the product details page of an online retail store, utilizing webpack, RESTful API, and React to power the module's UI. It constitutes one component of a broader service-oriented architecture.
 
-# Documentation
-1. [Project ReadMe](./README.md)
-2. [useServerFetch](./documentation/useServerFetch.md)
-3. [useReviewRating](./documentation/useReviewRating.md)
-
 # Getting Started
 1. Clone the Github repository: `https://github.com/Team-Jurassic-Parse/Product-Detail-Page.git`
 2. Navigate inside of the directory `./Product-Detail-Page` and run the following commands:
 3. Run the command `npm install`
-4. Environment Setup: Please copy the `example.env` file, rename it to `.env`, and update the `AUTH_TOKEN` variable with your GitHub token. For example: `AUTH_TOKEN=your_github_token_here`.
+4. Environment Setup: Please copy the `example.env` file, rename it to `.env`, and update the `AUTH_TOKEN` variable with your GitHub token. For example: `AUTH_TOKEN='your_github_token_here'`.
 5. Run the command `npm start`
 6. Open a new browser to see the application: `http://localhost:3000/`
 
@@ -54,6 +49,11 @@ This service centers around the product details page of an online retail store, 
 # Requirements
 * Node >= 16.20
 * Github API token: `.env` `AUTH_TOKEN`
+
+# Documentation
+1. [Project ReadMe](./README.md)
+2. [useServerFetch](./documentation/useServerFetch.md)
+3. [useReviewRating](./documentation/useReviewRating.md)
 
 # Technologies
 * React
