@@ -32,6 +32,10 @@ This service centers around the product details page of an online retail store, 
 
 
 
+https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/53bd1615-5c8d-4dec-a729-e7622c656399
+
+
+
 
 # Getting Started
 1. Clone the Github repository: `https://github.com/Team-Jurassic-Parse/Product-Detail-Page.git`
