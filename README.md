@@ -52,7 +52,10 @@ https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/53bd
 4. RESTful API State Sync: Implemented real-time synchronization of app states with API updates, both user-generated and external.
 
 # Deliverables
-![image](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/9f12949a-8a12-40f0-8d19-3f9ee1ebe93a)
+
+![image](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/e38c46ac-ea97-4afd-8dce-e9b59e18493c)
+
+
 
 # Sprint Management
 ![image](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/5a3cbfa8-9739-47ad-a17c-32d522fe41fa)
