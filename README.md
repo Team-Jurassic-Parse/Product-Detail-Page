@@ -46,7 +46,7 @@ https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/53bd
 6. Open a new browser to see the application: `http://localhost:3000/`
 
 # Challenges
-1. Built an interactive product detail page from scratch with multiple responsive changes
+1. Built an interactive product detail page with multiple responsive components
 2. Efficient Data Fetching: Retrieved data from various external server endpoints and managed application state effectively.
 3. State Distribution: Ensured smooth state propagation throughout the app components.
 4. RESTful API State Sync: Implemented real-time synchronization of app states with API updates, both user-generated and external.
