@@ -26,14 +26,26 @@
 # Product-Detail-Page
 This service centers around the product details page of an online retail store, utilizing webpack, RESTful API, and React to power the module's UI. It constitutes one component of a broader service-oriented architecture.
 
+## ✅ Features
 
 
-![ProjectAtelier](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/6cd2e6dc-14ba-4e70-8295-75f32944f032)
+- [x]  Overview - Module divided into image gallery, product information, style selector, add to cart
+
+![Overview](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/5a49c30c-8c3e-4242-ab1a-e9f611bf6e80)
 
 
+- [x]  Related Products - Carousel of related products (from current product in overview) and outfit list (custom created by user)
 
-https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/53bd1615-5c8d-4dec-a729-e7622c656399
+![RelatedProducts](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/61559269-db62-4b57-b1f6-4c1c8d08934e)
 
+
+- [x]  Questions & Answers - Module divided into view questions, search for questions, asking a question, answering a question
+
+![QuestionsandAnswers](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/4b0e35ab-7a82-470a-8963-849dcc566314)
+
+- [x]  Ratings and Reviews - Module divided into write new review, reviews list, sorting, rating breakdown, product breakdown
+
+![RatingsandReviews](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/c5134220-c21d-4cd2-9cf3-6401139565ba)
 
 
 
@@ -53,7 +65,8 @@ https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/53bd
 
 # Deliverables
 
-![image](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/e38c46ac-ea97-4afd-8dce-e9b59e18493c)
+![Deliverables](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/b9b360ae-16cb-4df3-8dce-955c5595b28e)
+
 
 
 
