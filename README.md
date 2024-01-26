@@ -31,22 +31,20 @@ This service centers around the product details page of an online retail store, 
 
 - [x]  Overview - Module divided into image gallery, product information, style selector, add to cart
 
-![Overview](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/5a49c30c-8c3e-4242-ab1a-e9f611bf6e80)
+![Overview](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/67b55e50-44b8-48a5-adb0-eed52d76999e)
 
 
 - [x]  Related Products - Carousel of related products (from current product in overview) and outfit list (custom created by user)
 
-![RelatedProducts](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/61559269-db62-4b57-b1f6-4c1c8d08934e)
-
+![RelatedProducts](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/589e172b-d02d-4287-8377-9c13b4cbc385)
 
 - [x]  Questions & Answers - Module divided into view questions, search for questions, asking a question, answering a question
 
-![QuestionsandAnswers](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/4b0e35ab-7a82-470a-8963-849dcc566314)
+![QuestionsandAnswers](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/24264d5c-9d14-4ec1-8017-62b24df7f785)
 
 - [x]  Ratings and Reviews - Module divided into write new review, reviews list, sorting, rating breakdown, product breakdown
 
-![RatingsandReviews](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/c5134220-c21d-4cd2-9cf3-6401139565ba)
-
+![RatingsandReviews](https://github.com/Team-Jurassic-Parse/Product-Detail-Page/assets/144174704/31b545c4-c3af-4033-b7ff-ddc26ae03dad)
 
 
 # Getting Started
