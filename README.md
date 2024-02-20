@@ -78,7 +78,6 @@ This service centers around the product details page of an online retail store, 
 # Documentation
 1. [Project ReadMe](./README.md)
 2. [useServerFetch](./documentation/useServerFetch.md)
-3. [useReviewRating](./documentation/useReviewRating.md)
 
 # Technologies
 * React
